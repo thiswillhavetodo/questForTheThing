@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>The Quest for the Thing</title>
+  <link href="styles/style.css" rel="stylesheet" type="text/css">
+  </head>
+<body>
+  
+<div id="header"> 
+  <div id="logo">
+    <img id="pic" src="images/image1.jpeg">
+  </div>
+  <div id="navbar">
+    <ul>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="forum.html">Forum</a></li>
+      <li><a href="settings.html">Settings</a></li>
+      <li><a href="contactUs.html">Contact Us</a></li>
+      <li><a href="logOut.html">Log Out</a></li>
+    </ul> 
+  </div>
+  <h1>The Quest for The Thing</h1>
+  <h4 id="subtitle">A Game Wot I Wrote</h4>
+</div>
+  
+<div id="content">
+
+  <div id="character_attributes">
+    <h4><span>Your Character:&nbsp;</span></h4>
+    <p id="display_level"></p>
+    <p id="display_strength"></p>
+    <p id="display_hit"></p>
+    <p id="display_def"></p>
+    <p id="display_dodge"></p>
+    <p id="display_luck"></p>
+    <p id="display_points"></p>
+  </div>
+  
+  <div id="adventure_stats">
+    <h4><span>Your Adventure:&nbsp;</span></h4>
+    <p id="display_HP"></p>
+    <p id="display_energy"></p>
+    <p id="display_Xp"></p>
+    <p id="display_NextLevelAt"></p>
+    <p id="display_Gold"></p>
+    <p id="display_Equipment"></p>
+    <button onClick="Paul.find()" id="listItems">Sell/Use Items</button>
+    <select id="equipment"></select>
+    <br/>
+    <button onClick="Paul.sell()" id="sellItems">Sell</button>
+    <br/>
+    <button onClick="Paul.use()" id="useItems">Use</button>
+  </div>
+  
+  <div id="armour">
+    <h4><span>Your Armour:&nbsp;</span></h4>
+    <p id="display_Weapon">Weapon: None</p>
+    <p id="display_Shield">Shield: None</p>
+    <p id="display_Helm">Helm: None</p>
+    <p id="display_Chest">Chest: None</p>
+    <p id="display_Legs">Legs: None</p>
+    <p id="display_Gloves">Gloves: None</p>
+    <p id="display_Boots">Boots: None</p>
+    <p id="display_Ring">Ring: None</p>
+    <p id="display_Amulet">Amulet: None</p>
+  </div>
+
+  <div id="fight">
+    <h4><span>Your Battles:&nbsp;</span></h4>      
+    <div id="fight_commentary1">
+      <p id="youHit"></p>
+      <p id="yourHP"></p>
+    </div>  
+    <div id="fightButtons">
+    <div id="initiateButtons">
+    <button onClick="Paul.fight(mouse)" id="fightMouse"><span style="font-weight:bold">Fight a Mouse</span><br>Energy Cost: 3<br>Level: 1+</button>
+    <br/>
+    <button onClick="Paul.fight(rat)" id="fightRat"><span style="font-weight:bold">Fight a Rat</span><br>Energy Cost: 4<br>Level: 3+</button>
+    <br/>
+    <button onClick="Paul.fight(dog)" id="fightDog"><span style="font-weight:bold">Fight a Dog</span><br>Energy Cost: 5<br>Level: 5+</button>
+    <br/>      
+    <button onClick="Paul.fight(wolf)" id="fightWolf"><span style="font-weight:bold">Fight a Wolf</span><br>Energy Cost: 6<br>Level: 7+</button>
+    <br/>      
+    <button onClick="Paul.fight(goblin)" id="fightGoblin"><span style="font-weight:bold">Fight a Goblin</span><br>Energy Cost: 7<br>Level: 10+</button>
+    <br/>      
+    <button onClick="Paul.fight(orc)" id="fightOrc"><span style="font-weight:bold">Fight an Orc</span><br>Energy Cost: 8<br>Level: 13+</button>  
+    <br/>      
+    <button onClick="Paul.fight(ogre)" id="fightOgre"><span style="font-weight:bold">Fight an Ogre</span><br>Energy Cost: 9<br>Level: 16+</button>              
+    </div>
+    <div id="specialButtons">
+    <button onClick="attack()" id="attackMouse">Attack</button>
+
+    <button onClick="berserk()" id="berserkMouse" class="berserker">Berserk</button>
+
+    <button onClick="invulnerable()" id="invulnerableMouse" class="invuln">Invulnerable</button>
+
+
+    <button onClick="attack()" id="attackRat">Attack</button>
+    <br/>
+    <button onClick="berserk()" id="berserkRat" class="berserker">Berserk</button>
+    <br/>
+    <button onClick="invulnerable()" id="invulnerableRat" class="invuln">Invulnerable</button>
+    <br/>      
+
+    <button onClick="attack()" id="attackDog">Attack</button>
+    <br/>
+    <button onClick="berserk()" id="berserkDog" class="berserker">Berserk</button>
+    <br/>
+    <button onClick="invulnerable()" id="invulnerableDog" class="invuln">Invulnerable</button>
+
+    <button onClick="attack()" id="attackWolf">Attack</button>
+    <br/>
+    <button onClick="berserk()" id="berserkWolf" class="berserker">Berserk</button>
+    <br/>
+    <button onClick="invulnerable()" id="invulnerableWolf" class="invuln">Invulnerable</button>
+
+    <button onClick="attack()" id="attackGoblin">Attack</button>  
+    <br/>
+    <button onClick="berserk()" id="berserkGoblin" class="berserker">Berserk</button>
+    <br/>
+    <button onClick="invulnerable()" id="invulnerableGoblin" class="invuln">Invulnerable</button>
+
+    <button onClick="attack()" id="attackOrc">Attack</button>  
+    <br/>
+    <button onClick="berserk()" id="berserkOrc" class="berserker">Berserk</button>
+    <br/>
+    <button onClick="invulnerable()" id="invulnerableOrc" class="invuln">Invulnerable</button>
+
+    <button onClick="attack()" id="attackOgre">Attack</button>  
+    <br/>
+    <button onClick="berserk()" id="berserkOgre" class="berserker">Berserk</button>
+    <br/>
+    <button onClick="invulnerable()" id="invulnerableOgre" class="invuln">Invulnerable</button>
+    <br/>  
+    </div>    
+    </div> 
+    <div id="fight_commentary2">
+    <p id="enemy_Hit"></p>
+    <p id="enemyHP"></p>
+    </div>
+    <div id="fight_result">
+    <p id="fightResult"></p>
+    </div>
+  </div>
+
+  <div id="buttonWrapper">
+    <div id="buttons">
+    <button onClick="Paul.strPlus()" id="strPlus">Raise Strength</button>
+    <button onClick="Paul.hitPlus()" id="hitPlus">Raise Accuracy</button>
+    <button onClick="Paul.defPlus()" id="defPlus">Raise Defence</button>
+    <button onClick="Paul.dodgePlus()" id="dodgePlus">Raise Evade</button>
+    <button onClick="Paul.luckPlus()" id="luckPlus">Raise Luck</button>
+    </div>
+  </div>
+
+  <div id="messages">
+    <h4><span>Your Messages:&nbsp;</span></h4>
+    <p id="result"></p>
+  </div>
+  
+  <div id="shop">
+    <h4><span>Goblin Dave's Used Goods Emporium&nbsp;</span></h4>
+      <table id="stock">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Effect</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Wooden Sword</td>
+      <td>Strength +2</td>
+      <td id="price">14 gold</td>
+    </tr>
+    <tr>
+      <td>Wooden Shield</td>
+      <td>Evade +2</td>
+      <td id="price">15 gold</td>
+    </tr>
+    <tr>
+      <td>Cloth Hat</td>
+      <td>Defence +1</td>
+      <td id="price">8 gold</td>
+    </tr>
+    <tr>
+      <td>Cloth Shirt</td>
+      <td>Defence +2</td>
+      <td id="price">18 gold</td>
+    </tr>
+    <tr>
+      <td>Cloth Legs</td>
+      <td>Defence +2</td>
+      <td id="price">16 gold</td>
+    </tr>
+    <tr>
+      <td>Cloth Gloves</td>
+      <td>Accuracy +2</td>
+      <td id="price">15 gold</td>
+    </tr>
+    <tr>
+      <td>Cloth Boots</td>
+      <td>Evade +1</td>
+      <td id="price">8 gold</td>
+    </tr>
+    <tr>
+      <td>Worn Ring</td>
+      <td>Luck +1 </td>
+      <td id="price">12 gold</td>
+    </tr>
+    <tr>
+      <td>Worn Amulet</td>
+      <td>Max Health +5 </td>
+      <td id="price">13 gold</td>
+    </tr>    
+  </tbody>
+  <button onClick="Paul.findShop()" id="findItem">Choose Item</button>      
+  <select id="shopStock"></select>         
+  <button onClick="Paul.buy()" id="buy">Buy</button>
+   <br/>
+  <button onClick="Paul.findTier()" id="find_tier">Choose Tier</button>  
+  <select id="shop_Tier"></select> 
+  <button onClick="Paul.changeStock()" id="newStock">Confirm</button>     
+   </div>  
+</div>
+<script src="scripts/jquery.js"></script>  
+<script src="scripts/main.js"></script>    
+</body>
+</html>
