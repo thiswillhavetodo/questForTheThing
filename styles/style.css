@@ -4,6 +4,9 @@ html {
   font-weight: normal;
   margin-left: 2em;
 }
+body{
+  overflow: hidden;
+}
 #header {
   background-color: #3b5998;
   margin-left: -2em;
@@ -12,7 +15,7 @@ html {
   font-family : Impact;
   font-weight: normal;
   padding-bottom: 2px;
-  height: 9em;
+  height: 9.2em;
   padding-right: 1em;
 }
 #navbar ul {
@@ -28,7 +31,7 @@ html {
   float: left;
 }
 #navbar li {
-  padding-top: 0.3em;
+  padding-top: 0.35em;
   height: 1.5em;
 }
 #sideNav li  {
@@ -56,11 +59,38 @@ h1 {
   font-size: 4.5em;
   text-align: center;
   font-weight: normal;
+  padding-bottom: 0;
 }
 #subtitle {
   text-align: center;
   color: white;
   font-weight: normal;
+  padding-bottom: 5px;
+}
+#tutorialLink {
+  position: relative;
+  top: -25px;
+  left: 50%;
+  margin-left: -30px;
+}
+#tutorialLink button {
+  width: 80px;
+  border: none;
+  background-color: white;
+  color: #3b5998;
+}
+#tutorial {
+  position: absolute;
+  display: none;
+  border: 6px solid black;
+  background-color: #3b5998;
+  color: white;   
+  width: 600px;
+  top: 200px;
+  left: 50%;
+  margin-left: -300px;
+  text-align: center;
+  padding: 5px;
 }
 #content {
   width: 100%;
@@ -68,7 +98,7 @@ h1 {
 }
 #logo img{
   float: left;
-  width: 7.5em;
+  width: 7.65em;
   height: auto;
   border: solid 1px #3b5998; 
  }

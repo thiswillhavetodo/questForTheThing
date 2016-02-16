@@ -17,6 +17,12 @@ $(document).ready(function() {
   );
 });
 
+$(document).ready(function(){
+  $('#tutorialLink').on('click', 'button', function() {
+    $('#tutorial').fadeToggle(400, "linear");    
+  });
+});
+
 var startDate = new Date();
 var hpStartDate = new Date();
 var correction = 0;
