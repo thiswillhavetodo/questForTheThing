@@ -72,6 +72,7 @@ h1 {
   top: -25px;
   left: 50%;
   margin-left: -30px;
+  width: 80px;
 }
 #tutorialLink button {
   width: 80px;
@@ -95,6 +96,7 @@ h1 {
 #content {
   width: 100%;
   height: 50em;
+    box-sizing: border-box;
 }
 #logo img{
   float: left;
@@ -120,65 +122,74 @@ button {
 }
 #character_attributes {
   float: left;
-  width: 20%;  
+  width: 25%;  
   height: 50%;
+    box-sizing: border-box;
 }
 #adventure_stats {
   float: left;
-  width: 20%;  
+  width: 25%;  
   height: 50%;
+    box-sizing: border-box;
 }
 #armour {
   float: left;
-  width: 20%;  
+  width: 25%;  
   height: 50%;
+    box-sizing: border-box;
 }
 #fight {
-  float: right;
-  width: 40%;  
-  height: 100%;
-}
-#buttonWrapper {
-  width: 35%;  
-  height: 12.5%;
-}
-#messages {
-  box-sizing: border-box;
-  float: left;
-  width: 35%;  
-  height: 37.5%;
-  margin-top: 2em;
-  padding-right: 1em;
-}
-#fight_commentary1 {
-  width: 30%;  
-  float: left;
-}
-#fightButtons {
-  float: left;
-  width: 40%;
-}
-#fight_commentary2 {  
-  color: red;
-  float: left;
-  width: 30%;
-}
-#fight_result {
-  padding-top: 1em;
-  clear: both;
-}
-#shop {
   float: left;
   width: 25%;  
   height: 50%;
-  margin-top: -1em;
+    box-sizing: border-box;
+}
+#buttonWrapper {
+  float: left;
+  width: 25%;  
+  height: 50%;
+    box-sizing: border-box;
+}
+#strPlus {
+  background-image: url('../images/strength.jpeg');
+  width: 150px;
+  height: 80px;
+  color: #3b5998;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+#fightButtons {
+}
+
+#shop {
+  box-sizing: border-box;
+  float: left;
+  width: 35%;  
+  height: 50%;
+  margin-top: -1.5em;
+}
+#shopButtons {
+  float: left;
+  width: 100%;
+}
+#stock {
+    box-sizing: border-box;
+  float: left;
 }
 #stock th, td {
   padding-top: 0.3em;
 }
-#price {
-  text-align: right;
-  padding-left: 0.3em;
+#stock th {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+#yourMessages {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;  
+  margin-left: 100%;
+  margin-top: -7.1em;
 }
 #initiateButtons button {
   color: black;

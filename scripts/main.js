@@ -63,6 +63,7 @@ document.getElementById("invulnerableWolf").style.visibility='hidden';
 document.getElementById("invulnerableGoblin").style.visibility='hidden';
 document.getElementById("invulnerableOrc").style.visibility='hidden';
 document.getElementById("invulnerableOgre").style.visibility='hidden';
+document.getElementById("close").style.visibility='hidden';
 var mouse = {
   name: "Mouse",
   energyCost: 3,
@@ -175,12 +176,75 @@ var ogre = {
   //  dropTable: "medDrop",
   difficulty: 17
 };
+function showMouse() {
+    $('.mouse').removeClass('noDisplay'); 
+    $('.rat').addClass('noDisplay');
+    $('.dog').addClass('noDisplay'); 
+    $('.wolf').addClass('noDisplay');   
+    $('.goblin').addClass('noDisplay');   
+    $('.orc').addClass('noDisplay'); 
+    $('.ogre').addClass('noDisplay'); 
+}
+function showRat() {
+    $('.rat').removeClass('noDisplay'); 
+    $('.mouse').addClass('noDisplay'); 
+    $('.dog').addClass('noDisplay'); 
+    $('.wolf').addClass('noDisplay');  
+    $('.goblin').addClass('noDisplay');    
+    $('.orc').addClass('noDisplay');    
+    $('.ogre').addClass('noDisplay');
+}
+function showDog() {
+    $('.dog').removeClass('noDisplay'); 
+    $('.mouse').addClass('noDisplay'); 
+    $('.rat').addClass('noDisplay');
+    $('.wolf').addClass('noDisplay');   
+    $('.goblin').addClass('noDisplay');
+    $('.orc').addClass('noDisplay');   
+    $('.ogre').addClass('noDisplay');      
+}
+function showWolf() {
+    $('.wolf').removeClass('noDisplay'); 
+    $('.mouse').addClass('noDisplay'); 
+    $('.rat').addClass('noDisplay');
+    $('.dog').addClass('noDisplay');  
+    $('.goblin').addClass('noDisplay');  
+    $('.orc').addClass('noDisplay');      
+    $('.ogre').addClass('noDisplay');      
+}
+function showGoblin() {
+    $('.goblin').removeClass('noDisplay'); 
+    $('.mouse').addClass('noDisplay'); 
+    $('.rat').addClass('noDisplay');
+    $('.dog').addClass('noDisplay');  
+    $('.wolf').addClass('noDisplay'); 
+    $('.orc').addClass('noDisplay'); 
+    $('.ogre').addClass('noDisplay');      
+}
+function showOrc() {
+    $('.orc').removeClass('noDisplay'); 
+    $('.mouse').addClass('noDisplay'); 
+    $('.rat').addClass('noDisplay');
+    $('.dog').addClass('noDisplay');  
+    $('.wolf').addClass('noDisplay');  
+    $('.goblin').addClass('noDisplay');  
+    $('.ogre').addClass('noDisplay');      
+}
+function showOgre() {
+    $('.ogre').removeClass('noDisplay'); 
+    $('.mouse').addClass('noDisplay'); 
+    $('.rat').addClass('noDisplay');
+    $('.dog').addClass('noDisplay');  
+    $('.wolf').addClass('noDisplay');  
+    $('.goblin').addClass('noDisplay'); 
+    $('.orc').addClass('noDisplay');      
+}
 function fight(enemy) {  
   this.updateStatus();
   fightResult.innerHTML = "";
   result.innerHTML = "";
-  youHit.innerHTML = "";
-  enemy_Hit.innerHTML = "";
+//  youHit.innerHTML = "";
+//  enemy_Hit.innerHTML = "";
   yourHP.innerHTML = "";
   enemyHP.innerHTML = "";
   if (this.points > 0) {
@@ -201,6 +265,28 @@ function fight(enemy) {
         startDate = new Date();
       }
   fighting = true;
+  $('#wrapper').removeClass('noDisplay');
+  if (enemy.name=="Mouse") {    
+    showMouse();
+  }
+  else if (enemy.name=="Rat") {    
+    showRat();
+  }   
+  else if (enemy.name=="Dog") {    
+    showDog();
+  }  
+  else if (enemy.name=="Wolf") {    
+    showWolf();
+  }  
+  else if (enemy.name=="Goblin") {    
+    showGoblin();
+  }  
+  else if (enemy.name=="Orc") {    
+    showOrc();
+  }  
+  else if (enemy.name=="Ogre") {    
+    showOgre();
+  }        
   enemy.hp = enemy.maxHp;
   document.getElementById("attack" + enemy.name).style.visibility='visible';
   this.energy -= enemy.energyCost;
@@ -239,7 +325,8 @@ function fight(enemy) {
           yourDamageThisRound = 1;          
         }
       } 
-  youHit.innerHTML += "You hit: " + yourDamageThisRound + space;  
+  //youHit.innerHTML += "You hit: " + yourDamageThisRound + space;
+  hit.innerHTML = yourDamageThisRound;   
   enemy.hp -= yourDamageThisRound; 
   enemyHP.innerHTML = enemy.name + " health: " + enemy.hp;
       if (((enemy.str + enemyRoll) - (self.def + yourRoll)) > 0 ){
@@ -264,7 +351,8 @@ function fight(enemy) {
           enemyDamageThisRound = 1;          
         } 
       }
-  enemy_Hit.innerHTML += enemy.name + " hits: " + enemyDamageThisRound + space; 
+  //enemy_Hit.innerHTML += enemy.name + " hits: " + enemyDamageThisRound + space; 
+  enemyhit.innerHTML = enemyDamageThisRound;
   if (this.hp === this.maxHp && enemyDamageThisRound>0) {
         hpStartDate = new Date();
       }  
@@ -321,6 +409,7 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
       fighting = false;
+      document.getElementById('close').style.visibility='visible'; 
       self.lowDrop(enemy.difficulty); // need to amend drop method to take table and difficulty
       fightResult.innerHTML = "You win! You receive " + enemy.xpWin + " Experience Points and " + drop + "." + space + "You have " + self.hp + " Hit Points left and " + self.xp + " Experience Points.";
       self.updateStatus();
@@ -332,6 +421,7 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
       fightResult.innerHTML = "The dying " + enemy.name + " lashes out with the last of it's strength, you are both dead. You receive " + enemy.xpDraw + " Experience Points and pay 2 Energy for resurrection.";
       self.xp += enemy.xpDraw;
       fighting = false;
+      document.getElementById('close').style.visibility='visible'; 
       self.updateStatus();
       document.getElementById("attack" + enemy.name).style.visibility='hidden';
       berserkScore = 5;
@@ -341,6 +431,7 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
       fightResult.innerHTML = "You lose! You receive " + enemy.xpLose + " Experience Points and pay 2 Energy for resurrection.";
       self.xp += enemy.xpLose;
       fighting = false;
+      document.getElementById('close').style.visibility='visible'; 
       self.updateStatus();
       document.getElementById("attack" + enemy.name).style.visibility='hidden';
       berserkScore = 5;
@@ -377,7 +468,8 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
           yourDamageThisRound = 1;          
         }
       } 
-  youHit.innerHTML += "You hit: " + yourDamageThisRound + space;  
+  //youHit.innerHTML += "You hit: " + yourDamageThisRound + space; 
+  hit.innerHTML = yourDamageThisRound;  
   enemy.hp -= yourDamageThisRound; 
   enemyHP.innerHTML = enemy.name + " health: " + enemy.hp;
       if (((enemy.str + enemyRoll) - (self.def + yourRoll)) > 0 ){
@@ -402,7 +494,8 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
           enemyDamageThisRound = 1;          
         } 
       }
-  enemy_Hit.innerHTML += enemy.name + " hits: " + enemyDamageThisRound + space; 
+  //enemy_Hit.innerHTML += enemy.name + " hits: " + enemyDamageThisRound + space; 
+  enemyhit.innerHTML = enemyDamageThisRound;
   if (this.hp === this.maxHp && enemyDamageThisRound>0) {
         hpStartDate = new Date();
       }  
@@ -413,6 +506,7 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
       fighting = false;
+      document.getElementById('close').style.visibility='visible'; 
       self.lowDrop(enemy.difficulty); // need to amend drop method to take table and difficulty
       fightResult.innerHTML = "You win! You receive " + enemy.xpWin + " Experience Points and " + drop + "." + space + "You have " + self.hp + " Hit Points left and " + self.xp + " Experience Points.";
       self.updateStatus();
@@ -424,6 +518,7 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
       fightResult.innerHTML = "The dying " + enemy.name + " lashes out with the last of it's strength, you are both dead. You receive " + enemy.xpDraw + " Experience Points and pay 2 Energy for resurrection.";
       self.xp += enemy.xpDraw;
       fighting = false;
+      document.getElementById('close').style.visibility='visible'; 
       self.updateStatus();
       document.getElementById("attack" + enemy.name).style.visibility='hidden';
       berserkScore = 5;
@@ -433,6 +528,7 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
       fightResult.innerHTML = "You lose! You receive " + enemy.xpLose + " Experience Points and pay 2 Energy for resurrection.";
       self.xp += enemy.xpLose;
       fighting = false;
+      document.getElementById('close').style.visibility='visible'; 
       self.updateStatus();
       document.getElementById("attack" + enemy.name).style.visibility='hidden';
       berserkScore = 5;
@@ -470,11 +566,13 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
           yourDamageThisRound = 1;          
         }
       } 
-  youHit.innerHTML += "You hit: " + yourDamageThisRound + space;  
+  //youHit.innerHTML += "You hit: " + yourDamageThisRound + space;
+  hit.innerHTML = yourDamageThisRound;  
   enemy.hp -= yourDamageThisRound; 
   enemyHP.innerHTML = enemy.name + " health: " + enemy.hp;
   enemyDamageThisRound = 0; 
-  enemy_Hit.innerHTML += enemy.name + " hits: " + enemyDamageThisRound + space; 
+  //enemy_Hit.innerHTML += enemy.name + " hits: " + enemyDamageThisRound + space; 
+  enemyhit.innerHTML = enemyDamageThisRound;
   if (this.hp === this.maxHp && enemyDamageThisRound>0) {
         hpStartDate = new Date();
       }  
@@ -485,6 +583,7 @@ document.getElementById("invulnerableOgre").style.visibility='visible';
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
       fighting = false;
+      document.getElementById('close').style.visibility='visible'; 
       self.lowDrop(enemy.difficulty); // need to amend drop method to take table and difficulty
       fightResult.innerHTML = "You win! You receive " + enemy.xpWin + " Experience Points and " + drop + "." + space + "You have " + self.hp + " Hit Points left and " + self.xp + " Experience Points.";
       self.updateStatus();
@@ -1400,16 +1499,16 @@ function changeStock() {
     shop = [" Bread", " Cheese", " Ham", " Stew"];
     stockTable.rows[1].cells[0].innerHTML = 'Crust of Bread'; 
     stockTable.rows[1].cells[1].innerHTML = 'Health +3, Energy +1';    
-    stockTable.rows[1].cells[2].innerHTML = '9 gold';     
+    stockTable.rows[1].cells[2].innerHTML = '11 gold';     
     stockTable.rows[2].cells[0].innerHTML = 'Piece of Cheese'; 
     stockTable.rows[2].cells[1].innerHTML = 'Health +5, Energy +2';    
-    stockTable.rows[2].cells[2].innerHTML = '15 gold';     
+    stockTable.rows[2].cells[2].innerHTML = '20 gold';     
     stockTable.rows[3].cells[0].innerHTML = 'Leg of Ham'; 
     stockTable.rows[3].cells[1].innerHTML = 'Health +8, Energy +3';    
-    stockTable.rows[3].cells[2].innerHTML = '29 gold';     
+    stockTable.rows[3].cells[2].innerHTML = '31 gold';     
     stockTable.rows[4].cells[0].innerHTML = 'Hot Stew'; 
     stockTable.rows[4].cells[1].innerHTML = 'Health +9, Energy +5';    
-    stockTable.rows[4].cells[2].innerHTML = '43 gold'; 
+    stockTable.rows[4].cells[2].innerHTML = '46 gold'; 
     stockTable.rows[5].cells[0].innerHTML = ''; 
     stockTable.rows[5].cells[1].innerHTML = '';    
     stockTable.rows[5].cells[2].innerHTML = '';    
@@ -1504,8 +1603,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Bread": if (this.gold >= 9) {
-        this.gold -= 9;
+      case " Bread": if (this.gold >= 11) {
+        this.gold -= 11;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1584,8 +1683,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Cheese": if (this.gold >= 15) {
-        this.gold -= 15;
+      case " Cheese": if (this.gold >= 20) {
+        this.gold -= 20;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1664,8 +1763,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Ham": if (this.gold >= 29) {
-        this.gold -= 29;
+      case " Ham": if (this.gold >= 31) {
+        this.gold -= 31;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1744,8 +1843,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Stew": if (this.gold >= 43) {
-        this.gold -= 43;
+      case " Stew": if (this.gold >= 46) {
+        this.gold -= 46;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1828,7 +1927,329 @@ function buy() {
   document.getElementById("buy").style.visibility='hidden'; 
   this.updateStatus();
 }
-
+function mouseMove() {
+  if ($('.mouse').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#mouseHead').css({'top': '380px', 'left': '320px'});
+  $('#mouseLeftEar').css({'top': '352px', 'left': '325px'});
+  $('#mouseRightEar').css({'top': '360px', 'left': '365px'});
+  $('#mouseBody').css({'top': '400px', 'left': '345px'});
+  $('#mouseFloor').css({'top': '456px', 'left': '347px'});
+  $('#mouseTail').css({'top': '410px', 'left': '405px'});
+  $('#mouseNose').css({'top': '418px', 'left': '328px'});
+  $('#mouseWhisker1').css({'top': '423px', 'left': '306px'});
+  $('#mouseWhisker2').css({'top': '418px', 'left': '307px'});
+  $('#mouseWhisker3').css({'top': '428px', 'left': '308px'});
+  $('#mouseWhisker4').css({'top': '426px', 'left': '341px'});
+  $('#mouseWhisker5').css({'top': '423px', 'left': '341px'});
+  $('#mouseWhisker6').css({'top': '433px', 'left': '341px'});
+  $('#mouseLeftPupil').css({'top': '0px', 'left': '2px'});
+  $('#mouseRightPupil').css({'top': '0px', 'left': '2px'});    
+  }
+}
+function mouseBack() {
+  if ($('.mouse').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#mouseHead').css({'top': '600px', 'left': '690px'});
+  $('#mouseLeftEar').css({'top': '572px', 'left': '695px'});
+  $('#mouseRightEar').css({'top': '580px', 'left': '735px'});
+  $('#mouseBody').css({'top': '620px', 'left': '715px'});
+  $('#mouseFloor').css({'top': '676px', 'left': '717px'});
+  $('#mouseTail').css({'top': '630px', 'left': '775px'});
+  $('#mouseNose').css({'top': '638px', 'left': '698px'});
+  $('#mouseWhisker1').css({'top': '643px', 'left': '676px'});
+  $('#mouseWhisker2').css({'top': '638px', 'left': '677px'});
+  $('#mouseWhisker3').css({'top': '648px', 'left': '678px'});
+  $('#mouseWhisker4').css({'top': '646px', 'left': '711px'});
+  $('#mouseWhisker5').css({'top': '643px', 'left': '711px'});
+  $('#mouseWhisker6').css({'top': '653px', 'left': '711px'});
+  $('#mouseLeftPupil').css({'top': '8px', 'left': '2px'});
+  $('#mouseRightPupil').css({'top': '8px', 'left': '3px'});     
+  }
+}
+function ratMove() {
+  if ($('.rat').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#ratHead').css('transform', 'rotate(-35deg)'); 
+  $('#ratNose').css({'top': '578px', 'left': '671px'}); 
+  $('#ratLeftEar').css({'top': '480px', 'left': '700px'}); 
+  $('#ratRightEar').css({'top': '515px', 'left': '755px'});
+  $('#ratLeftTooth').css({'top': '585px', 'left': '671px'});
+  $('#ratRightTooth').css({'top': '587px', 'left': '681px'});
+  $('#ratWhisker1').css({'top': '573px', 'left': '633px', 'transform': 'rotate(20deg)'}); 
+  $('#ratWhisker2').css({'top': '566px', 'left': '639px', 'transform': 'rotate(45deg)'});
+  $('#ratWhisker3').css({'top': '584px', 'left': '633px', 'transform': 'rotate(-5deg)'});
+  $('#ratWhisker4').css({'top': '605px', 'left': '690px', 'transform': 'rotate(35deg)'});
+  $('#ratWhisker5').css({'top': '595px', 'left': '692px', 'transform': 'rotate(10deg)'});
+  $('#ratWhisker6').css({'top': '611px', 'left': '681px', 'transform': 'rotate(60deg)'});
+  $('#ratLeftPupil').css({'width': '8px', 'height': '8px', 'top': '6px'}); 
+  $('#ratRightPupil').css({'width': '8px', 'height': '8px', 'top': '6px'}); 
+  $('#ratLaser').css('display','block');
+  }
+}
+function ratBack() {
+  if ($('.rat').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#ratHead').css('transform', 'rotate(-55deg)'); 
+  $('#ratNose').css({'top': '590px', 'left': '688px'}); 
+  $('#ratLeftEar').css({'top': '480px', 'left': '690px'}); 
+  $('#ratRightEar').css({'top': '495px', 'left': '755px'});
+  $('#ratLeftTooth').css({'top': '597px', 'left': '688px'});
+  $('#ratRightTooth').css({'top': '599px', 'left': '698px'});
+  $('#ratWhisker1').css({'top': '600px', 'left': '647px', 'transform': 'rotate(0deg)'}); 
+  $('#ratWhisker2').css({'top': '590px', 'left': '648px', 'transform': 'rotate(25deg)'});
+  $('#ratWhisker3').css({'top': '610px', 'left': '648px', 'transform': 'rotate(-25deg)'});
+  $('#ratWhisker4').css({'top': '609px', 'left': '708px', 'transform': 'rotate(15deg)'});
+  $('#ratWhisker5').css({'top': '600px', 'left': '708px', 'transform': 'rotate(-10deg)'});
+  $('#ratWhisker6').css({'top': '618px', 'left': '705px', 'transform': 'rotate(40deg)'});
+  $('#ratLeftPupil').css({'width': '3px', 'height': '3px', 'top': '8px'}); 
+  $('#ratRightPupil').css({'width': '3px', 'height': '3px', 'top': '8px'}); 
+  $('#ratLaser').css('display','none');
+  }
+}
+function dogMove() {
+  if ($('.dog').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#dogHead').css({'left': '170px'});
+  $('#dogLeftEar').css({'left': '205px'});
+  $('#dogLeftEarBorder1').css({'left': '215px'});
+  $('#dogLeftEarBorder2').css({'left': '235px'});
+  $('#dogRightEar').css({'left': '283px'});
+  $('#dogRightEarBorder1').css({'left': '303px'});
+  $('#dogRightEarBorder2').css({'left': '316px'});
+  $('#dogBelly').css({'left': '215px'}); 
+  $('#dogBody').css({'left': '215px'}); 
+  $('#dogFloor').css({'left': '195px'}); 
+  $('#dogTail').css({'left': '394px'}); 
+  $('#dogNose').css({'left': '191px'});  
+  $('#dogNosePoint').css({'left': '193px'}); 
+  $('#dogFoot1').css({'left': '195px'});
+  $('#dogLeg').css({'left': '263px'}); 
+  $('#dogFoot2').css({'left': '234px'}); 
+  $('#dogFoot3').css({'left': '289px'});
+  $('#leftPupil').css('top', '32px');
+  }
+}
+function dogBack() {
+  if ($('.dog').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#dogHead').css({'left': '670px'});
+  $('#dogLeftEar').css({'left': '705px'});
+  $('#dogLeftEarBorder1').css({'left': '715px'});
+  $('#dogLeftEarBorder2').css({'left': '735px'});
+  $('#dogRightEar').css({'left': '783px'});
+  $('#dogRightEarBorder1').css({'left': '803px'});
+  $('#dogRightEarBorder2').css({'left': '816px'});
+  $('#dogBelly').css({'left': '715px'}); 
+  $('#dogBody').css({'left': '715px'}); 
+  $('#dogFloor').css({'left': '695px'}); 
+  $('#dogTail').css({'left': '894px'}); 
+  $('#dogNose').css({'left': '691px'});  
+  $('#dogNosePoint').css({'left': '693px'}); 
+  $('#dogFoot1').css({'left': '695px'});
+  $('#dogLeg').css({'left': '763px'}); 
+  $('#dogFoot2').css({'left': '734px'}); 
+  $('#dogFoot3').css({'left': '789px'});
+  $('#leftPupil').css('top', '22px');    
+  }
+}
+function wolfMove() {
+  if ($('.wolf').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#wolfHead').css({'top': '320px', 'left': '520px', 'transform': 'rotate(-150deg)'}); 
+  $('#wolfRightEye').css({'display': 'none'});  
+  $('#wolfLeftEye').css({'top': '70px', 'left': '100px'}); 
+  $('#wolfLeftPupil').css({'top': '20px', 'left': '40px'});  
+  $('#wolfRightEarBorder1').css({'left': '727px'}); 
+  $('#wolfRightEarBorder2').css({'left': '737px'}); 
+  $('#wolfRightEar').css({'left': '690px'});
+  $('#wolfNose').css({'top': '315px', 'left': '520px', 'width': '40px', 'transform': 'rotate(30deg)', 'border-radius': '50%'});     
+  $('#wolfNosePoint').css({'display': 'none'}); 
+  $('#wolfLeftToothLeft').css({'display': 'none'}); 
+  $('#wolfLeftToothRight').css({'display': 'none'});
+  $('#wolfRightToothLeft').css({'display': 'none'}); 
+  $('#wolfRightToothRight').css({'display': 'none'}); 
+$('#wolfMouth').css({'display': 'block'});
+$('#wolfFoot1').css({'left': '585px'});  
+$('#wolfLeg').css({'left': '675px'});     
+$('#wolfFoot2').css({'left': '634px'}); 
+$('#wolfFoot3').css({'left': '710px'});
+$('#wolfBelly').css({'width': '140px'});
+$('#wolfFloor').css({'width': '232px', 'left': '585px'});  
+$('#wolfHowl').css({'display': 'block'});    
+  }
+}
+function wolfBack() {
+  if ($('.wolf').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#wolfHead').css({'top': '370px', 'left': '550px',  'transform': 'rotate(-55deg)'});  
+  $('#wolfRightEye').css({'display': 'block'}); 
+  $('#wolfLeftEye').css({'top': '-10px','left': '75px'});  
+  $('#wolfLeftPupil').css({'top': '6px', 'left': '6px'});  
+  $('#wolfRightEarBorder1').css({'left': '757px'}); 
+  $('#wolfRightEarBorder2').css({'left': '767px'}); 
+  $('#wolfRightEar').css({'left': '720px'});
+  $('#wolfNose').css({'top': '499px', 'left': '583px', 'width': '65px', 'transform': 'rotate(18deg)', 'border-radius': '40%'});    
+  $('#wolfNosePoint').css({'display': 'block'}); 
+  $('#wolfLeftToothLeft').css({'display': 'block'}); 
+  $('#wolfLeftToothRight').css({'display': 'block'});
+  $('#wolfRightToothLeft').css({'display': 'block'}); 
+  $('#wolfRightToothRight').css({'display': 'block'});
+$('#wolfMouth').css({'display': 'none'});
+$('#wolfFoot1').css({'left': '575px'});  
+$('#wolfLeg').css({'left': '685px'});     
+$('#wolfFoot2').css({'left': '644px'}); 
+$('#wolfFoot3').css({'left': '720px'});
+$('#wolfBelly').css({'width': '150px'}); 
+$('#wolfFloor').css({'width': '242px', 'left': '575px'});
+$('#wolfHowl').css({'display': 'none'}); 
+  }
+}
+function goblinMove() {
+  if ($('.goblin').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#goblinRightArm').css({'top': '427px', 'transform': 'rotate(80deg)'}); 
+  $('#goblinWeapon2').css({'left': '250px', 'transform': 'rotate(-80deg)'});  
+  $('#goblinHilt2').css({'top': '415px', 'left': '260px', 'transform': 'rotate(10deg)'});    
+  }
+}
+function goblinBack() {
+  if ($('.goblin').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#goblinRightArm').css({'top': '409px', 'transform': 'rotate(110deg)'}); 
+  $('#goblinWeapon2').css({'left': '595px', 'transform': 'rotate(20deg)'});  
+  $('#goblinHilt2').css({'top': '419px', 'left': '593px', 'transform': 'rotate(110deg)'});    
+  }
+}
+function orcMove() {
+  if ($('.orc').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#orcRightArm').css({'top': '345px', 'left': '615px', 'transform': 'rotate(65deg)'}); 
+  $('#orcAxeHead').css({'top': '270px', 'left': '500px', 'transform': 'rotate(-115deg)'});  
+  $('#orcAxeHandle').css({'top': '270px', 'left': '565px', 'transform': 'rotate(-25deg)'});    
+  }  
+}
+function orcBack() {
+  if ($('.orc').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#orcRightArm').css({'top': '300px', 'left': '620px', 'transform': 'rotate(110deg)'}); 
+  $('#orcAxeHead').css({'top': '200px', 'left': '580px', 'transform': 'rotate(-70deg)'});  
+  $('#orcAxeHandle').css({'top': '200px', 'left': '610px', 'transform': 'rotate(20deg)'});    
+  }  
+}
+function ogreMove() {
+  if ($('.ogre').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#ogreRightArm').css({'top': '305px', 'left': '613px', 'transform': 'rotate(65deg)'}); 
+  $('#ogreWeaponHead').css({'top': '180px', 'left': '480px', 'transform': 'rotate(-25deg)'});  
+  $('#ogreWeaponHandle').css({'top': '245px', 'left': '555px', 'transform': 'rotate(-25deg)'});   
+  }  
+}
+function ogreBack() {
+  if ($('.ogre').hasClass('noDisplay')) {    
+  }
+  else {
+  $('#ogreRightArm').css({'top': '275px', 'left': '610px', 'transform': 'rotate(90deg)'}); 
+  $('#ogreWeaponHead').css({'top': '135px', 'left': '545px', 'transform': 'rotate(0deg)'});  
+  $('#ogreWeaponHandle').css({'top': '200px', 'left': '580px', 'transform': 'rotate(0deg)'});    
+  }  
+}
+function heroMove() {
+  $('#weapon').css({'left': '345px','top':'270px', 'transform':'rotate(40deg)'}); 
+  $('#hilt').css({'left': '306px', 'top':'389px', 'transform':'rotate(40deg)'});
+  $('#hitsplat').css('display','block');
+  $('#hit').css('display','block');
+  $('#rightEye').css('display', 'none');
+  $('#leftEye').css('left', '53px');
+  $('#leftPupil').css({'left': '27px', 'top': '22px'}); 
+  $('#leftEyebrow').css('transform', 'rotate(25deg)');  
+  $('#leftArm').css('left', '202px');  
+  $('#rightArm').css({'transform': 'rotate(45deg)', 'left': '218px', 'top': '362px'});
+  $('#shield').css('left', '220px');
+  $('#leftLeg').css('left', '200px');
+  $('#rightLeg').css({'left': '215px', 'top': '511px', 'height': '120px'});
+  $('#leftFoot').css('left', '204px');
+  $('#leftSole').css('left', '204px'); 
+  $('#rightFoot').css({'left': '218px', 'top': '618px'});
+  $('#rightSole').css({'left': '218px', 'top': '630px'});    
+}
+function heroBack() {
+  $('#weapon').css({'left': '340px', 'top': '202px', 'transform': 'rotate(0deg)'}); 
+  $('#hilt').css({'left': '332px', 'top': '330px', 'transform': 'rotate(0deg)'});
+  $('#rightArm').css({'transform': 'rotate(0deg)', 'left': '241px', 'top': '339px'});
+  $('#hitsplat').css('display','none');
+  $('#hit').css('display','none');
+}
+function heroReset() {
+  $('#weapon').css({'top': '200px', 'transform': 'rotate(0deg)'}); 
+  $('#hilt').css({'top': '328px', 'transform': 'rotate(0deg)'});
+  $('#hit').css('display','none');
+  $('#rightEye').css('display', 'block');
+  $('#leftEye').css('left', '6px');
+  $('#leftEyebrow').css('transform', 'rotate(0deg)');
+  $('#leftPupil').css({'left': '19px', 'top': '15px'}); 
+  $('#leftArm').css({'left': '56px', 'top': '337px'});
+  $('#rightArm').css({'left': '243px', 'top': '337px', 'transform': 'rotate(0deg)'});
+  $('#shield').css({'left': '20px', 'top': '305px'});
+  $('#leftLeg').css('left', '180px');
+  $('#rightLeg').css({'left': '225px', 'top': '505px', 'height': '135px'});
+  $('#leftFoot').css('left', '147px');
+  $('#leftSole').css('left', '147px'); 
+  $('#rightFoot').css({'left': '229px', 'top': '628px'});
+  $('#rightSole').css({'left': '228px', 'top': '640px'}); 
+}
+// event handler
+$(document).ready(function(){
+    $('#attackButtonDiv').on('click', 'button', function() {
+    heroMove();
+    setTimeout(function() {
+      heroBack();
+    }, [600]);
+    setTimeout(function() {
+      ratMove();
+      mouseMove();
+      dogMove();
+      wolfMove();
+      goblinMove();
+      orcMove();
+      ogreMove();
+      $('#enemysplat').css('display','block');
+      $('#enemyhit').css('display','block');
+      $('#leftEyebrow').css('transform', 'rotate(-5deg)'); 
+      setTimeout(function() {
+        ratBack(); 
+        mouseBack();
+        dogBack();
+        wolfBack();
+        goblinBack();
+        orcBack();
+        ogreBack();
+        $('#enemysplat').css('display','none');
+        $('#enemyhit').css('display','none');
+        $('#leftEyebrow').css('transform', 'rotate(25deg)'); 
+      }, [600]);
+    }, [700]);
+  });  
+});
+$(document).ready(function(){
+  $('#close').on('click', 'button', function() {
+  $('#wrapper').addClass('noDisplay');
+  document.getElementById("close").style.visibility='hidden';    
+  });
+});
 function Character() {
   this.level = 1;
   this.nextLevelXp = 10;

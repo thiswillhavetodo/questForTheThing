@@ -1,0 +1,1915 @@
+.noDisplay {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+#wrapper {
+  width: 1000px;
+  height: 800px;
+  top: 90px;
+  left: 50%;
+  margin-left: -500px;
+  border: solid black 5px;
+  overflow: hidden;
+  position: absolute;
+  background-color: white;
+}
+.attack {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 350px;
+  font-size: 3em;
+}
+.berserker {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  font-size: 3em;
+}
+.invuln {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 650px;
+  font-size: 3em;
+}
+#close button {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 350px;
+  font-size: 3em;
+}
+#yourHP {
+  position: absolute;
+  font-size: 2em;
+  color: red;
+  top: 80px;
+  left: 100px;
+}
+#enemyHP {
+  position: absolute;
+  font-size: 2em;
+  color: blue;
+  top: 80px;
+  left: 600px;
+}
+#fight_result {
+  position: absolute;
+  font-size: 1em;
+  top: 700px;
+  left: 50px;
+  text-align: center;
+  width: 900px;
+}
+#head {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 200px;
+  left: 150px;
+}
+.eye {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: solid black 3px;
+}
+.pupil {
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  border: solid black 1px;
+  background-color: black;
+}
+.eyebrow {
+  width: 25px;
+  height: 0;
+  border-radius: 20%;
+  border: solid black 2px;
+  background-color: black;
+  position: absolute;  
+  top: -5px;
+  left: 5px;
+}
+#rightEye {
+  position: absolute;
+  top: 15px;
+  left: 51px;
+}
+#rightPupil {
+  position: absolute;
+  top: 15px;
+  left: 11px;
+}
+#leftEye {
+  position: absolute;
+  top: 15px;
+  left: 6px;
+}
+#leftPupil {
+  position: absolute;
+  top: 15px;
+  left: 19px;
+}
+#chest {
+  width: 100px;
+  height: 200px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 308px;
+  left: 150px;
+}
+.arm {
+  width: 105px;
+  height: 0;
+  border-radius: 10px;
+  border: solid black 3px;
+}
+#rightArm {
+  position: absolute;
+  top: 337px;
+  left: 243px;
+}
+#leftArm {
+  position: absolute;
+  top: 337px;
+  left: 56px;
+}
+.leg {
+  width: 0;
+  height: 135px;
+  border-radius: 10px;
+  border: solid black 3px;
+}
+#rightLeg {
+  position: absolute;
+  top: 505px;
+  left: 225px;
+}
+#leftLeg {
+  position: absolute;
+  top: 505px;
+  left: 180px;
+}
+.foot {
+  position: absolute;
+  height:35px;
+  width: 35px;
+  border-radius: 100%;
+  border-top: black solid 6px;
+  background-color: white;    
+}
+#leftFoot {
+  top: 628px;
+  left: 147px;
+}
+#rightFoot {
+  top: 628px;
+  left: 229px;
+}
+.sole {
+  position: absolute;
+  height:0;
+  width: 30px;
+  border: black solid 3px
+}
+#leftSole {
+  border-radius: 10px;  
+  top: 640px;
+  left: 147px;  
+}
+#rightSole {
+  border-radius: 10px;  
+  top: 640px;
+  left: 228px;  
+}
+#shield {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 305px;
+  left: 20px;
+  background-color: #94792b;
+}
+#hilt {
+  width: 17px;
+  height: 0;
+  border-radius: 10px;
+  border: solid grey 4px;
+  position: absolute;
+  left: 332px;
+  top: 328px;
+}
+#weapon {
+  width: 0;
+  height: 145px;
+  border-radius: 35%;
+  border: solid grey 4px;
+  position: absolute;
+  left: 340px;
+  top: 200px;
+}
+
+#hitsplat {
+  display: none;
+  top: 500px;
+  left: 500px;
+  background: radial-gradient(circle, yellow, orange, red);
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  text-align: center;
+  -webkit-transform: rotate(20deg);
+       -moz-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+         -o-transform: rotate(20deg);
+}
+#hitsplat:before {    
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 80px;
+    background: radial-gradient(circle, yellow, orange, red);
+    -webkit-transform: rotate(135deg);
+       -moz-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+         -o-transform: rotate(135deg);
+}
+#hit {
+  display: none;
+  position: absolute;
+  top: 510px;
+  left: 525px;
+  font-size: 3em;
+}
+#enemysplat {
+  display: none;
+  top: 235px;
+  left: 400px;
+  background: radial-gradient(circle, yellow, orange, red);
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  text-align: center;
+  -webkit-transform: rotate(20deg);
+       -moz-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+         -o-transform: rotate(20deg);
+}
+#enemysplat:before {    
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 80px;
+    background: radial-gradient(circle, yellow, orange, red);
+    -webkit-transform: rotate(135deg);
+       -moz-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+         -o-transform: rotate(135deg);
+}
+#enemyhit {
+  display: none;
+  position: absolute;
+  top: 245px;
+  left: 425px;
+  font-size: 3em;
+}
+/*mouse*/
+
+#mouseHead {
+  background-color: white;
+  width: 52px;
+  height: 33px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 600px;
+  left: 690px;
+  transform: rotate(-55deg)
+}
+#mouseLeftEar {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 572px;
+  left: 695px;
+}
+#mouseRightEar {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 580px;
+  left: 735px;
+}
+#mouseLeftEye {
+  width: 13px;
+  height: 13px;
+  border-radius: 100%;
+  border: solid black 3px;
+  position: relative;
+  top: -5px;
+  left: 22px;
+  background-color: white;
+}
+#mouseRightEye {
+  width: 13px;
+  height: 13px;
+  border-radius: 100%;
+  border: solid black 3px;
+  position: relative;
+  top: -10px;
+  left: 30px;
+}
+#mouseLeftPupil {
+  background-color: black;
+  width: 1px;
+  height: 1px;
+  border-radius: 100%;
+  border: solid black 1px;
+  position: relative;
+  top: 8px;
+  left: 2px;  
+}
+#mouseRightPupil {
+  background-color: black;
+  width: 1px;
+  height: 1px;
+  border-radius: 100%;
+  border: solid black 1px;
+  position: relative;
+  top: 8px;
+  left: 3px;
+}
+#mouseBody {
+  width: 40px;
+  height: 77px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 620px;
+  left: 715px;
+}
+#mouseFloor {
+  background-color: white;
+  width: 44px;
+  height: 35px;
+  border-top: solid black 4px;
+  position: absolute;
+  top: 676px;
+  left: 717px;
+}
+#mouseTail {
+  transform: rotate(45deg);
+  width: 0;
+  height: 55px;
+  border-radius: 40%;
+  border: solid black 3px;
+  position: absolute;
+  top: 630px;
+  left: 775px;
+}
+#mouseNose {
+  width: 9px;
+  height: 9px;
+  border-radius: 100%;
+  border: solid black 2px;
+  position: absolute;
+  top: 638px;
+  left: 698px;
+  background-color: pink;  
+}
+.mouseWhisker {
+  width: 20px;
+  height: 0;
+  border: solid black 1px;
+  position: absolute;
+}
+#mouseWhisker1 {
+  top: 643px;
+  left: 676px;
+}
+#mouseWhisker2 {
+  top: 638px;
+  left: 677px;
+  transform: rotate(25deg)
+}
+#mouseWhisker3 {
+  top: 648px;
+  left: 678px;
+  transform: rotate(-25deg)  
+}
+#mouseWhisker4 {
+  top: 646px;
+  left: 711px;
+  transform: rotate(15deg);
+}
+#mouseWhisker5 {
+  top: 643px;
+  left: 711px;
+  transform: rotate(-10deg);
+}
+#mouseWhisker6 {
+  top: 653px;
+  left: 711px;
+  transform: rotate(40deg);
+}
+
+/*rat*/
+
+.rat {
+  background-color: grey;
+}
+
+#ratHead {
+  background-color: grey;
+  width: 104px;
+  height: 66px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 520px;
+  left: 670px;
+  transform: rotate(-55deg)
+}
+#ratLeftEar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 480px;
+  left: 690px;
+}
+#ratRightEar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 495px;
+  left: 755px;
+}
+#ratLeftEye {
+  width: 26px;
+  height: 26px;
+  border-radius: 100%;
+  border: solid black 3px;
+  position: relative;
+  top: -1px;
+  left: 42px;
+  background-color: white;
+}
+#ratRightEye {
+  width: 26px;
+  height: 26px;
+  border-radius: 100%;
+  border: solid black 3px;
+  position: relative;
+  top: -5px;
+  left: 55px;
+  background-color: white;
+}
+#ratLeftPupil {
+  background-color: red;
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  border: solid black 1px;
+  position: relative;
+  top: 8px;
+  left: 2px;  
+}
+#ratRightPupil {
+  background-color: red;
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  border: solid black 1px;
+  position: relative;
+  top: 8px;
+  left: 3px;
+}
+#ratBody {
+  width: 80px;
+  height: 154px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 560px;
+  left: 715px;
+}
+#ratFloor {
+  background-color: white;
+  width: 84px;
+  height: 70px;
+  border-top: solid black 4px;
+  position: absolute;
+  top: 660px;
+  left: 717px;
+}
+#ratTail {
+  transform: rotate(45deg);
+  width: 0;
+  height: 110px;
+  border-radius: 40%;
+  border: solid black 3px;
+  position: absolute;
+  left: 825px;
+  top: 575px;
+}
+#ratNose {
+  width: 18px;
+  height: 18px;
+  border-radius: 100%;
+  border: solid black 2px;
+  position: absolute;
+  top: 590px;
+  left: 688px;
+  background-color: pink;  
+}
+.ratWhisker {
+  width: 40px;
+  height: 0;
+  border: solid black 1.5px;
+  position: absolute;
+}
+#ratWhisker1 {
+  top: 600px;
+  left: 647px;
+}
+#ratWhisker2 {
+  top: 590px;
+  left: 648px;
+  transform: rotate(25deg)
+}
+#ratWhisker3 {
+  top: 610px;
+  left: 648px;
+  transform: rotate(-25deg)  
+}
+#ratWhisker4 {
+  top: 609px;
+  left: 708px;
+  transform: rotate(15deg);
+}
+#ratWhisker5 {
+  top: 600px;
+  left: 708px;
+  transform: rotate(-10deg);
+}
+#ratWhisker6 {
+  top: 618px;
+  left: 705px;
+  transform: rotate(40deg);
+}
+#ratLeftTooth {
+  width: 8px;
+  height: 18px;
+  border: solid black 2px;
+  background-color: white;
+  position: absolute;
+  top: 597px;
+  left: 688px;
+  transform: rotate(10deg);
+}
+#ratRightTooth {
+  width: 8px;
+  height: 18px;
+  border: solid black 2px;
+  background-color: white;
+  position: absolute;
+  top: 599px;
+  left: 698px;
+  transform: rotate(10deg);
+}
+#ratLaser {
+  width: 370px;
+  height: 0;
+  border-radius: 10px;
+  border: solid red 3px;
+  transform: rotate(25deg);
+  position: absolute;
+  top: 440px;
+  left: 330px;
+  display: none;
+}
+
+/*dog*/
+
+.dog {
+  background-color: brown;
+}
+
+#dogHead {
+  background-color: brown;
+  width: 145px;
+  height: 90px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 470px;
+  left: 670px;
+  transform: rotate(-55deg);
+}
+#dogLeftEar {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid brown;
+  border-radius: 100%;  
+  position: absolute;
+  top: 430px;
+  left: 705px;
+  background-color: transparent;
+  transform: rotate(-26deg)
+}
+#dogLeftEarBorder1 {
+  height: 45px;
+  width: 0px;
+  border: solid black 2px;
+  position: absolute;
+  top: 432px;
+  left: 715px;
+}
+#dogLeftEarBorder2 {
+  height: 45px;
+  width: 0px;
+  border: solid black 2px;
+  position: absolute;
+  top: 424px;
+  left: 735px;
+  transform: rotate(-53deg)
+}
+#dogRightEar {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid brown;
+  border-radius: 100%;  
+  position: absolute;
+  top: 445px;
+  left: 783px;
+  background-color: transparent;
+  transform: rotate(55deg)
+}
+#dogRightEarBorder1 {
+  height: 45px;
+  width: 0px;
+  border: solid black 2px;
+  position: absolute;
+  top: 434px;
+  left: 803px;
+  transform: rotate(-100deg)
+}
+#dogRightEarBorder2 {
+  height: 49px;
+  width: 0px;
+  border: solid black 2px;
+  position: absolute;
+  top: 450px;
+  left: 816px;
+  transform: rotate(-150deg)
+}
+#dogLeftEye {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: relative;
+  top: -7px;
+  left: 50px;
+  background-color: white;
+}
+#dogRightEye {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  border: solid black 8px;
+  position: relative;
+  top: -14px;
+  left: 65px;
+  background-color: white;
+}
+#dogLeftPupil {
+  background-color: black;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border: solid black 1px;
+  position: relative;
+  top: 6px;
+  left: 6px;  
+}
+#dogRightPupil {
+  background-color: black;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  border: solid black 1px;
+  position: relative;
+  top: 6px;
+  left: 6px;
+}
+#dogBelly {
+  background-color: white;  
+  width: 100px;
+  height: 170px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 554px;
+  left: 715px;
+  transform: rotate(-8deg)
+}
+#dogBody {
+  width: 130px;
+  height: 260px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 510px;
+  left: 715px;
+}
+#dogFloor {
+  background-color: white;
+  width: 160px;
+  height: 125px;
+  border-top: solid black 4px;
+  position: absolute;
+  top: 655px;
+  left: 695px;
+
+}
+#dogTail {
+  transform: rotate(45deg);
+  width: 20px;
+  height: 165px;
+  border-radius: 50%;
+  border: solid black 4px;
+  position: absolute;
+  top: 511px;
+  left: 894px;  
+  background-color : none;
+}
+#dogNose {
+  width: 50px;
+  height: 25px;
+  border-radius: 40%;
+  border: solid black 2px;
+  position: absolute;
+  top: 555px;
+  left: 691px;
+  background-color: black;
+  transform: rotate(18deg)
+}
+#dogNosePoint {
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;	
+  border-top: 7px solid black;
+  position: absolute;
+  top: 580px;
+  left: 693px;
+  background-color: transparent;
+  transform: rotate(24deg)
+}
+#dogFoot1 {
+  width: 25px;
+  height: 20px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 643px;
+  left: 695px;
+  background-color: white;
+}
+#dogLeg {
+  width: 0px;
+  height: 40px;
+  border: solid black 2px;
+  border-radius: 60%;
+  position: absolute;
+  top: 611px;
+  left: 767px;
+  transform: rotate(8deg)
+}
+#dogFoot2 {
+  width: 25px;
+  height: 20px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 643px;
+  left: 734px;
+  background-color: white;
+}
+#dogFoot3 {
+  width: 25px;
+  height: 20px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 643px;
+  left: 789px;
+  background-color: white;
+}
+
+/*wolf*/
+
+.wolf {
+  background-color: darkgrey;
+}
+
+#wolfHead {
+  background-color: darkgrey;
+  width: 215px;
+  height: 135px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 370px;
+  left: 550px;
+  transform: rotate(-55deg);
+}
+#wolfLeftEar {
+  width: 0; 
+  height: 0; 
+  border-left: 37px solid transparent;
+  border-right: 37px solid transparent;
+  border-bottom: 75px solid darkgrey;
+  border-radius: 100%;  
+  position: absolute;
+  top: 310px;
+  left: 596px;
+  background-color: transparent;
+  transform: rotate(-26deg)
+}
+#wolfLeftEarBorder1 {
+  height: 67px;
+  width: 0px;
+  border: solid black 2px;
+  position: absolute;
+  top: 312px;
+  left: 616px;
+}
+#wolfLeftEarBorder2 {
+  height: 67px;
+  width: 0px;
+  border: solid black 2px;
+  position: absolute;
+  top: 299px;
+  left: 643px;
+  transform: rotate(-53deg)
+}
+#wolfRightEar {
+  width: 0; 
+  height: 0; 
+  border-left: 37px solid transparent;
+  border-right: 37px solid transparent;
+  border-bottom: 80px solid darkgrey;
+  border-radius: 100%;  
+  position: absolute;
+  top: 325px;
+  left: 720px;
+  background-color: transparent;
+  transform: rotate(55deg)
+}
+#wolfRightEarBorder1 {
+  height: 63px;
+  width: 0px;
+  border: solid black 2px;
+  position: absolute;
+  top: 313px;
+  left: 757px;
+  transform: rotate(-100deg)
+}
+#wolfRightEarBorder2 {
+  height: 79px;
+  width: 0px;
+  border: solid black 2px;
+  position: absolute;
+  top: 335px;
+  left: 767px;
+  transform: rotate(-148deg)
+}
+#wolfLeftEye {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: relative;
+  top: -10px;
+  left: 75px;
+  background-color: #ffff66;
+}
+#wolfRightEye {
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: relative;
+  top: -15px;
+  left: 95px;
+  background-color: #ffff66;
+}
+#wolfLeftPupil {
+  background-color: black;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  border: solid black 1px;
+  position: relative;
+  top: 6px;
+  left: 6px;  
+}
+#wolfRightPupil {
+  background-color: black;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  border: solid black 1px;
+  position: relative;
+  top: 6px;
+  left: 6px;
+}
+#wolfBelly {
+  background-color: white;  
+  width: 150px;
+  height: 255px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 500px;
+  left: 605px;
+  transform: rotate(-8deg)
+}
+#wolfBody {
+  width: 205px;
+  height: 390px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 430px;
+  left: 605px;
+}
+#wolfFloor {
+  background-color: white;
+  width: 242px;
+  height: 158px;
+  border-top: solid black 4px;
+  position: absolute;
+  top: 655px;
+  left: 575px;
+}
+#wolfTail {
+  transform: rotate(45deg);
+  width: 30px;
+  height: 250px;
+  border-radius: 50%;
+  border: solid black 4px;
+  position: absolute;
+  left: 882px;
+  top: 438px;
+  background-color : dark;
+}
+#wolfNose {
+  width: 65px;
+  height: 35px;
+  border-radius: 40%;
+  border: solid black 2px;
+  position: absolute;
+  top: 499px;
+  left: 583px;
+  background-color: black;
+  transform: rotate(18deg)
+}
+#wolfNosePoint {
+  width: 0; 
+  height: 0; 
+  border-left: 23px solid transparent;
+  border-right: 23px solid transparent;	
+  border-top: 10px solid black;
+  position: absolute;
+  top: 533px;
+  left: 585px;
+  background-color: transparent;
+  transform: rotate(22deg);
+}
+#wolfFoot1 {
+  width: 37px;
+  height: 30px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 638px;
+  left: 575px;
+  background-color: white;
+}
+#wolfLeg {
+  width: 0px;
+  height: 60px;
+  border: solid black 2px;
+  border-radius: 60%;
+  position: absolute;
+  top: 585px;
+  left: 685px;
+  transform: rotate(8deg)
+}
+#wolfFoot2 {
+  width: 37px;
+  height: 30px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 638px;
+  left: 644px;
+  background-color: white;
+}
+#wolfFoot3 {
+  width: 37px;
+  height: 30px;
+  border-radius: 100%;
+  border: solid black 4px;
+  position: absolute;
+  top: 638px;
+  left: 720px;
+  background-color: white;
+}
+#wolfLeftToothLeft {
+  height: 25px;
+  width: 0px;
+  border: solid black 1px;
+  position: absolute;
+  top: 498px;
+  left: 577px;
+  transform: rotate(-4deg)   
+}
+#wolfLeftToothRight {
+  height: 7px;
+  width: 0px;
+  border: solid black 1px;
+  position: absolute;
+  top: 515px;
+  left: 581px;
+  transform: rotate(35deg)  
+}
+#wolfRightToothLeft {
+  height: 12px;
+  width: 0px;
+  border: solid black 1px;
+  position: absolute;
+  top: 534px;
+  left: 650px;
+  transform: rotate(-15deg) 
+}
+#wolfRightToothRight {
+  height: 18px;
+  width: 0px;
+  border: solid black 1px;
+  position: absolute;
+  top: 529px;
+  left: 657px;
+  transform: rotate(30deg)  
+}
+#wolfMouth {
+  display: none;
+  position: relative;
+  left: 140px;
+  top: 28px;
+  width: 70px;
+  height: 25px;
+  background-color: black;
+  border-radius: 100%;
+}
+#wolfHowl {
+  display: none;
+  position: absolute;
+  top: 280px;
+  left: 360px;
+  transform: rotate(15deg); 
+  background-color: transparent;
+}
+#wolfHowl p {
+  font-size: 46px;
+  color: red;
+  font-family: papyrus, palatino, serif;
+}
+
+/* Goblin */
+
+#goblinNose {
+  width: 0; 
+  height: 0; 
+  border-left: 22px solid transparent; 
+  border-top: 30px solid olive;
+  position: absolute;
+  top: 359px;
+  left: 586px;
+  background-color: transparent;
+  transform: rotate(95deg); 
+}
+#goblinNoseBorderLeft {
+  position: absolute;
+  height:0;
+  width: 33px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 371px;
+  left: 580px; 
+  transform: rotate(152deg);   
+}
+#goblinNoseBorderRight {
+  position: absolute;
+  height:0;
+  width: 25px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 383px;
+  left: 582px; 
+  transform: rotate(190deg);   
+}
+#goblinHead {
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 350px;
+  left: 605px;    
+  background-color: olive;  
+}
+#goblinEye {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: solid black 3px;
+  position: relative;
+  top: 2px;
+  left: 1px; 
+  background-color: yellow;
+}
+#goblinPupil {
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  border: solid black 1px;
+  background-color: red;  
+  position: relative;
+  top: 7px;
+  left: 1px;   
+}
+#goblinEyebrow {
+  width: 0;
+  height: 15px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: relative;
+  top: -16px;
+  left: 5px;  
+  transform: rotate(70deg);    
+}
+#goblinEar {
+  width: 0; 
+  height: 0; 
+  border-left: 22px solid transparent; 
+  border-top: 40px solid olive;
+  position: absolute;
+  top: 365px;
+  left: 665px;
+  background-color: transparent;
+  transform: rotate(270deg); 
+}
+#goblinEar1 {
+  position: absolute;
+  height:0;
+  width: 40px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 370px;
+  left: 655px;  
+  transform: rotate(10deg);  
+}
+#goblinEar2 {
+  position: absolute;
+  height: 40px;
+  width: 0;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 365px;
+  left: 675px;  
+  transform: rotate(60deg);  
+}
+#goblinChest {
+  width: 110px;
+  height: 120px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 420px;
+  left: 630px;
+  transform: rotate(-15deg);
+  background-color: olive;  
+}
+#goblinWeapon1 {
+  width: 0;
+  height: 35px;
+  border-radius: 35%;
+  border: solid grey 3px;  
+  position: absolute;
+  top: 468px;
+  left: 591px;  
+  transform: rotate(-25deg);   
+}
+#goblinHilt1 {
+  width: 0;
+  height: 10px;
+  border-radius: 35%;
+  border: solid grey 3px;  
+  position: absolute;
+  top: 488px;
+  left: 594px;  
+  transform: rotate(65deg);   
+}
+#goblinWeapon2 {
+  width: 0;
+  height: 35px;
+  border-radius: 35%;
+  border: solid grey 3px;  
+  position: absolute;
+  top: 400px;
+  left: 595px;  
+  transform: rotate(20deg);   
+}
+#goblinHilt2 {
+  width: 0;
+  height: 10px;
+  border-radius: 35%;
+  border: solid grey 3px;  
+  position: absolute;
+  top: 419px;
+  left: 593px;  
+  transform: rotate(110deg);   
+}
+#goblinLeftArm {
+  width: 0;
+  height: 100px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 425px;
+  left: 635px;  
+  transform: rotate(60deg);  
+}
+#goblinRightArm {
+  width: 0;
+  height: 52px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 409px;
+  left: 611px;  
+  transform: rotate(110deg);   
+}
+#goblinLeftLeg {
+  width: 0;
+  height: 70px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 545px;
+  left: 685px;  
+}
+#goblinRightLeg {
+  width: 0;
+  height: 100px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 535px;
+  left: 702px;  
+}
+#goblinLeftFoot {
+  position: absolute;
+  height:35px;
+  width: 35px;
+  border-radius: 100%;
+  border-top: black solid 6px;
+  background-color: transparent;   
+  top: 606px;
+  left: 655px;  
+}
+#goblinRightFoot {
+  position: absolute;
+  height:35px;
+  width: 35px;
+  border-radius: 100%;
+  border-top: black solid 6px;
+  background-color: white; 
+  top: 623px;
+  left: 669px;  
+}
+#goblinLeftSole {
+  position: absolute;
+  height:0;
+  width: 30px;
+  border: black solid 3px; 
+  border-radius: 10px;  
+  top: 618px;
+  left: 655px;      
+}
+#goblinRightSole {
+  position: absolute;
+  height:0;
+  width: 30px;
+  border: black solid 3px;
+  border-radius: 10px;  
+  top: 635px;
+  left: 669px;      
+}
+
+/* orc */
+
+#orcNose {
+  width: 0; 
+  height: 0; 
+  border-left: 22px solid transparent; 
+  border-top: 30px solid olive;
+  position: absolute;
+  top: 249px;
+  left: 637px;
+  background-color: transparent;
+  transform: rotate(95deg); 
+}
+#orcNoseBorderLeft {
+  position: absolute;
+  height:0;
+  width: 33px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 261px;
+  left: 630px; 
+  transform: rotate(152deg);   
+}
+#orcNoseBorderRight {
+  position: absolute;
+  height:0;
+  width: 25px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 273px;
+  left: 632px; 
+  transform: rotate(190deg);   
+}
+#orcHead {
+  width: 85px;
+  height: 85px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 230px;
+  left: 655px;    
+  background-color: olive;  
+}
+#orcEye {
+  width: 27px;
+  height: 27px;
+  border-radius: 100%;
+  border: solid black 3px;
+  position: relative;
+  top: 4px;
+  left: 3px; 
+  background-color: yellow;
+}
+#orcPupil {
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  border: solid black 1px;
+  background-color: red;  
+  position: relative;
+  top: 11px;
+  left: 1px;   
+}
+#orcEyebrow {
+  width: 0;
+  height: 15px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: relative;
+  top: -16px;
+  left: 5px;  
+  transform: rotate(70deg);    
+}
+#orcTusk {
+  width: 0; 
+  height: 0; 
+  border-right: 10px solid transparent; 
+  border-top: 18px solid white;
+  position: relative;
+  top: 8px;
+  left: 9px;
+  background-color: transparent;
+  transform: rotate(190deg); 
+}
+#orcTusk1 {
+  width: 0;
+  height: 19px;
+  border-radius: 10px;
+  border: solid black 1px;  
+  position: relative;
+  top: -11px;
+  left: 13px;  
+  transform: rotate(40deg);    
+}
+#orcTusk2 {
+  width: 0;
+  height: 15px;
+  border-radius: 10px;
+  border: solid black 1px;  
+  position: relative;
+  top: -28px;
+  left: 17px;  
+  transform: rotate(10deg);    
+}
+#orcMouth {
+  width: 0;
+  height: 14px;
+  border-radius: 10px;
+  border: solid black 1px;  
+  position: relative;
+  top: -38px;
+  left: 7px;  
+  transform: rotate(100deg);    
+}
+#orcEar {
+  width: 0; 
+  height: 0; 
+  border-left: 22px solid transparent; 
+  border-top: 40px solid olive;
+  position: absolute;
+  top: 255px;
+  left: 715px;
+  background-color: transparent;
+  transform: rotate(270deg); 
+}
+#orcEar1 {
+  position: absolute;
+  height:0;
+  width: 40px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 260px;
+  left: 705px;  
+  transform: rotate(10deg);  
+}
+#orcEar2 {
+  position: absolute;
+  height: 40px;
+  width: 0;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 255px;
+  left: 725px;  
+  transform: rotate(60deg);  
+}
+#orcChest {
+  width: 120px;
+  height: 185px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 320px;
+  left: 640px;
+  background-color: olive;  
+}
+#orcAxeHead {
+  width: 0; 
+  height: 0; 
+  border-left: 35px solid transparent; 
+  border-right: 35px solid transparent;
+  border-top: 55px solid grey;
+  position: absolute;
+  background-color: transparent;  
+  top: 200px;
+  left: 580px;
+  transform: rotate(-70deg);   
+}
+#orcAxeHandle {
+  width: 0;
+  height: 135px;
+  border-radius: 35%;
+  border: solid brown 5px;  
+  position: absolute;
+  top: 200px;
+  left: 610px;  
+  transform: rotate(20deg);  
+}
+#orcLeftArm {
+  width: 0;
+  height: 130px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 335px;
+  left: 645px;  
+  transform: rotate(60deg);  
+}
+#orcRightArm {
+  width: 0;
+  height: 70px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 300px;
+  left: 620px;  
+  transform: rotate(110deg);   
+}
+#orcLeftLeg {
+  width: 0;
+  height: 103px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 512px;
+  left: 692px;  
+}
+#orcRightLeg {
+  width: 0;
+  height: 125px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 510px;
+  left: 710px;  
+}
+#orcLeftFoot {
+  position: absolute;
+  height:35px;
+  width: 35px;
+  border-radius: 100%;
+  border-top: black solid 6px;
+  background-color: transparent;   
+  top: 606px;
+  left: 660px;  
+}
+#orcRightFoot {
+  position: absolute;
+  height:35px;
+  width: 35px;
+  border-radius: 100%;
+  border-top: black solid 6px;
+  background-color: white; 
+  top: 623px;
+  left: 676px;  
+}
+#orcLeftSole {
+  position: absolute;
+  height:0;
+  width: 30px;
+  border: black solid 3px; 
+  border-radius: 10px;  
+  top: 618px;
+  left: 660px;      
+}
+#orcRightSole {
+  position: absolute;
+  height:0;
+  width: 30px;
+  border: black solid 3px;
+  border-radius: 10px;  
+  top: 635px;
+  left: 676px;      
+}
+
+/* ogre NOT FINISHED */
+
+#ogreNose {
+  width: 0; 
+  height: 0; 
+  border-left: 22px solid transparent; 
+  border-top: 30px solid olive;
+  position: absolute;
+  top: 193px;
+  left: 636px;
+  background-color: transparent;
+  transform: rotate(75deg); 
+}
+#ogreNoseBorderLeft {
+  position: absolute;
+  height:0;
+  width: 33px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 206px;
+  left: 628px; 
+  transform: rotate(132deg);   
+}
+#ogreNoseBorderRight {
+  position: absolute;
+  height:0;
+  width: 25px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 218px;
+  left: 632px; 
+  transform: rotate(170deg);   
+}
+#ogreHead {
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 139px;
+  left: 655px;    
+  background-color: olive;  
+}
+#ogreEye {
+  width: 33px;
+  height: 33px;
+  border-radius: 100%;
+  border: solid black 3px;
+  position: relative;
+  top: 23px;
+  left: -6px; 
+  background-color: yellow;
+}
+#ogrePupil {
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  border: solid black 1px;
+  background-color: red;  
+  position: relative;
+  top: 16px;
+  left: 1px;   
+}
+#ogreEyebrow {
+  width: 0;
+  height: 15px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: relative;
+  top: -16px;
+  left: 5px;  
+  transform: rotate(70deg);    
+}
+#ogreTusk {
+  width: 0; 
+  height: 0; 
+  border-right: 14px solid transparent; 
+  border-top: 23px solid white;
+  position: relative;
+  top: 21px;
+  left: 19px;
+  background-color: transparent;
+  transform: rotate(170deg); 
+}
+#ogreTusk1 {
+  width: 0;
+  height: 24px;
+  border-radius: 10px;
+  border: solid black 1px;  
+  position: relative;
+  top: -3px;
+  left: 25px;  
+  transform: rotate(20deg);    
+}
+#ogreTusk2 {
+  width: 0;
+  height: 21px;
+  border-radius: 10px;
+  border: solid black 1px;  
+  position: relative;
+  top: -29px;
+  left: 32px;  
+  transform: rotate(-10deg);    
+}
+#ogreMouth {
+  width: 0;
+  height: 33px;
+  border-radius: 10px;
+  border: solid black 1px;  
+  position: relative;
+  top: -43px;
+  left: 21px;  
+  transform: rotate(80deg);    
+}
+#ogreEar1 {
+  position: absolute;
+  height:0;
+  width: 40px;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 175px;
+  left: 721px;  
+  transform: rotate(10deg);  
+}
+#ogreEar2 {
+  position: absolute;
+  height: 40px;
+  width: 0;
+  border: black solid 2px;
+  border-radius: 10px;  
+  top: 170px;
+  left: 743px;  
+  transform: rotate(60deg);  
+}
+#ogreChest {
+  width: 140px;
+  height: 235px;
+  border-radius: 100%;
+  border: solid black 5px;
+  position: absolute;
+  top: 253px;
+  left: 645px;
+  background-color: olive;  
+}
+#ogreWeaponHead {
+  width: 75px; 
+  height: 75px; 
+  border-radius: 100%;
+  border: solid black 2px;
+  position: absolute;
+  background-color: grey;  
+  top: 135px;
+  left: 545px; 
+}
+#ogreWeaponHandle {
+  width: 0;
+  height: 120px;
+  border-radius: 15%;
+  border: solid brown 5px;  
+  position: absolute;
+  top: 200px;
+  left: 580px;  
+}
+#ogreLeftArm {
+  width: 0;
+  height: 150px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 277px;
+  left: 650px;  
+  transform: rotate(60deg);  
+}
+#ogreRightArm {
+  width: 0;
+  height: 80px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 275px;
+  left: 610px;  
+  transform: rotate(90deg);   
+}
+#ogreLeftLeg {
+  width: 0;
+  height: 123px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 493px;
+  left: 707px;  
+}
+#ogreRightLeg {
+  width: 0;
+  height: 150px;
+  border-radius: 10px;
+  border: solid black 3px;  
+  position: absolute;
+  top: 492px;
+  left: 725px;  
+}
+#ogreLeftFoot {
+  position: absolute;
+  height:50px;
+  width: 50px;
+  border-radius: 100%;
+  border-top: black solid 6px;
+  background-color: transparent;   
+  top: 598px;
+  left: 660px;  
+}
+#ogreRightFoot {
+  position: absolute;
+  height:50px;
+  width: 50px;
+  border-radius: 100%;
+  border-top: black solid 6px;
+  background-color: white; 
+  top: 623px;
+  left: 678px;  
+}
+#ogreLeftSole {
+  position: absolute;
+  height:0;
+  width: 45px;
+  border: black solid 3px; 
+  border-radius: 10px;  
+  top: 617px;
+  left: 660px;      
+}
+#ogreRightSole {
+  position: absolute;
+  height:0;
+  width: 45px;
+  border: black solid 3px;
+  border-radius: 10px;  
+  top: 642px;
+  left: 678px;      
+}
+.spike {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-top: 25px solid grey;
+  position: absolute;
+  background-color: transparent; 
+}
+.spikeBorder {
+  width: 18px;
+  height: 0;
+  border: solid black 1px;
+  position: absolute; 
+}
+#ogreWeaponSpike1 {
+  top: 5px;
+  left: 5px;
+  transform: rotate(-90deg);
+}
+#ogreWeaponSpike2 {
+  top: 45px;
+  left: 5px;
+  transform: rotate(180deg);
+}
+#ogreWeaponSpike3 {
+  top: 45px;
+  left: 45px;
+  transform: rotate(90deg);
+}
+#ogreWeaponSpike4 {
+  top: 5px;
+  left: 45px;
+  transform: rotate(0deg);
+}
+#ogreWeaponSpike1Left {
+  top: 3px;
+  left: 5px;
+}
+#ogreWeaponSpike1Right {
+  top: 12px;
+  left: -5px;
+  transform: rotate(90deg);  
+}
+#ogreWeaponSpike2Left {
+  top: 3px;
+  left: 52px;
+}
+#ogreWeaponSpike2Right {
+  top: 12px;
+  left: 61px;
+  transform: rotate(90deg);  
+}
+#ogreWeaponSpike3Left {
+  top: 70px;
+  left: 5px;
+}
+#ogreWeaponSpike3Right {
+  top: 60px;
+  left: -5px;
+  transform: rotate(90deg);  
+}
+#ogreWeaponSpike4Left {
+  top: 70px;
+  left: 52px;
+}
+#ogreWeaponSpike4Right {
+  top: 60px;
+  left: 61px;
+  transform: rotate(90deg);  
+}
