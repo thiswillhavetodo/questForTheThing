@@ -109,8 +109,8 @@ h4 span{
   color: white;
   width: auto;*/
   color: #3b5998;
-  font-weight: normal;
   font-weight: bold;
+  font-size: 1.2em;
 }
 button {
   border-radius: 0.5em;
@@ -157,6 +157,57 @@ button {
   color: #3b5998;
   font-size: 1.5em;
   font-weight: bold;
+  border: solid 4px #3b5998;
+  margin-top: -2em;
+  margin-left: 10%;
+}
+#hitPlus {
+  background-image: url('../images/accuracy.png');
+  background-color: white;
+  width: 150px;
+  height: 80px;
+  color: #3b5998;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: solid 4px #3b5998; 
+  margin-top: 0.1em; 
+  margin-left: 10%;
+}
+#defPlus {
+  background-image: url('../images/defence.png');
+  background-color: white;
+  width: 150px;
+  height: 80px;
+  color: #3b5998;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: solid 4px #3b5998;
+  margin-top: 0.1em;
+  margin-left: 10%;
+}
+#dodgePlus {
+  background-image: url('../images/evade.png');
+  background-color: white;
+  width: 150px;
+  height: 80px;
+  color: #3b5998;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: solid 4px #3b5998;
+  margin-top: 0.1em;
+  margin-left: 10%;
+}
+#luckPlus {
+  background-image: url('../images/luck.png');
+  background-color: white;
+  width: 150px;
+  height: 80px;
+  color: #3b5998;
+  font-size: 1.5em;
+  font-weight: bold;
+  border: solid 4px #3b5998;
+  margin-top: 0.1em;
+  margin-left: 10%;
 }
 #fightButtons {
 }
@@ -173,17 +224,20 @@ button {
   width: 100%;
 }
 #stock {
-    box-sizing: border-box;
-  float: left;
+  box-sizing: border-box;
+  position: absolute;
+  top: 40em;
 }
 #stock th, td {
   padding-top: 0.3em;
 }
 #stock th {
-  padding-left: 3em;
-  padding-right: 3em;
+  padding-left: 2em;
+  padding-right: 3.5em;
 }
-
+#price {
+  padding-left: 0.7em;
+}
 #yourMessages {
   box-sizing: border-box;
   float: left;
