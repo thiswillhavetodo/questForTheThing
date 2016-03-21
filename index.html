@@ -24,8 +24,11 @@
   <h1>The Quest for The Thing</h1>
   <h4 id="subtitle">A Game Wot I Wrote</h4>
   <div id='tutorialLink'>
-  <button>Tutorial</button>
+  <button>Tutorial</button>  
   </div>
+  <div id='testStatsLink'>
+  <button onClick='stats()'>Test Stats</button>  
+  </div>  
 </div>
 <div id="wrapper" title="Click buttons to fight" class="noDisplay">
 <div id="head">
@@ -306,6 +309,16 @@
     <p>Fighting uses up Energy and if you take damage you'll lose Health as well, you'll then receive 1 Energy and Health back each minute until you're at full points again.</p>
     <p>If you lose all your Health you'll be revived but it will cost you 2 Energy.</p>
     <p>Good Luck!</p>
+  </div>
+  <div id='testStats'>
+    <p id='headers'>Name, Str, Hit, Def, Dodge, HP, XP, Difficulty, Defeats</p>
+    <p id='mouseStats'></p>
+    <p id='ratStats'></p>
+    <p id='dogStats'></p>
+    <p id='wolfStats'></p>
+    <p id='goblinStats'></p>
+    <p id='orcStats'></p>
+    <p id='ogreStats'></p>
   </div>
   <div id="character_attributes">
     <h4><span>Your Character:&nbsp;</span></h4>

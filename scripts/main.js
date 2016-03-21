@@ -22,7 +22,11 @@ $(document).ready(function(){
     $('#tutorial').fadeToggle(400, "linear");    
   });
 });
-
+$(document).ready(function(){
+  $('#testStatsLink').on('click', 'button', function() {
+    $('#testStats').fadeToggle(400, "linear");    
+  });
+});
 var startDate = new Date();
 var hpStartDate = new Date();
 var correction = 0;
@@ -79,6 +83,7 @@ var mouse = {
   xpDraw: 5,
   xpLose: 3,
   //  dropTable: "lowDrop",
+  realDifficulty: 1,
   difficulty: 1,
   defeats: 0,
   levelUps: 0
@@ -98,6 +103,7 @@ var rat = {
   xpDraw: 7,
   xpLose: 4,
   //  dropTable: "lowDrop",
+  realDifficulty: 3,
   difficulty: 3,
   defeats: 0,
   levelUps: 0
@@ -117,6 +123,7 @@ var dog = {
   xpDraw: 10,
   xpLose: 5,
   //  dropTable: "lowDrop",
+  realDifficulty: 5,
   difficulty: 5,
   defeats: 0,
   levelUps: 0
@@ -136,6 +143,7 @@ var wolf = {
   xpDraw: 14,
   xpLose: 7,
   //  dropTable: "lowDrop",
+  realDifficulty: 8,
   difficulty: 8,
   defeats: 0,
   levelUps: 0
@@ -155,6 +163,7 @@ var goblin = {
   xpDraw: 18,
   xpLose: 9,
   //  dropTable: "medDrop",
+  realDifficulty: 11,
   difficulty: 11,
   defeats: 0,
   levelUps: 0
@@ -166,14 +175,15 @@ var orc = {
   energyCost: 8,
   hp: 99,
   maxHp: 99,
-  str: 26,
-  hit: 25,
-  def: 23,
-  dodge: 23,
+  str: 27,
+  hit: 26,
+  def: 24,
+  dodge: 24,
   xpWin: 46,
   xpDraw: 23,
   xpLose: 11,
   //  dropTable: "medDrop",
+  realDifficulty: 14,
   difficulty: 14,
   defeats: 0,
   levelUps: 0
@@ -183,20 +193,30 @@ var ogre = {
   plural: "Ogres",
   level: 16,
   energyCost: 9,
-  hp: 120,
-  maxHp: 120,
-  str: 36,
-  hit: 30,
-  def: 35,
-  dodge: 26,
+  hp: 110,
+  maxHp: 110,
+  str: 38,
+  hit: 32,
+  def: 37,
+  dodge: 29,
   xpWin: 57,
   xpDraw: 29,
   xpLose: 14,
   //  dropTable: "medDrop",
+  realDifficulty: 17,
   difficulty: 17,
   defeats: 0,
   levelUps: 0
 };
+function stats() {
+  mouseStats.innerHTML = mouse.name + ", " + mouse.str + ", " + mouse.hit + ", " + mouse.def + ", " + mouse.dodge + ", " + mouse.maxHp + ", " + mouse.xpWin + ", " + mouse.difficulty + ", " + ((mouse.levelUps*5)+mouse.defeats);
+  ratStats.innerHTML = rat.name + ", " + rat.str + ", " + rat.hit + ", " + rat.def + ", " + rat.dodge + ", " + rat.maxHp + ", " + rat.xpWin + ", " + rat.difficulty + ", " + ((rat.levelUps*5)+rat.defeats);
+  dogStats.innerHTML = dog.name + ", " + dog.str + ", " + dog.hit + ", " + dog.def + ", " + dog.dodge + ", " + dog.maxHp + ", " + dog.xpWin + ", " + dog.difficulty + ", " + ((dog.levelUps*5)+dog.defeats);
+  wolfStats.innerHTML = wolf.name + ", " + wolf.str + ", " + wolf.hit + ", " + wolf.def + ", " + wolf.dodge + ", " + wolf.maxHp + ", " + wolf.xpWin + ", " + wolf.difficulty + ", " + ((wolf.levelUps*5)+wolf.defeats);
+  goblinStats.innerHTML = goblin.name + ", " + goblin.str + ", " + goblin.hit + ", " + goblin.def + ", " + goblin.dodge + ", " + goblin.maxHp + ", " + goblin.xpWin + ", " + goblin.difficulty + ", " + ((goblin.levelUps*5)+goblin.defeats);
+  orcStats.innerHTML = orc.name + ", " + orc.str + ", " + orc.hit + ", " + orc.def + ", " + orc.dodge + ", " + orc.maxHp + ", " + orc.xpWin + ", " + orc.difficulty + ", " + ((orc.levelUps*5)+orc.defeats);
+  ogreStats.innerHTML = ogre.name + ", " + ogre.str + ", " + ogre.hit + ", " + ogre.def + ", " + ogre.dodge + ", " + ogre.maxHp + ", " + ogre.xpWin + ", " + ogre.difficulty + ", " + ((ogre.levelUps*5)+ogre.defeats);
+}
 function showMouse() {
     $('.mouse').removeClass('noDisplay'); 
     $('.rat').addClass('noDisplay');
@@ -322,7 +342,8 @@ function fight(enemy) {
     if(enemy.defeats>=5) {
       enemy.levelUps ++;
       enemy.defeats -= 5;
-      enemy.difficulty ++      
+      enemy.realDifficulty += 0.7,
+      enemy.difficulty = Math.floor(enemy.realDifficulty);      
       enemy.maxHp += 1 + Math.floor(enemy.maxHp/20);
       enemy.str = (enemy.str + 1) + Math.floor(enemy.str/20);
       enemy.hit = (enemy.hit + 1) + Math.floor(enemy.hit/20);
@@ -786,7 +807,7 @@ function checkLevel() {
   if (this.xp >= this.nextLevelXp) {
   this.xp -= this.nextLevelXp;
   this.level ++;
-  this.nextLevelXp = 12 + ((this.level-1)*(18 + this.level));
+  this.nextLevelXp = 10 + ((this.level-1)*(20 + this.level));
   this.baseMaxHp = this.baseMaxHp + 5;
   this.maxHp = this.equipHp + this.baseMaxHp;  
   if (this.hp < this.maxHp) {
