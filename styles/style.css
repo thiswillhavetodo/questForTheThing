@@ -1,22 +1,23 @@
 html {
   background-color: #f0f8ff;
-  font-family : Impact;
-  font-weight: normal;
-  margin-left: 2em;
+  margin-left: 5%;
+  color: #3b5998;
+  font-family: arial;
 }
 body{
   overflow: hidden;
 }
 #header {
+  font-family: serif;
   background-color: #3b5998;
-  margin-left: -2em;
-  margin-top: -2.7em;
+  margin-left: -5.5em;
+  margin-top: 0em;
   color: white;
-  font-family : Impact;
-  font-weight: normal;
   padding-bottom: 2px;
   height: 9.2em;
   padding-right: 1em;
+  border: black solid 4px;
+  border-radius: 0.5em;
 }
 #navbar ul {
   list-style-type: none;
@@ -55,7 +56,7 @@ body{
   padding: 0 0.5em;
 }
 h1 {
-  margin-bottom: 0em;
+  margin: 0px;
   font-size: 4.5em;
   text-align: center;
   font-weight: normal;
@@ -69,13 +70,13 @@ h1 {
 }
 #tutorialLink {
   position: relative;
-  top: -25px;
+  top: -50px;
   left: 50%;
-  margin-left: -30px;
+  margin-left: -37px;
   width: 80px;
 }
 #tutorialLink button {
-  width: 80px;
+  width: 90px;
   border: none;
   background-color: white;
   color: #3b5998;
@@ -95,13 +96,13 @@ h1 {
 }
 #testStatsLink {
   position: relative;
-  top: -25px;
+  top: -50px;
   left: 50%;
-  margin-left: -30px;
+  margin-left: -37px;
   width: 80px;
 }
 #testStatsLink button {
-  width: 80px;
+  width: 90px;
   border: none;
   background-color: transparent;
   color: #3b5998;
@@ -137,47 +138,94 @@ h4 span{
   color: #3b5998;
   font-weight: bold;
   font-size: 1.2em;
-  border: 4px solid #3b5998;
-  border-radius: 0.5em;
   padding: 0.3em;
   padding-left: 0.4em;
-  background-color: #f2f2ff;
+  position: relative;
+  top: -15px;
 }
 button {
+  border: solid 2px #3b5998; 
   border-radius: 0.5em;
   width: 8.5em;
-  background-color: #3b5998;
-  color: white;
+  background-color: #f8f8ff;
+  color: #3b5998;
   padding-left: 0;
   padding-right: 0;
 }
 #character_attributes {
   float: left;
-  width: 25%;  
+  width: 22%;  
   height: 50%;
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+.heading {
+  border: 4px solid #3b5998;  
+  background-color: #f8f8ff;
+  border-radius: 0.5em; 
+  height: 40px; 
+  position: relative;
+  top: 10px;
+  margin-bottom: 0.1em; 
+  text-align: center;
+}
+.container {
+  border: 4px solid #3b5998;  
+  background-color: #f8f8ff;
+  border-radius: 0.5em;
+  position: relative;
+  top: 10px;  
+  padding-left: 10px;
+}
+#characterHeading {
+  width: 320px;
+}
+#characterContainer {
+  width: 310px;
 }
 #adventure_stats {
   float: left;
-  width: 25%;  
+  width: 28%;  
   height: 50%;
     box-sizing: border-box;
+}
+#adventureHeading {
+  width: 410px;
+}
+#adventureContainer {
+  width: 400px;
+  height: 325px;
+}
+#useItems {
+  margin-top: 0.1em;
 }
 #armour {
   float: left;
-  width: 25%;  
+  width: 20%;  
   height: 50%;
     box-sizing: border-box;
+}
+#armourHeading {
+  width: 250px;
+}
+#armourContainer {
+  width: 240px;
 }
 #fight {
   float: left;
-  width: 25%;  
+  width: 30%;  
   height: 50%;
     box-sizing: border-box;
 }
+#fightButtons {
+  position: relative;
+  top: 20px;
+}
+#fightHeading {
+  width: 337px;
+}
 #buttonWrapper {
   float: left;
-  width: 25%;  
+  width: 21%;  
   height: 50%;
     box-sizing: border-box;
 }
@@ -190,7 +238,7 @@ button {
   font-weight: bold;
   border: solid 4px #3b5998;
   margin-top: -2em;
-  margin-left: 10%;
+  margin-left: 15%;
 }
 #hitPlus {
   background-image: url('../images/accuracy.png');
@@ -202,7 +250,7 @@ button {
   font-weight: bold;
   border: solid 4px #3b5998; 
   margin-top: 0.1em; 
-  margin-left: 10%;
+  margin-left: 15%;
 }
 #defPlus {
   background-image: url('../images/defence.png');
@@ -214,7 +262,7 @@ button {
   font-weight: bold;
   border: solid 4px #3b5998;
   margin-top: 0.1em;
-  margin-left: 10%;
+  margin-left: 15%;
 }
 #dodgePlus {
   background-image: url('../images/evade.png');
@@ -226,7 +274,7 @@ button {
   font-weight: bold;
   border: solid 4px #3b5998;
   margin-top: 0.1em;
-  margin-left: 10%;
+  margin-left: 15%;
 }
 #luckPlus {
   background-image: url('../images/luck.png');
@@ -238,43 +286,64 @@ button {
   font-weight: bold;
   border: solid 4px #3b5998;
   margin-top: 0.1em;
-  margin-left: 10%;
+  margin-left: 15%;
 }
-#fightButtons {
-}
-
 #shop {
   box-sizing: border-box;
   float: left;
-  width: 35%;  
+  width: 39%;  
   height: 50%;
   margin-top: -1.5em;
 }
+#shopHeading {
+  top: 25px;
+  width: 430px;
+}
+#shopContainer {
+  top: 25px;
+  height: 330px;
+  width: 420px;
+  border-top: 0;
+  border-left: solid 4px #3b5998;
+  border-bottom: solid 4px #3b5998;
+  border-right: solid 4px #3b5998;
+}
 #shopButtons {
-  float: left;
+  position: relative;
+  top: 278px;
   width: 100%;
+  padding-top: 0.1em;
 }
 #stock {
   box-sizing: border-box;
   position: absolute;
-  top: 40em;
+  top: 38.4em;
+  left: 30.1em;
+  width: 442px;
 }
-#stock th, td {
+#stock td {
+  padding-left: 0.6em;
   padding-top: 0.3em;
 }
 #stock th {
-  padding-left: 2em;
-  padding-right: 3.5em;
+  border: solid 4px #3b5998;
+  border-radius: 0.5em;
+  padding: 0.3em; 
+  color: #3b5998; 
 }
-#price {
-  padding-left: 0.7em;
+.price th {
+  width: 50px;
+
 }
 #yourMessages {
   box-sizing: border-box;
   float: left;
   width: 100%;  
-  margin-left: 100%;
-  margin-top: -7.1em;
+  margin-left: 74.5%;
+  margin-top: -23em;
+}
+#messageContainer {
+  height: 325px;
 }
 #initiateButtons button {
   color: black;
@@ -317,19 +386,10 @@ button {
 }
 #initiateButtons {
   float: left;
-  margin-top: -0.7em;
+  margin-top: -0.7em;  
 }
 #specialButtons {
   right: 0;
-}
-button span {
-  font-size: 1.2em;
-}
-.berserker {
-  background-color: #FF0000;
-}
-.invuln {
-  background-color: #00FF00;
 }
 .highlight {
   opacity: 0.7;

@@ -432,15 +432,9 @@ function fight(enemy) {
   } 
   if (invulnerableScore > 0) {
     invulnerableScore--;   
-  }
-  if (berserkScore===0){
-    $('.eye').css('background-color', 'red');
-  } 
-  if (invulnerableScore===0){
-    $('#shield').css({'width': '150px', 'height': '150px'});
-  }   
+  }  
   if (enemy.name === "Mouse" && berserkScore === 0) {
-  document.getElementById("berserkMouse").style.visibility='visible';  
+  document.getElementById("berserkMouse").style.visibility='visible';   
   } 
   if (enemy.name === "Rat" && berserkScore === 0) {
   document.getElementById("berserkRat").style.visibility='visible';  
@@ -516,6 +510,7 @@ function fight(enemy) {
      }
   };
     berserk = function()  {
+    $('.eye').css('background-color', 'red'); 
     var randomize = (Math.random(0,1) + 0.2);
     var score = Math.floor((self.luck/10)/randomize);
     var berserkModifier = 2 + Math.floor(0.46*((self.str + self.hit + self.luck) / 3)) 
@@ -589,8 +584,7 @@ function fight(enemy) {
   self.hp -= enemyDamageThisRound;
   yourHP.innerHTML = "Your health: " + self.hp;
   berserkScore = 4;
-  document.getElementById("berserk" + enemy.name).style.visibility='hidden';
-  $('.eye').css('background-color', 'white'); 
+  document.getElementById("berserk" + enemy.name).style.visibility='hidden';  
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
       fighting = false;
@@ -628,6 +622,7 @@ function fight(enemy) {
   
     
   invulnerable = function()  {
+    $('#shield').css({'width': '150px', 'height': '150px'});  
     var randomize = (Math.random(0,1) + 0.2);
     var score = Math.floor((self.luck/10)/randomize); 
     highRoll = Math.floor(enemy.level/3) + 4;
@@ -673,8 +668,7 @@ function fight(enemy) {
   self.hp -= enemyDamageThisRound;
   yourHP.innerHTML = "Your health: " + self.hp;
   invulnerableScore = 3;
-  document.getElementById("invulnerable" + enemy.name).style.visibility='hidden'; 
-  $('#shield').css({'width': '100px', 'height': '100px'});     
+  document.getElementById("invulnerable" + enemy.name).style.visibility='hidden';     
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
       fighting = false;
@@ -2333,7 +2327,8 @@ function heroMove() {
   $('#leftFoot').css('left', '204px');
   $('#leftSole').css('left', '204px'); 
   $('#rightFoot').css({'left': '218px', 'top': '618px'});
-  $('#rightSole').css({'left': '218px', 'top': '630px'});    
+  $('#rightSole').css({'left': '218px', 'top': '630px'});  
+
 }
 function heroBack() {
   $('#weapon').css({'left': '340px', 'top': '202px', 'transform': 'rotate(0deg)'}); 
@@ -2341,24 +2336,6 @@ function heroBack() {
   $('#rightArm').css({'transform': 'rotate(0deg)', 'left': '241px', 'top': '339px'});
   $('#hitsplat').css('display','none');
   $('#hit').css('display','none');
-}
-function heroReset() {
-  $('#weapon').css({'top': '200px', 'transform': 'rotate(0deg)'}); 
-  $('#hilt').css({'top': '328px', 'transform': 'rotate(0deg)'});
-  $('#hit').css('display','none');
-  $('#rightEye').css('display', 'block');
-  $('#leftEye').css('left', '6px');
-  $('#leftEyebrow').css('transform', 'rotate(0deg)');
-  $('#leftPupil').css({'left': '19px', 'top': '15px'}); 
-  $('#leftArm').css({'left': '56px', 'top': '337px'});
-  $('#rightArm').css({'left': '243px', 'top': '337px', 'transform': 'rotate(0deg)'});
-  $('#shield').css({'left': '20px', 'top': '305px'});
-  $('#leftLeg').css('left', '180px');
-  $('#rightLeg').css({'left': '225px', 'top': '505px', 'height': '135px'});
-  $('#leftFoot').css('left', '147px');
-  $('#leftSole').css('left', '147px'); 
-  $('#rightFoot').css({'left': '229px', 'top': '628px'});
-  $('#rightSole').css({'left': '228px', 'top': '640px'}); 
 }
 // event handler
 $(document).ready(function(){
@@ -2389,6 +2366,8 @@ $(document).ready(function(){
         $('#enemysplat').css('display','none');
         $('#enemyhit').css('display','none');
         $('#leftEyebrow').css('transform', 'rotate(25deg)'); 
+        $('.eye').css('background-color', 'white'); 
+        $('#shield').css({'width': '100px', 'height': '100px'}); 
       }, [600]);
     }, [700]);
   });  

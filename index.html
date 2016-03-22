@@ -22,358 +22,85 @@
     </ul> 
   </div>
   <h1>The Quest for The Thing</h1>
-  <h4 id="subtitle">A Game Wot I Wrote</h4>
+
   <div id='tutorialLink'>
-  <button>Tutorial</button>  
+    <button>Tutorial</button>  
   </div>
   <div id='testStatsLink'>
-  <button onClick='stats()'>Test Stats</button>  
+    <button onClick='stats()'>Test Stats</button>  
   </div>  
 </div>
-<div id="wrapper" title="Click buttons to fight" class="noDisplay">
-<div id="head">
-  <div id="leftEye" class="eye">
-    <div id="leftPupil" class="pupil"></div>
-    <div id="leftEyebrow" class="eyebrow"></div>
-  </div>
-  <div id="rightEye" class="eye">
-    <div id="rightPupil" class="pupil"></div>
-    <div id="rightEyebrow" class="eyebrow"></div>
-  </div>   
-</div>
-<div id="chest"></div>
-<div id="weapon"></div> 
-<div id="hilt"></div> 
-<div id="leftArm" class="arm"></div>
-<div id="rightArm" class="arm"></div> 
-<div id="leftLeg" class="leg"></div>
-<div id="rightLeg" class="leg"></div>
-<div id="rightFoot" class="foot"></div>
-<div id="rightSole" class="sole"></div> 
-<div id="leftFoot" class="foot"></div>
-<div id="leftSole" class="sole"></div>   
-<div id="shield"></div> 
-<div id="hitsplat"></div>   
-<div id="hit">
-  <p>10</p>
-</div>
-<div id="enemysplat"></div>
-<div id="enemyhit">
-  <p>8</p>
-</div>  
-<div id="mouseLeftEar" class="mouse noDisplay"></div>
-<div id="mouseRightEar" class="mouse noDisplay"></div>
-<div id="mouseBody" class="mouse noDisplay"></div>
-<div id="mouseHead" class="mouse noDisplay">
-  <div id="mouseLeftEye" class="mouse noDisplay">
-    <div id="mouseLeftPupil" class="mouse noDisplay"></div>
-  </div>
-  <div id="mouseRightEye" class="mouse noDisplay">
-    <div id="mouseRightPupil" class="mouse noDisplay"></div>
-  </div>
-</div>
-<div id="mouseNose" class="mouse noDisplay"></div>
-<div id="mouseWhisker1" class="mouseWhisker mouse noDisplay"></div>
-<div id="mouseWhisker2" class="mouseWhisker mouse noDisplay"></div>
-<div id="mouseWhisker3" class="mouseWhisker mouse noDisplay"></div>
-<div id="mouseWhisker4" class="mouseWhisker mouse noDisplay"></div>
-<div id="mouseWhisker5" class="mouseWhisker mouse noDisplay"></div>
-<div id="mouseWhisker6" class="mouseWhisker mouse noDisplay"></div>  
-<div id="mouseTail" class="mouse noDisplay"></div>
-<div id="mouseFloor" class="mouse noDisplay"></div>
-  
-<div id="ratLeftEar" class="rat noDisplay"></div>
-<div id="ratRightEar" class="rat noDisplay"></div>
-<div id="ratLeftTooth" class="rat noDisplay"></div>
-<div id="ratRightTooth" class="rat noDisplay"></div>  
-<div id="ratBody" class="rat noDisplay"></div>
-<div id="ratHead" class="rat noDisplay">
-  <div id="ratLeftEye" class="rat noDisplay">
-    <div id="ratLeftPupil" class="rat noDisplay"></div>
-  </div>
-  <div id="ratRightEye" class="rat noDisplay">
-    <div id="ratRightPupil" class="rat noDisplay"></div>
-  </div>
-</div>
-<div id="ratNose" class="rat noDisplay"></div>
-<div id="ratWhisker1" class="ratWhisker rat noDisplay"></div>
-<div id="ratWhisker2" class="ratWhisker rat noDisplay"></div>
-<div id="ratWhisker3" class="ratWhisker rat noDisplay"></div>
-<div id="ratWhisker4" class="ratWhisker rat noDisplay"></div>
-<div id="ratWhisker5" class="ratWhisker rat noDisplay"></div>
-<div id="ratWhisker6" class="ratWhisker rat noDisplay"></div>  
-<div id="ratTail" class="rat noDisplay"></div>
-<div id="ratFloor" class="rat noDisplay"></div>
-<div id="ratLaser" class="rat noDisplay"></div> 
 
-<div id="dogNosePoint" class="dog noDisplay"></div>
-<div id="dogLeftEar" class="dog noDisplay"></div>
-<div id="dogLeftEarBorder1" class="dog noDisplay"></div>
-<div id="dogLeftEarBorder2" class="dog noDisplay"></div>
-<div id="dogRightEar" class="dog noDisplay"></div>
-<div id="dogRightEarBorder1" class="dog noDisplay"></div>
-<div id="dogRightEarBorder2" class="dog noDisplay"></div>
-<div id="dogTail" class="dog noDisplay"></div>
-<div id="dogFoot1" class="dog noDisplay"></div> 
-<div id="dogBody" class="dog noDisplay"></div> 
-<div id="dogBelly" class="dog noDisplay"></div>
-<div id="dogLeg" class="dog noDisplay"></div>  
-<div id="dogFoot2" class="dog noDisplay"></div> 
-<div id="dogFoot3" class="dog noDisplay"></div>
-<div id="dogHead" class="dog noDisplay">
-  <div id="dogLeftEye" class="dog noDisplay">
-    <div id="dogLeftPupil" class="dog noDisplay"></div>
-  </div>
-  <div id="dogRightEye" class="dog noDisplay">
-    <div id="dogRightPupil" class="dog noDisplay"></div>
-  </div>
-</div>
-<div id="dogNose" class="dog noDisplay"></div>
-<div id="dogFloor" class="dog noDisplay"></div>
-
-<div id="wolfHowl" class="wolf noDisplay">
-  <p>HOWL</p>  
-</div>
-<div id="wolfNosePoint" class="wolf noDisplay"></div>
-<div id="wolfLeftEar" class="wolf noDisplay"></div>
-<div id="wolfLeftEarBorder1" class="wolf noDisplay"></div>
-<div id="wolfLeftEarBorder2" class="wolf noDisplay"></div>
-<div id="wolfRightEar" class="wolf noDisplay"></div>
-<div id="wolfRightEarBorder1" class="wolf noDisplay"></div>
-<div id="wolfRightEarBorder2" class="wolf noDisplay"></div>
-<div id="wolfTail" class="wolf noDisplay"></div>
-<div id="wolfFoot1" class="wolf noDisplay"></div> 
-<div id="wolfBody" class="wolf noDisplay"></div> 
-<div id="wolfBelly" class="wolf noDisplay"></div>
-<div id="wolfLeg" class="wolf noDisplay"></div>  
-<div id="wolfFoot2" class="wolf noDisplay"></div> 
-<div id="wolfFoot3" class="wolf noDisplay"></div>
-<div id="wolfHead" class="wolf noDisplay">
-  <div id="wolfMouth" class="wolf noDisplay"></div>
-  <div id="wolfLeftEye" class="wolf noDisplay">
-    <div id="wolfLeftPupil" class="wolf noDisplay"></div>
-  </div>
-  <div id="wolfRightEye" class="wolf noDisplay">
-    <div id="wolfRightPupil" class="wolf noDisplay"></div>
-  </div>
-</div>
-<div id="wolfNose" class="wolf noDisplay"></div>
-<div id="wolfLeftToothLeft" class="wolf noDisplay"></div>
-<div id="wolfLeftToothRight" class="wolf noDisplay"></div>
-<div id="wolfRightToothLeft" class="wolf noDisplay"></div>
-<div id="wolfRightToothRight" class="wolf noDisplay"></div>  
-<div id="wolfFloor" class="wolf noDisplay"></div>
-
-<div id="goblinHead" class="goblin noDisplay">
-  <div id="goblinEye" class="goblin noDisplay">
-    <div id="goblinPupil" class="goblin noDisplay"></div>
-    <div id="goblinEyebrow" class="goblin noDisplay"></div>
-  </div> 
-</div>
-<div id="goblinEar" class="goblin noDisplay"></div> 
-<div id="goblinEar1" class="goblin noDisplay"></div>
-<div id="goblinEar2" class="goblin noDisplay"></div>  
-<div id="goblinNose" class="goblin noDisplay"></div>
-<div id="goblinNoseBorderLeft" class="goblin noDisplay"></div>
-<div id="goblinNoseBorderRight" class="goblin noDisplay"></div>
-<div id="goblinChest" class="goblin noDisplay"></div>
-<div id="goblinWeapon1" class="goblin noDisplay"></div> 
-<div id="goblinHilt1" class="goblin noDisplay"></div> 
-<div id="goblinWeapon2" class="goblin noDisplay"></div>   
-<div id="goblinHilt2" class="goblin noDisplay"></div>  
-<div id="goblinLeftArm" class="goblin noDisplay"></div>
-<div id="goblinRightArm" class="goblin noDisplay"></div> 
-<div id="goblinLeftLeg" class="goblin noDisplay"></div>
-<div id="goblinRightLeg" class="goblin noDisplay"></div>
-<div id="goblinRightFoot" class="goblin noDisplay"></div>
-<div id="goblinRightSole" class="goblin noDisplay"></div> 
-<div id="goblinLeftFoot" class="goblin noDisplay"></div>
-<div id="goblinLeftSole" class="goblin noDisplay"></div>
-
-<div id="orcHead" class="orc noDisplay">
-  <div id="orcEye" class="orc noDisplay">
-    <div id="orcPupil" class="orc noDisplay"></div>
-    <div id="orcEyebrow" class="orc noDisplay"></div>
-  </div> 
-  <div id="orcTusk" class="orc noDisplay"></div>
-  <div id="orcTusk1" class="orc noDisplay"></div>
-  <div id="orcTusk2" class="orc noDisplay"></div>
-  <div id="orcMouth" class="orc noDisplay"></div>  
-</div>
-<div id="orcEar" class="orc noDisplay"></div> 
-<div id="orcEar1" class="orc noDisplay"></div>
-<div id="orcEar2" class="orc noDisplay"></div>  
-<div id="orcNose" class="orc noDisplay"></div>
-<div id="orcNoseBorderLeft" class="orc noDisplay"></div>
-<div id="orcNoseBorderRight" class="orc noDisplay"></div>
-<div id="orcChest" class="orc noDisplay"></div>
-<div id="orcAxeHead" class="orc noDisplay"></div>
-<div id="orcAxeHandle" class="orc noDisplay"></div> 
-<div id="orcLeftArm" class="orc noDisplay"></div>
-<div id="orcRightArm" class="orc noDisplay"></div> 
-<div id="orcLeftLeg" class="orc noDisplay"></div>
-<div id="orcRightLeg" class="orc noDisplay"></div>
-<div id="orcRightFoot" class="orc noDisplay"></div>
-<div id="orcRightSole" class="orc noDisplay"></div> 
-<div id="orcLeftFoot" class="orc noDisplay"></div>
-<div id="orcLeftSole" class="orc noDisplay"></div> 
-
-<div id="ogreHead" class="ogre">
-  <div id="ogreEye" class="ogre">
-    <div id="ogrePupil" class="ogre"></div>
-    <div id="ogreEyebrow" class="ogre"></div>
-  </div> 
-  <div id="ogreTusk" class="ogre"></div>
-  <div id="ogreTusk1" class="ogre"></div>
-  <div id="ogreTusk2" class="ogre"></div>
-  <div id="ogreMouth" class="ogre"></div>  
-</div>
-<div id="ogreEar1" class="ogre"></div>
-<div id="ogreEar2" class="ogre"></div>  
-<div id="ogreNose" class="ogre"></div>
-<div id="ogreNoseBorderLeft" class="ogre"></div>
-<div id="ogreNoseBorderRight" class="ogre"></div>
-<div id="ogreChest" class="ogre"></div>
-<div id="ogreWeaponHandle" class="ogre"></div>
-<div id="ogreWeaponHead" class="ogre">
-  <div id="ogreWeaponSpike1" class="spike ogre"></div>
-  <div id="ogreWeaponSpike1Left" class="spikeBorder ogre"></div>
-  <div id="ogreWeaponSpike1Right" class="spikeBorder ogre"></div>
-  <div id="ogreWeaponSpike2" class="spike ogre"></div>
-  <div id="ogreWeaponSpike2Left" class="spikeBorder ogre"></div>
-  <div id="ogreWeaponSpike2Right" class="spikeBorder ogre"></div>
-  <div id="ogreWeaponSpike3" class="spike ogre"></div>
-  <div id="ogreWeaponSpike3Left" class="spikeBorder ogre"></div>
-  <div id="ogreWeaponSpike3Right" class="spikeBorder ogre"></div>  
-  <div id="ogreWeaponSpike4" class="spike ogre"></div>
-  <div id="ogreWeaponSpike4Left" class="spikeBorder ogre"></div>
-  <div id="ogreWeaponSpike4Right" class="spikeBorder ogre"></div>
-</div>  
-<div id="ogreLeftArm" class="ogre"></div>
-<div id="ogreRightArm" class="ogre"></div> 
-<div id="ogreLeftLeg" class="ogre"></div>
-<div id="ogreRightLeg" class="ogre"></div>
-<div id="ogreRightFoot" class="ogre"></div>
-<div id="ogreRightSole" class="ogre"></div> 
-<div id="ogreLeftFoot" class="ogre"></div>
-<div id="ogreLeftSole" class="ogre"></div> 
-  
-<div id="attackButtonDiv"> 
-<button onClick="attack()" id="attackMouse" class="attack">Attack</button>
-<button onClick="berserk()" id="berserkMouse" class="berserker">Berserk</button>
-<button onClick="invulnerable()" id="invulnerableMouse" class="invuln">Invulnerable</button> 
-<br/>
-<button onClick="attack()" id="attackRat" class="attack">Attack</button>
-<button onClick="berserk()" id="berserkRat" class="berserker">Berserk</button>
-<button onClick="invulnerable()" id="invulnerableRat" class="invuln">Invulnerable</button> 
-<br/>
-<button onClick="attack()" id="attackDog" class="attack">Attack</button>
-<button onClick="berserk()" id="berserkDog" class="berserker">Berserk</button>
-<button onClick="invulnerable()" id="invulnerableDog" class="invuln">Invulnerable</button> 
-<br/>
-<button onClick="attack()" id="attackWolf" class="attack">Attack</button>
-<button onClick="berserk()" id="berserkWolf" class="berserker">Berserk</button>
-<button onClick="invulnerable()" id="invulnerableWolf" class="invuln">Invulnerable</button> 
-<br/>
-<button onClick="attack()" id="attackGoblin" class="attack">Attack</button>
-<button onClick="berserk()" id="berserkGoblin" class="berserker">Berserk</button>
-<button onClick="invulnerable()" id="invulnerableGoblin" class="invuln">Invulnerable</button> 
-<br/>
-<button onClick="attack()" id="attackOrc" class="attack">Attack</button>
-<button onClick="berserk()" id="berserkOrc" class="berserker">Berserk</button>
-<button onClick="invulnerable()" id="invulnerableOrc" class="invuln">Invulnerable</button> 
-<br/>
-<button onClick="attack()" id="attackOgre" class="attack">Attack</button>
-<button onClick="berserk()" id="berserkOgre" class="berserker">Berserk</button>
-<button onClick="invulnerable()" id="invulnerableOgre" class="invuln">Invulnerable</button> 
-<br/>  
-</div>
-<div id='close'>
-  <button>Close</button>  
-</div> 
-<div id="healthCount">
- <p id="yourHP"></p>
- <p id="enemyHP"></p>
-</div>
-<div id="fight_result">
-    <p id="fightResult"></p>
-</div>
-</div>     
 <div id="content">
-  <div id='tutorial'>
-    <p>First spend all your attribute points using the 'Raise ...' buttons.</p>
-    <p>If you have enough gold you can buy items from Goblin Dave's Used Goods Emporium, or you can save it up for later.</p>
-    <p>Higher tier items are stronger but cost more. Every time you win a fight you'll receive either an item or gold.</p>
-    <p>Equip items using the 'Sell/Use Items' button under 'Your Adventure:'.</p>
-    <p>When you're ready to fight choose an enemy you think you can beat and click the 'Fight a ...' button then 'Attack' (watch out for your special attacks too!).</p>
-    <p>Fighting uses up Energy and if you take damage you'll lose Health as well, you'll then receive 1 Energy and Health back each minute until you're at full points again.</p>
-    <p>If you lose all your Health you'll be revived but it will cost you 2 Energy.</p>
-    <p>Good Luck!</p>
-  </div>
-  <div id='testStats'>
-    <p id='headers'>Name, Str, Hit, Def, Dodge, HP, XP, Difficulty, Defeats</p>
-    <p id='mouseStats'></p>
-    <p id='ratStats'></p>
-    <p id='dogStats'></p>
-    <p id='wolfStats'></p>
-    <p id='goblinStats'></p>
-    <p id='orcStats'></p>
-    <p id='ogreStats'></p>
-  </div>
+
   <div id="character_attributes">
-    <h4><span>Your Character:&nbsp;</span></h4>
-    <p id="display_level"></p>
-    <p id="display_strength"></p>
-    <p id="display_hit"></p>
-    <p id="display_def"></p>
-    <p id="display_dodge"></p>
-    <p id="display_luck"></p>
-    <p id="display_points"></p>
+    <div id="characterHeading" class="heading">  
+      <h4><span>Your Character:&nbsp;</span></h4>
+    </div>      
+    <div id="characterContainer"class="container">  
+      <p id="display_level"></p>
+      <p id="display_strength"></p>
+      <p id="display_hit"></p>
+      <p id="display_def"></p>
+      <p id="display_dodge"></p>
+      <p id="display_luck"></p>
+      <p id="display_points"></p>
+    </div>
   </div>
   
   <div id="adventure_stats">
-    <h4><span>Your Adventure:&nbsp;</span></h4>
-    <p id="display_HP"></p>
-    <p id="display_energy"></p>
-    <p id="display_Xp"></p>
-    <p id="display_NextLevelAt"></p>
-    <p id="display_Gold"></p>
-    <p id="display_Equipment"></p>
-    <button onClick="Paul.find()" id="listItems">Sell/Use Items</button>
-    <select id="equipment"></select>
-    <br/>
-    <button onClick="Paul.sell()" id="sellItems">Sell</button>
-    <br/>
-    <button onClick="Paul.use()" id="useItems">Use</button>
+    <div id="adventureHeading" class="heading"> 
+      <h4><span>Your Adventure:&nbsp;</span></h4>
+    </div>
+    <div id="adventureContainer"class="container">
+      <p id="display_HP"></p>
+      <p id="display_energy"></p>
+      <p id="display_Xp"></p>
+      <p id="display_NextLevelAt"></p>
+      <p id="display_Gold"></p>
+      <p id="display_Equipment"></p>
+      <button onClick="Paul.find()" id="listItems">Sell/Use Items</button>
+      <select id="equipment"></select>
+      <br/>
+      <button onClick="Paul.sell()" id="sellItems">Sell</button>
+      <br/>
+      <button onClick="Paul.use()" id="useItems">Use</button>
+    </div>
   </div>
   
   <div id="armour">
-    <h4><span>Your Armour:&nbsp;</span></h4>
-    <p id="display_Weapon">Weapon: None</p>
-    <p id="display_Shield">Shield: None</p>
-    <p id="display_Helm">Helm: None</p>
-    <p id="display_Chest">Chest: None</p>
-    <p id="display_Legs">Legs: None</p>
-    <p id="display_Gloves">Gloves: None</p>
-    <p id="display_Boots">Boots: None</p>
-    <p id="display_Ring">Ring: None</p>
-    <p id="display_Amulet">Amulet: None</p>
+    <div id="armourHeading" class="heading"> 
+      <h4><span>Your Armour:&nbsp;</span></h4>
+    </div>
+    <div id="armourContainer"class="container">
+      <p id="display_Weapon">Weapon: None</p>
+      <p id="display_Shield">Shield: None</p>
+      <p id="display_Helm">Helm: None</p>
+      <p id="display_Chest">Chest: None</p>
+      <p id="display_Legs">Legs: None</p>
+      <p id="display_Gloves">Gloves: None</p>
+      <p id="display_Boots">Boots: None</p>
+      <p id="display_Ring">Ring: None</p>
+      <p id="display_Amulet">Amulet: None</p>
+    </div>
   </div>
 
   <div id="fight">
-    <h4><span>Your Battles:&nbsp;</span></h4> 
+    <div id="fightHeading" class="heading"> 
+      <h4><span>Your Battles:&nbsp;</span></h4> 
+    </div>
     <div id="fightButtons">
     <div id="initiateButtons">
-    <button onClick="Paul.fight(mouse)" id="fightMouse"><span style="font-weight:bold">Fight a Mouse</span><br>Energy Cost: 3<br>Level: 1+</button>
-    <button onClick="Paul.fight(rat)" id="fightRat"><span style="font-weight:bold">Fight a Rat</span><br>Energy Cost: 4<br>Level: 3+</button>
-    <br/>
-    <button onClick="Paul.fight(dog)" id="fightDog"><span style="font-weight:bold">Fight a Dog</span><br>Energy Cost: 5<br>Level: 5+</button>  
-    <button onClick="Paul.fight(wolf)" id="fightWolf"><span style="font-weight:bold">Fight a Wolf</span><br>Energy Cost: 6<br>Level: 7+</button>
-    <br/>      
-    <button onClick="Paul.fight(goblin)" id="fightGoblin"><span style="font-weight:bold">Fight a Goblin</span><br>Energy Cost: 7<br>Level: 10+</button>     
-    <button onClick="Paul.fight(orc)" id="fightOrc"><span style="font-weight:bold">Fight an Orc</span><br>Energy Cost: 8<br>Level: 13+</button>  
-    <br/>      
-    <button onClick="Paul.fight(ogre)" id="fightOgre"><span style="font-weight:bold">Fight an Ogre</span><br>Energy Cost: 9<br>Level: 16+</button>              
+      <button onClick="Paul.fight(mouse)" id="fightMouse"><span style="font-weight:bold">Fight a Mouse</span><br>Energy Cost: 3<br>Level: 1+</button>
+      <button onClick="Paul.fight(rat)" id="fightRat"><span style="font-weight:bold">Fight a Rat</span><br>Energy Cost: 4<br>Level: 3+</button>
+      <br/>
+      <button onClick="Paul.fight(dog)" id="fightDog"><span style="font-weight:bold">Fight a Dog</span><br>Energy Cost: 5<br>Level: 5+</button>  
+      <button onClick="Paul.fight(wolf)" id="fightWolf"><span style="font-weight:bold">Fight a Wolf</span><br>Energy Cost: 6<br>Level: 7+</button>
+      <br/>      
+      <button onClick="Paul.fight(goblin)" id="fightGoblin"><span style="font-weight:bold">Fight a Goblin</span><br>Energy Cost: 7<br>Level: 10+</button>     
+      <button onClick="Paul.fight(orc)" id="fightOrc"><span style="font-weight:bold">Fight an Orc</span><br>Energy Cost: 8<br>Level: 13+</button>  
+      <br/>      
+      <button onClick="Paul.fight(ogre)" id="fightOgre"><span style="font-weight:bold">Fight an Ogre</span><br>Energy Cost: 9<br>Level: 16+</button>              
     </div>    
     </div> 
   </div>
@@ -389,82 +116,376 @@
   </div>
 
   <div id="shop">
-    <h4><span>Goblin Dave's Used Goods Emporium&nbsp;</span></h4>
+    <div id="shopHeading" class="heading"> 
+      <h4><span>Goblin Dave's Used Goods Emporium&nbsp;</span></h4>
+    </div>
+    <div id="shopContainer"class="container">
+      <div id="shopButtons">    
+        <button onClick="Paul.findShop()" id="findItem">Choose Item</button>      
+        <select id="shopStock"></select>         
+        <button onClick="Paul.buy()" id="buy">Buy</button>
+         <br/>
+        <button onClick="Paul.findTier()" id="find_tier">Choose Tier</button>  
+        <select id="shop_Tier"></select> 
+        <button onClick="Paul.changeStock()" id="newStock">Confirm</button>  
+      </div>
+    </div>
       <table id="stock">
         <thead>
           <tr>
             <th>Item</th>
             <th>Effect</th>
-            <th>Price</th>
+            <th class="price">Price</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Wooden Sword</td>
             <td>Strength +4</td>
-            <td id="price">42 gold</td>
+            <td class="price">42 gold</td>
           </tr>
           <tr>
             <td>Wooden Shield</td>
             <td>Evade +4</td>
-            <td id="price">45 gold</td>
+            <td class="price">45 gold</td>
           </tr>
           <tr>
             <td>Cloth Hat</td>
             <td>Defence +2</td>
-            <td id="price">24 gold</td>
+            <td class="price">24 gold</td>
           </tr>
           <tr>
             <td>Cloth Shirt</td>
             <td>Defence +4</td>
-            <td id="price">54 gold</td>
+            <td class="price">54 gold</td>
           </tr>
           <tr>
             <td>Cloth Legs</td>
             <td>Defence +4</td>
-            <td id="price">48 gold</td>
+            <td class="price">48 gold</td>
           </tr>
           <tr>
             <td>Cloth Gloves</td>
             <td>Accuracy +4</td>
-            <td id="price">45 gold</td>
+            <td class="price">45 gold</td>
           </tr>
           <tr>
             <td>Cloth Boots</td>
             <td>Evade +2</td>
-            <td id="price">24 gold</td>
+            <td class="price">24 gold</td>
           </tr>
           <tr>
             <td>Worn Ring</td>
             <td>Luck +2</td>
-            <td id="price">36 gold</td>
+            <td class="price">36 gold</td>
           </tr>
           <tr>
             <td>Worn Amulet</td>
             <td>Max Health +10 </td>
-            <td id="price">39 gold</td>
+            <td class="price">39 gold</td>
           </tr>    
         </tbody>
-    <div id="shopButtons">    
-      <button onClick="Paul.findShop()" id="findItem">Choose Item</button>      
-      <select id="shopStock"></select>         
-      <button onClick="Paul.buy()" id="buy">Buy</button>
-       <br/>
-      <button onClick="Paul.findTier()" id="find_tier">Choose Tier</button>  
-      <select id="shop_Tier"></select> 
-      <button onClick="Paul.changeStock()" id="newStock">Confirm</button>  
-    </div>
   </div>  
 
 <div id="yourMessages">
+  <div id="messgeHeading" class="heading"> 
     <h4><span>Your Messages:&nbsp;</span></h4>
+  </div>
+  <div id="messageContainer"class="container">
     <p id="result"></p>
     <p id="other"></p>
-</div>  
-
-
+  </div>
+</div> 
 </div>
+<div id="wrapper" title="Click buttons to fight" class="noDisplay">
+  <div id="head">
+    <div id="leftEye" class="eye">
+      <div id="leftPupil" class="pupil"></div>
+      <div id="leftEyebrow" class="eyebrow"></div>
+    </div>
+    <div id="rightEye" class="eye">
+      <div id="rightPupil" class="pupil"></div>
+      <div id="rightEyebrow" class="eyebrow"></div>
+    </div>   
+  </div>
+  <div id="chest"></div>
+  <div id="weapon"></div> 
+  <div id="hilt"></div> 
+  <div id="leftArm" class="arm"></div>
+  <div id="rightArm" class="arm"></div> 
+  <div id="leftLeg" class="leg"></div>
+  <div id="rightLeg" class="leg"></div>
+  <div id="rightFoot" class="foot"></div>
+  <div id="rightSole" class="sole"></div> 
+  <div id="leftFoot" class="foot"></div>
+  <div id="leftSole" class="sole"></div>   
+  <div id="shield"></div> 
+  <div id="hitsplat"></div>   
+  <div id="hit">
+    <p>10</p>
+  </div>
+  <div id="enemysplat"></div>
+  <div id="enemyhit">
+    <p>8</p>
+  </div>  
+  <div id="mouseLeftEar" class="mouse noDisplay"></div>
+  <div id="mouseRightEar" class="mouse noDisplay"></div>
+  <div id="mouseBody" class="mouse noDisplay"></div>
+  <div id="mouseHead" class="mouse noDisplay">
+    <div id="mouseLeftEye" class="mouse noDisplay">
+      <div id="mouseLeftPupil" class="mouse noDisplay"></div>
+    </div>
+    <div id="mouseRightEye" class="mouse noDisplay">
+      <div id="mouseRightPupil" class="mouse noDisplay"></div>
+    </div>
+  </div>
+  <div id="mouseNose" class="mouse noDisplay"></div>
+  <div id="mouseWhisker1" class="mouseWhisker mouse noDisplay"></div>
+  <div id="mouseWhisker2" class="mouseWhisker mouse noDisplay"></div>
+  <div id="mouseWhisker3" class="mouseWhisker mouse noDisplay"></div>
+  <div id="mouseWhisker4" class="mouseWhisker mouse noDisplay"></div>
+  <div id="mouseWhisker5" class="mouseWhisker mouse noDisplay"></div>
+  <div id="mouseWhisker6" class="mouseWhisker mouse noDisplay"></div>  
+  <div id="mouseTail" class="mouse noDisplay"></div>
+  <div id="mouseFloor" class="mouse noDisplay"></div>
+    
+  <div id="ratLeftEar" class="rat noDisplay"></div>
+  <div id="ratRightEar" class="rat noDisplay"></div>
+  <div id="ratLeftTooth" class="rat noDisplay"></div>
+  <div id="ratRightTooth" class="rat noDisplay"></div>  
+  <div id="ratBody" class="rat noDisplay"></div>
+  <div id="ratHead" class="rat noDisplay">
+    <div id="ratLeftEye" class="rat noDisplay">
+      <div id="ratLeftPupil" class="rat noDisplay"></div>
+    </div>
+    <div id="ratRightEye" class="rat noDisplay">
+      <div id="ratRightPupil" class="rat noDisplay"></div>
+    </div>
+  </div>
+  <div id="ratNose" class="rat noDisplay"></div>
+  <div id="ratWhisker1" class="ratWhisker rat noDisplay"></div>
+  <div id="ratWhisker2" class="ratWhisker rat noDisplay"></div>
+  <div id="ratWhisker3" class="ratWhisker rat noDisplay"></div>
+  <div id="ratWhisker4" class="ratWhisker rat noDisplay"></div>
+  <div id="ratWhisker5" class="ratWhisker rat noDisplay"></div>
+  <div id="ratWhisker6" class="ratWhisker rat noDisplay"></div>  
+  <div id="ratTail" class="rat noDisplay"></div>
+  <div id="ratFloor" class="rat noDisplay"></div>
+  <div id="ratLaser" class="rat noDisplay"></div> 
 
+  <div id="dogNosePoint" class="dog noDisplay"></div>
+  <div id="dogLeftEar" class="dog noDisplay"></div>
+  <div id="dogLeftEarBorder1" class="dog noDisplay"></div>
+  <div id="dogLeftEarBorder2" class="dog noDisplay"></div>
+  <div id="dogRightEar" class="dog noDisplay"></div>
+  <div id="dogRightEarBorder1" class="dog noDisplay"></div>
+  <div id="dogRightEarBorder2" class="dog noDisplay"></div>
+  <div id="dogTail" class="dog noDisplay"></div>
+  <div id="dogFoot1" class="dog noDisplay"></div> 
+  <div id="dogBody" class="dog noDisplay"></div> 
+  <div id="dogBelly" class="dog noDisplay"></div>
+  <div id="dogLeg" class="dog noDisplay"></div>  
+  <div id="dogFoot2" class="dog noDisplay"></div> 
+  <div id="dogFoot3" class="dog noDisplay"></div>
+  <div id="dogHead" class="dog noDisplay">
+    <div id="dogLeftEye" class="dog noDisplay">
+      <div id="dogLeftPupil" class="dog noDisplay"></div>
+    </div>
+    <div id="dogRightEye" class="dog noDisplay">
+      <div id="dogRightPupil" class="dog noDisplay"></div>
+    </div>
+  </div>
+  <div id="dogNose" class="dog noDisplay"></div>
+  <div id="dogFloor" class="dog noDisplay"></div>
+
+  <div id="wolfHowl" class="wolf noDisplay">
+    <p>HOWL</p>  
+  </div>
+  <div id="wolfNosePoint" class="wolf noDisplay"></div>
+  <div id="wolfLeftEar" class="wolf noDisplay"></div>
+  <div id="wolfLeftEarBorder1" class="wolf noDisplay"></div>
+  <div id="wolfLeftEarBorder2" class="wolf noDisplay"></div>
+  <div id="wolfRightEar" class="wolf noDisplay"></div>
+  <div id="wolfRightEarBorder1" class="wolf noDisplay"></div>
+  <div id="wolfRightEarBorder2" class="wolf noDisplay"></div>
+  <div id="wolfTail" class="wolf noDisplay"></div>
+  <div id="wolfFoot1" class="wolf noDisplay"></div> 
+  <div id="wolfBody" class="wolf noDisplay"></div> 
+  <div id="wolfBelly" class="wolf noDisplay"></div>
+  <div id="wolfLeg" class="wolf noDisplay"></div>  
+  <div id="wolfFoot2" class="wolf noDisplay"></div> 
+  <div id="wolfFoot3" class="wolf noDisplay"></div>
+  <div id="wolfHead" class="wolf noDisplay">
+    <div id="wolfMouth" class="wolf noDisplay"></div>
+    <div id="wolfLeftEye" class="wolf noDisplay">
+      <div id="wolfLeftPupil" class="wolf noDisplay"></div>
+    </div>
+    <div id="wolfRightEye" class="wolf noDisplay">
+      <div id="wolfRightPupil" class="wolf noDisplay"></div>
+    </div>
+  </div>
+  <div id="wolfNose" class="wolf noDisplay"></div>
+  <div id="wolfLeftToothLeft" class="wolf noDisplay"></div>
+  <div id="wolfLeftToothRight" class="wolf noDisplay"></div>
+  <div id="wolfRightToothLeft" class="wolf noDisplay"></div>
+  <div id="wolfRightToothRight" class="wolf noDisplay"></div>  
+  <div id="wolfFloor" class="wolf noDisplay"></div>
+
+  <div id="goblinHead" class="goblin noDisplay">
+    <div id="goblinEye" class="goblin noDisplay">
+      <div id="goblinPupil" class="goblin noDisplay"></div>
+      <div id="goblinEyebrow" class="goblin noDisplay"></div>
+    </div> 
+  </div>
+  <div id="goblinEar" class="goblin noDisplay"></div> 
+  <div id="goblinEar1" class="goblin noDisplay"></div>
+  <div id="goblinEar2" class="goblin noDisplay"></div>  
+  <div id="goblinNose" class="goblin noDisplay"></div>
+  <div id="goblinNoseBorderLeft" class="goblin noDisplay"></div>
+  <div id="goblinNoseBorderRight" class="goblin noDisplay"></div>
+  <div id="goblinChest" class="goblin noDisplay"></div>
+  <div id="goblinWeapon1" class="goblin noDisplay"></div> 
+  <div id="goblinHilt1" class="goblin noDisplay"></div> 
+  <div id="goblinWeapon2" class="goblin noDisplay"></div>   
+  <div id="goblinHilt2" class="goblin noDisplay"></div>  
+  <div id="goblinLeftArm" class="goblin noDisplay"></div>
+  <div id="goblinRightArm" class="goblin noDisplay"></div> 
+  <div id="goblinLeftLeg" class="goblin noDisplay"></div>
+  <div id="goblinRightLeg" class="goblin noDisplay"></div>
+  <div id="goblinRightFoot" class="goblin noDisplay"></div>
+  <div id="goblinRightSole" class="goblin noDisplay"></div> 
+  <div id="goblinLeftFoot" class="goblin noDisplay"></div>
+  <div id="goblinLeftSole" class="goblin noDisplay"></div>
+
+  <div id="orcHead" class="orc noDisplay">
+    <div id="orcEye" class="orc noDisplay">
+      <div id="orcPupil" class="orc noDisplay"></div>
+      <div id="orcEyebrow" class="orc noDisplay"></div>
+    </div> 
+    <div id="orcTusk" class="orc noDisplay"></div>
+    <div id="orcTusk1" class="orc noDisplay"></div>
+    <div id="orcTusk2" class="orc noDisplay"></div>
+    <div id="orcMouth" class="orc noDisplay"></div>  
+  </div>
+  <div id="orcEar" class="orc noDisplay"></div> 
+  <div id="orcEar1" class="orc noDisplay"></div>
+  <div id="orcEar2" class="orc noDisplay"></div>  
+  <div id="orcNose" class="orc noDisplay"></div>
+  <div id="orcNoseBorderLeft" class="orc noDisplay"></div>
+  <div id="orcNoseBorderRight" class="orc noDisplay"></div>
+  <div id="orcChest" class="orc noDisplay"></div>
+  <div id="orcAxeHead" class="orc noDisplay"></div>
+  <div id="orcAxeHandle" class="orc noDisplay"></div> 
+  <div id="orcLeftArm" class="orc noDisplay"></div>
+  <div id="orcRightArm" class="orc noDisplay"></div> 
+  <div id="orcLeftLeg" class="orc noDisplay"></div>
+  <div id="orcRightLeg" class="orc noDisplay"></div>
+  <div id="orcRightFoot" class="orc noDisplay"></div>
+  <div id="orcRightSole" class="orc noDisplay"></div> 
+  <div id="orcLeftFoot" class="orc noDisplay"></div>
+  <div id="orcLeftSole" class="orc noDisplay"></div> 
+
+  <div id="ogreHead" class="ogre">
+    <div id="ogreEye" class="ogre">
+      <div id="ogrePupil" class="ogre"></div>
+      <div id="ogreEyebrow" class="ogre"></div>
+    </div> 
+    <div id="ogreTusk" class="ogre"></div>
+    <div id="ogreTusk1" class="ogre"></div>
+    <div id="ogreTusk2" class="ogre"></div>
+    <div id="ogreMouth" class="ogre"></div>  
+  </div>
+  <div id="ogreEar1" class="ogre"></div>
+  <div id="ogreEar2" class="ogre"></div>  
+  <div id="ogreNose" class="ogre"></div>
+  <div id="ogreNoseBorderLeft" class="ogre"></div>
+  <div id="ogreNoseBorderRight" class="ogre"></div>
+  <div id="ogreChest" class="ogre"></div>
+  <div id="ogreWeaponHandle" class="ogre"></div>
+  <div id="ogreWeaponHead" class="ogre">
+    <div id="ogreWeaponSpike1" class="spike ogre"></div>
+    <div id="ogreWeaponSpike1Left" class="spikeBorder ogre"></div>
+    <div id="ogreWeaponSpike1Right" class="spikeBorder ogre"></div>
+    <div id="ogreWeaponSpike2" class="spike ogre"></div>
+    <div id="ogreWeaponSpike2Left" class="spikeBorder ogre"></div>
+    <div id="ogreWeaponSpike2Right" class="spikeBorder ogre"></div>
+    <div id="ogreWeaponSpike3" class="spike ogre"></div>
+    <div id="ogreWeaponSpike3Left" class="spikeBorder ogre"></div>
+    <div id="ogreWeaponSpike3Right" class="spikeBorder ogre"></div>  
+    <div id="ogreWeaponSpike4" class="spike ogre"></div>
+    <div id="ogreWeaponSpike4Left" class="spikeBorder ogre"></div>
+    <div id="ogreWeaponSpike4Right" class="spikeBorder ogre"></div>
+  </div>  
+  <div id="ogreLeftArm" class="ogre"></div>
+  <div id="ogreRightArm" class="ogre"></div> 
+  <div id="ogreLeftLeg" class="ogre"></div>
+  <div id="ogreRightLeg" class="ogre"></div>
+  <div id="ogreRightFoot" class="ogre"></div>
+  <div id="ogreRightSole" class="ogre"></div> 
+  <div id="ogreLeftFoot" class="ogre"></div>
+  <div id="ogreLeftSole" class="ogre"></div> 
+    
+  <div id="attackButtonDiv"> 
+  <button onClick="attack()" id="attackMouse" class="attack">Attack</button>
+  <button onClick="berserk()" id="berserkMouse" class="berserker">Berserk</button>
+  <button onClick="invulnerable()" id="invulnerableMouse" class="invuln">Invulnerable</button> 
+  <br/>
+  <button onClick="attack()" id="attackRat" class="attack">Attack</button>
+  <button onClick="berserk()" id="berserkRat" class="berserker">Berserk</button>
+  <button onClick="invulnerable()" id="invulnerableRat" class="invuln">Invulnerable</button> 
+  <br/>
+  <button onClick="attack()" id="attackDog" class="attack">Attack</button>
+  <button onClick="berserk()" id="berserkDog" class="berserker">Berserk</button>
+  <button onClick="invulnerable()" id="invulnerableDog" class="invuln">Invulnerable</button> 
+  <br/>
+  <button onClick="attack()" id="attackWolf" class="attack">Attack</button>
+  <button onClick="berserk()" id="berserkWolf" class="berserker">Berserk</button>
+  <button onClick="invulnerable()" id="invulnerableWolf" class="invuln">Invulnerable</button> 
+  <br/>
+  <button onClick="attack()" id="attackGoblin" class="attack">Attack</button>
+  <button onClick="berserk()" id="berserkGoblin" class="berserker">Berserk</button>
+  <button onClick="invulnerable()" id="invulnerableGoblin" class="invuln">Invulnerable</button> 
+  <br/>
+  <button onClick="attack()" id="attackOrc" class="attack">Attack</button>
+  <button onClick="berserk()" id="berserkOrc" class="berserker">Berserk</button>
+  <button onClick="invulnerable()" id="invulnerableOrc" class="invuln">Invulnerable</button> 
+  <br/>
+  <button onClick="attack()" id="attackOgre" class="attack">Attack</button>
+  <button onClick="berserk()" id="berserkOgre" class="berserker">Berserk</button>
+  <button onClick="invulnerable()" id="invulnerableOgre" class="invuln">Invulnerable</button> 
+  <br/>  
+  </div>
+  <div id='close'>
+    <button>Close</button>  
+  </div> 
+  <div id="healthCount">
+   <p id="yourHP"></p>
+   <p id="enemyHP"></p>
+  </div>
+  <div id="fight_result">
+      <p id="fightResult"></p>
+  </div>
+</div> 
+<div id='tutorial'>
+  <p>First spend all your attribute points using the 'Raise ...' buttons.</p>
+  <p>If you have enough gold you can buy items from Goblin Dave's Used Goods Emporium, or you can save it up for later.</p>
+  <p>Higher tier items are stronger but cost more. Every time you win a fight you'll receive either an item or gold.</p>
+  <p>Equip items using the 'Sell/Use Items' button under 'Your Adventure:'.</p>
+  <p>When you're ready to fight choose an enemy you think you can beat and click the 'Fight a ...' button then 'Attack' (watch out for your special attacks too!).</p>
+  <p>Fighting uses up Energy and if you take damage you'll lose Health as well, you'll then receive 1 Energy and Health back each minute until you're at full points again.</p>
+  <p>If you lose all your Health you'll be revived but it will cost you 2 Energy.</p>
+  <p>Good Luck!</p>
+</div>
+<div id='testStats'>
+  <p id='headers'>Name, Str, Hit, Def, Dodge, HP, XP, Difficulty, Defeats</p>
+  <p id='mouseStats'></p>
+  <p id='ratStats'></p>
+  <p id='dogStats'></p>
+  <p id='wolfStats'></p>
+  <p id='goblinStats'></p>
+  <p id='orcStats'></p>
+  <p id='ogreStats'></p>
+</div> 
 <script src="scripts/jquery.js"></script>  
 <script src="scripts/main.js"></script>    
 </body>

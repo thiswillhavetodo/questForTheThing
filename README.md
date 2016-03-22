@@ -1,6 +1,6 @@
 # questForTheThing
 
-Preview available here, unfortunately the preview breaks the tutorial in firefox (see line 304 of index.html for text):
+Preview available here, unfortunately the preview breaks the tutorial in firefox (see line 470 of index.html for text):
 
 https://htmlpreview.github.io/?https://github.com/thiswillhavetodo/questForTheThing/blob/master/index.html
 

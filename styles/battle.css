@@ -21,6 +21,10 @@
   top: 0;
   left: 350px;
   font-size: 3em;
+  background-color: #3b5998;
+  color: white;
+  border: none;
+  margin-top: 0.1em;
 }
 .berserker {
   width: 300px;
@@ -29,6 +33,10 @@
   top: 0;
   left: 50px;
   font-size: 3em;
+  background-color: #FF0000;
+  color: white;
+  border: none;
+  margin-top: 0.1em;
 }
 .invuln {
   width: 300px;
@@ -37,6 +45,10 @@
   top: 0;
   left: 650px;
   font-size: 3em;
+  background-color: #00FF00;
+  color: white;
+  border: none;
+  margin-top: 0.1em;
 }
 #close button {
   width: 300px;
@@ -45,6 +57,13 @@
   top: 0;
   left: 350px;
   font-size: 3em;
+  background-color: #3b5998;
+  color: white;
+  border: none;
+  margin-top: 0.1em;
+}
+button span {
+  font-size: 1.2em;
 }
 #yourHP {
   position: absolute;
