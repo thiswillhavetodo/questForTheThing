@@ -304,6 +304,7 @@
   transform: rotate(-55deg)
 }
 #mouseLeftEar {
+  background-color: white;
   width: 25px;
   height: 25px;
   border-radius: 100%;
@@ -313,6 +314,7 @@
   left: 695px;
 }
 #mouseRightEar {
+  background-color: white;
   width: 25px;
   height: 25px;
   border-radius: 100%;
@@ -361,6 +363,7 @@
   left: 3px;
 }
 #mouseBody {
+  background-color: white;
   width: 40px;
   height: 77px;
   border-radius: 100%;

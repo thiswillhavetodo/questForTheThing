@@ -427,12 +427,18 @@ function fight(enemy) {
       }  
   self.hp -= enemyDamageThisRound;
   yourHP.innerHTML = "Your health: " + self.hp;
-    if (berserkScore > 0) {
+  if (berserkScore > 0) {
     berserkScore--;  
   } 
   if (invulnerableScore > 0) {
     invulnerableScore--;   
-  }  
+  }
+  if (berserkScore===0){
+    $('.eye').css('background-color', 'red');
+  } 
+  if (invulnerableScore===0){
+    $('#shield').css({'width': '150px', 'height': '150px'});
+  }   
   if (enemy.name === "Mouse" && berserkScore === 0) {
   document.getElementById("berserkMouse").style.visibility='visible';  
   } 
@@ -584,6 +590,7 @@ function fight(enemy) {
   yourHP.innerHTML = "Your health: " + self.hp;
   berserkScore = 4;
   document.getElementById("berserk" + enemy.name).style.visibility='hidden';
+  $('.eye').css('background-color', 'white'); 
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
       fighting = false;
@@ -666,7 +673,8 @@ function fight(enemy) {
   self.hp -= enemyDamageThisRound;
   yourHP.innerHTML = "Your health: " + self.hp;
   invulnerableScore = 3;
-  document.getElementById("invulnerable" + enemy.name).style.visibility='hidden';    
+  document.getElementById("invulnerable" + enemy.name).style.visibility='hidden'; 
+  $('#shield').css({'width': '100px', 'height': '100px'});     
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
       fighting = false;
