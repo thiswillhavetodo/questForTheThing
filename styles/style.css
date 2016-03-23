@@ -1,6 +1,6 @@
 html {
   background-color: #f0f8ff;
-  margin-left: 5%;
+  margin-left: 2%;
   color: #3b5998;
   font-family: arial;
 }
@@ -10,14 +10,15 @@ body{
 #header {
   font-family: serif;
   background-color: #3b5998;
-  margin-left: -5.5em;
+  margin-left: -1.5%;
   margin-top: 0em;
   color: white;
   padding-bottom: 2px;
-  height: 9.2em;
+  height: 8.5em;
   padding-right: 1em;
   border: black solid 4px;
   border-radius: 0.5em;
+  position: relative;
 }
 #navbar ul {
   list-style-type: none;
@@ -32,7 +33,7 @@ body{
   float: left;
 }
 #navbar li {
-  padding-top: 0.35em;
+  padding-top: 0.25em;
   height: 1.5em;
 }
 #sideNav li  {
@@ -125,9 +126,12 @@ h1 {
   height: 50em;
     box-sizing: border-box;
 }
+#logo {
+  position: relative;  
+}
 #logo img{
   float: left;
-  width: 7.65em;
+  width: 7.1em;
   height: auto;
   border: solid 1px #3b5998; 
  }
@@ -177,10 +181,10 @@ button {
   padding-left: 10px;
 }
 #characterHeading {
-  width: 320px;
+  width: 16.67vw;
 }
 #characterContainer {
-  width: 310px;
+  width: 16.15vw;
 }
 #adventure_stats {
   float: left;
@@ -189,10 +193,10 @@ button {
     box-sizing: border-box;
 }
 #adventureHeading {
-  width: 410px;
+  width: 21.35vw;
 }
 #adventureContainer {
-  width: 400px;
+  width: 20.83vw;
   height: 325px;
 }
 #useItems {
@@ -205,10 +209,12 @@ button {
     box-sizing: border-box;
 }
 #armourHeading {
-  width: 250px;
+  width: 13.02vw;
+  min-width: 193px;
 }
 #armourContainer {
-  width: 240px;
+  width: 12.5vw;
+  min-width: 185px;
 }
 #fight {
   float: left;
@@ -218,14 +224,14 @@ button {
 }
 #fightButtons {
   position: relative;
-  top: 20px;
+  top: 25px;    
 }
 #fightHeading {
   width: 337px;
 }
 #buttonWrapper {
   float: left;
-  width: 21%;  
+  width: 18%;  
   height: 50%;
     box-sizing: border-box;
 }
@@ -291,18 +297,20 @@ button {
 #shop {
   box-sizing: border-box;
   float: left;
-  width: 39%;  
+  width: 42%;  
   height: 50%;
   margin-top: -1.5em;
 }
 #shopHeading {
   top: 25px;
-  width: 430px;
+  width: 22.4vw;
+  min-width: 369px;
 }
 #shopContainer {
   top: 25px;
   height: 330px;
-  width: 420px;
+  width: 21.875vw;
+  min-width: 360px;
   border-top: 0;
   border-left: solid 4px #3b5998;
   border-bottom: solid 4px #3b5998;
@@ -315,11 +323,18 @@ button {
   padding-top: 0.1em;
 }
 #stock {
-  box-sizing: border-box;
+/*  box-sizing: border-box;
   position: absolute;
   top: 38.4em;
-  left: 30.1em;
-  width: 442px;
+  left: 22.7vw;
+  width: 23.02vw;
+  min-width: 383px; */
+  box-sizing: border-box;
+  position: relative;
+  top: -20.35em;
+  left: -2px;
+  width: 23.02vw;
+  min-width: 383px;
 }
 #stock td {
   padding-left: 0.6em;
@@ -329,7 +344,7 @@ button {
   border: solid 4px #3b5998;
   border-radius: 0.5em;
   padding: 0.3em; 
-  color: #3b5998; 
+  color: #3b5998;
 }
 .price th {
   width: 50px;
@@ -341,7 +356,7 @@ button {
   box-sizing: border-box;
   float: left;
   width: 100%;  
-  margin-left: 74.5%;
+  margin-left: 76%;
   margin-top: -23em;
 }
 #messageContainer {
@@ -355,7 +370,7 @@ button {
   font-size: 1.05em;
   font-weight: bold;
   width: 170px;
-  height: 80px;
+  height: 80px;  
   margin-bottom: 0.1em;
 }
 #fightMouse {
