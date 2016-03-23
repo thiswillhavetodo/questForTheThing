@@ -333,7 +333,9 @@ button {
 }
 .price th {
   width: 50px;
-
+}
+#find_tier {
+  margin-top: 0.1em;
 }
 #yourMessages {
   box-sizing: border-box;
