@@ -303,13 +303,13 @@ button {
 }
 #shopHeading {
   top: 25px;
-  width: 22.4vw;
+  width: 25.4vw;
   min-width: 369px;
 }
 #shopContainer {
   top: 25px;
   height: 330px;
-  width: 21.875vw;
+  width: 24.875vw;
   min-width: 360px;
   border-top: 0;
   border-left: solid 4px #3b5998;
@@ -333,7 +333,7 @@ button {
   position: relative;
   top: -20.35em;
   left: -2px;
-  width: 23.02vw;
+  width: 26.02vw;
   min-width: 383px;
 }
 #stock td {
