@@ -33,9 +33,10 @@ var correction = 0;
 var hpCorrection = 0;
 var fighting = false;
 var shop = [];
-var tier = [ "1", "2", "3", "4", "5", "Food"];
+var tier = [ "1", "2", "3", "4", "5", "Food & Potions"];
 var berserkScore = 5;
 var invulnerableScore = 4;
+var potionPrice = 100;
 function ranInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -86,7 +87,8 @@ var mouse = {
   realDifficulty: 1,
   difficulty: 1,
   defeats: 0,
-  levelUps: 0
+  levelUps: 0,
+  veteranCount: 5
 };
 var rat = {
   name: "Rat",
@@ -106,7 +108,8 @@ var rat = {
   realDifficulty: 3,
   difficulty: 3,
   defeats: 0,
-  levelUps: 0
+  levelUps: 0,
+  veteranCount: 5
 };
 var dog = {
   name: "Dog",
@@ -126,7 +129,8 @@ var dog = {
   realDifficulty: 5,
   difficulty: 5,
   defeats: 0,
-  levelUps: 0
+  levelUps: 0,
+  veteranCount: 5
 };
 var wolf = {
   name: "Wolf",
@@ -146,7 +150,8 @@ var wolf = {
   realDifficulty: 8,
   difficulty: 8,
   defeats: 0,
-  levelUps: 0
+  levelUps: 0,
+  veteranCount: 5
 };
 var goblin = {
   name: "Goblin",
@@ -166,7 +171,8 @@ var goblin = {
   realDifficulty: 11,
   difficulty: 11,
   defeats: 0,
-  levelUps: 0
+  levelUps: 0,
+  veteranCount: 5
 };
 var orc = {
   name: "Orc",
@@ -179,14 +185,15 @@ var orc = {
   hit: 26,
   def: 24,
   dodge: 24,
-  xpWin: 48,
-  xpDraw: 24,
-  xpLose: 12,
+  xpWin: 50,
+  xpDraw: 25,
+  xpLose: 13,
   //  dropTable: "medDrop",
   realDifficulty: 14,
   difficulty: 14,
   defeats: 0,
-  levelUps: 0
+  levelUps: 0,
+  veteranCount: 5
 };
 var ogre = {
   name: "Ogre",
@@ -199,14 +206,15 @@ var ogre = {
   hit: 32,
   def: 37,
   dodge: 29,
-  xpWin: 59,
-  xpDraw: 29,
-  xpLose: 15,
+  xpWin: 63,
+  xpDraw: 32,
+  xpLose: 16,
   //  dropTable: "medDrop",
   realDifficulty: 17,
   difficulty: 17,
   defeats: 0,
-  levelUps: 0
+  levelUps: 0,
+  veteranCount: 5
 };
 function stats() {
   mouseStats.innerHTML = mouse.name + ", " + mouse.str + ", " + mouse.hit + ", " + mouse.def + ", " + mouse.dodge + ", " + mouse.maxHp + ", " + mouse.xpWin + ", " + mouse.difficulty + ", " + ((mouse.levelUps*5)+mouse.defeats);
@@ -353,6 +361,14 @@ function fight(enemy) {
       enemy.xpDraw = (enemy.xpDraw + 1) + Math.floor(enemy.xpDraw/25);
       enemy.xpLose = (enemy.xpLose + 1) + Math.floor(enemy.xpLose/20);
       other.innerHTML = "The " + enemy.plural + " are growing wise to you. Be careful."
+    }
+    if (enemy.levelUps>=enemy.veteranCount) {
+      enemy.veteranCount +=5;
+      enemy.maxHp ++;
+      enemy.str ++;
+      enemy.hit ++
+      enemy.def ++;
+      enemy.dodge ++;
     }
   }
   attack = function()  {
@@ -809,7 +825,7 @@ function checkLevel() {
   if (this.xp >= this.nextLevelXp) {
   this.xp -= this.nextLevelXp;
   this.level ++;
-  this.nextLevelXp = 10 + ((this.level-1)*(20 + this.level));
+  this.nextLevelXp = (this.level-1)*(25 + this.level);
   this.baseMaxHp = this.baseMaxHp + 5;
   this.maxHp = this.equipHp + this.baseMaxHp;  
   if (this.hp < this.maxHp) {
@@ -997,10 +1013,10 @@ function updateTime() {
 }
 function healthRegen() {
   if (this.hp < this.maxHp) {
-  var updatedDate = new Date();
-  currentDate = updatedDate.getTime();
-  var startNum = hpStartDate.getTime(); 
-  var difference = currentDate - startNum - (hpCorrection*60000);
+  var updatedDateHealth = new Date();
+  currentDateHealth = updatedDateHealth.getTime();
+  var startNumHealth = hpStartDate.getTime(); 
+  var difference = currentDateHealth - startNumHealth - (hpCorrection*60000);
   if (difference >= 60000) {
   var minutes = difference/60000;
     if (this.hp + (Math.floor(minutes)) >= this.maxHp) {
@@ -1129,6 +1145,8 @@ function sell() {
     break;    
     case " Jade Amulet": this.gold += 51;
     break;
+    case " Power Potion": this.gold += 30;
+    break;    
     }
     document.getElementById("sellItems").style.visibility='hidden';
     document.getElementById("useItems").style.visibility='hidden';
@@ -1152,6 +1170,8 @@ function use() {
     case " Stew": this.hp += 9;
       this.energy +=5;
       break;     
+    case " Power Potion": this.points ++;
+      break;       
     case " Stick": if(this.weapon !== "None") {
       this.equipment[this.equipment.length] = this.weapon;
     }
@@ -1638,23 +1658,23 @@ function changeStock() {
     stockTable.rows[9].cells[1].innerHTML = 'Max Health +50';    
     stockTable.rows[9].cells[2].innerHTML = '240 gold';     
   }  
-  else if (shopTier ==="Food") {
-    shop = [" Bread", " Cheese", " Ham", " Stew"];
+  else if (shopTier ==="Food & Potions") {
+    shop = [" Bread", " Cheese", " Ham", " Stew", " Power Potion"];
     stockTable.rows[1].cells[0].innerHTML = 'Crust of Bread'; 
     stockTable.rows[1].cells[1].innerHTML = 'Health +3, Energy +1';    
-    stockTable.rows[1].cells[2].innerHTML = '12 gold';     
+    stockTable.rows[1].cells[2].innerHTML = '17 gold';     
     stockTable.rows[2].cells[0].innerHTML = 'Piece of Cheese'; 
     stockTable.rows[2].cells[1].innerHTML = 'Health +5, Energy +2';    
-    stockTable.rows[2].cells[2].innerHTML = '22 gold';     
+    stockTable.rows[2].cells[2].innerHTML = '28 gold';     
     stockTable.rows[3].cells[0].innerHTML = 'Leg of Ham'; 
     stockTable.rows[3].cells[1].innerHTML = 'Health +8, Energy +3';    
-    stockTable.rows[3].cells[2].innerHTML = '34 gold';     
+    stockTable.rows[3].cells[2].innerHTML = '44 gold';     
     stockTable.rows[4].cells[0].innerHTML = 'Hot Stew'; 
     stockTable.rows[4].cells[1].innerHTML = 'Health +9, Energy +5';    
-    stockTable.rows[4].cells[2].innerHTML = '50 gold'; 
-    stockTable.rows[5].cells[0].innerHTML = ''; 
-    stockTable.rows[5].cells[1].innerHTML = '';    
-    stockTable.rows[5].cells[2].innerHTML = '';    
+    stockTable.rows[4].cells[2].innerHTML = '65 gold'; 
+    stockTable.rows[5].cells[0].innerHTML = 'Power Potion'; 
+    stockTable.rows[5].cells[1].innerHTML = 'Attribute Points +1';    
+    stockTable.rows[5].cells[2].innerHTML = potionPrice + ' gold';    
     stockTable.rows[6].cells[0].innerHTML = ''; 
     stockTable.rows[6].cells[1].innerHTML = '';    
     stockTable.rows[6].cells[2].innerHTML = '';    
@@ -1746,8 +1766,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Bread": if (this.gold >= 12) {
-        this.gold -= 12;
+      case " Bread": if (this.gold >= 17) {
+        this.gold -= 17;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1826,8 +1846,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Cheese": if (this.gold >= 22) {
-        this.gold -= 22;
+      case " Cheese": if (this.gold >= 28) {
+        this.gold -= 28;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1906,8 +1926,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Ham": if (this.gold >= 34) {
-        this.gold -= 34;
+      case " Ham": if (this.gold >= 44) {
+        this.gold -= 44;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1986,8 +2006,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Stew": if (this.gold >= 50) {
-        this.gold -= 50;
+      case " Stew": if (this.gold >= 65) {
+        this.gold -= 65;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2065,7 +2085,17 @@ function buy() {
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
-      break;              
+      break;  
+      case " Power Potion": if (this.gold >= potionPrice) {
+        this.gold -= potionPrice;
+        this.equipment[this.equipment.length] = item;
+        potionPrice += Math.floor(potionPrice/10);
+        changeStock();
+      }
+      else {
+        result.innerHTML = "You don't have enough gold to buy that.";
+      }
+      break;             
   }
   document.getElementById("buy").style.visibility='hidden'; 
   this.updateStatus();
@@ -2343,7 +2373,7 @@ $(document).ready(function(){
     heroMove();
     setTimeout(function() {
       heroBack();
-    }, [600]);
+    }, [500]);
     setTimeout(function() {
       ratMove();
       mouseMove();
@@ -2368,8 +2398,8 @@ $(document).ready(function(){
         $('#leftEyebrow').css('transform', 'rotate(25deg)'); 
         $('.eye').css('background-color', 'white'); 
         $('#shield').css({'width': '100px', 'height': '100px'}); 
-      }, [600]);
-    }, [700]);
+      }, [500]);
+    }, [600]);
   });  
 });
 $(document).ready(function(){
