@@ -834,7 +834,12 @@ function checkLevel() {
     this.hp = this.maxHp;
   }
   this.points = this.points + 2;
+  if (this.level%10===0) {
+    this.maxEnergy += 5;
+  }
+  else {
   this.maxEnergy ++;
+  }
   if (this.energy < this.maxEnergy) {
     this.energy = this.maxEnergy;
   }  
