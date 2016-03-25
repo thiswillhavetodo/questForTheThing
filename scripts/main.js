@@ -137,11 +137,11 @@ var wolf = {
   plural: "Wolves",
   level: 7,
   energyCost: 6,
-  hp: 67,
-  maxHp: 67,
+  hp: 68,
+  maxHp: 68,
   str: 14,
   hit: 12,
-  def: 10,
+  def: 11,
   dodge: 12,
   xpWin: 27,
   xpDraw: 14,
@@ -161,7 +161,7 @@ var goblin = {
   hp: 90,
   maxHp: 90,
   str: 19,
-  hit: 20,
+  hit: 19,
   def: 17,
   dodge: 17,
   xpWin: 38,
@@ -357,18 +357,20 @@ function fight(enemy) {
       enemy.hit = (enemy.hit + 1) + Math.floor(enemy.hit/20);
       enemy.def = (enemy.def + 1) + Math.floor(enemy.def/20);
       enemy.dodge = (enemy.dodge + 1) + Math.floor(enemy.dodge/20);
-      enemy.xpWin = (enemy.xpWin + 1) + Math.floor(enemy.xpWin/30);
+      enemy.xpWin = (enemy.xpWin + 1) + Math.floor(enemy.xpWin/35);
       enemy.xpDraw = (enemy.xpDraw + 1) + Math.floor(enemy.xpDraw/25);
       enemy.xpLose = (enemy.xpLose + 1) + Math.floor(enemy.xpLose/20);
       other.innerHTML = "The " + enemy.plural + " are growing wise to you. Be careful."
     }
     if (enemy.levelUps>=enemy.veteranCount) {
       enemy.veteranCount +=5;
-      enemy.maxHp ++;
+      enemy.maxHp += 3;
       enemy.str ++;
       enemy.hit ++
       enemy.def ++;
       enemy.dodge ++;
+      enemy.realDifficulty -= 0.3;
+      enemy.difficulty = Math.floor(enemy.realDifficulty);
     }
   }
   attack = function()  {
@@ -832,7 +834,7 @@ function checkLevel() {
     this.hp = this.maxHp;
   }
   this.points = this.points + 2;
-  this.maxEnergy += 2;
+  this.maxEnergy ++;
   if (this.energy < this.maxEnergy) {
     this.energy = this.maxEnergy;
   }  
@@ -1662,16 +1664,16 @@ function changeStock() {
     shop = [" Bread", " Cheese", " Ham", " Stew", " Power Potion"];
     stockTable.rows[1].cells[0].innerHTML = 'Crust of Bread'; 
     stockTable.rows[1].cells[1].innerHTML = 'Health +3, Energy +1';    
-    stockTable.rows[1].cells[2].innerHTML = '17 gold';     
+    stockTable.rows[1].cells[2].innerHTML = '19 gold';     
     stockTable.rows[2].cells[0].innerHTML = 'Piece of Cheese'; 
     stockTable.rows[2].cells[1].innerHTML = 'Health +5, Energy +2';    
-    stockTable.rows[2].cells[2].innerHTML = '28 gold';     
+    stockTable.rows[2].cells[2].innerHTML = '31 gold';     
     stockTable.rows[3].cells[0].innerHTML = 'Leg of Ham'; 
     stockTable.rows[3].cells[1].innerHTML = 'Health +8, Energy +3';    
-    stockTable.rows[3].cells[2].innerHTML = '44 gold';     
+    stockTable.rows[3].cells[2].innerHTML = '47 gold';     
     stockTable.rows[4].cells[0].innerHTML = 'Hot Stew'; 
     stockTable.rows[4].cells[1].innerHTML = 'Health +9, Energy +5';    
-    stockTable.rows[4].cells[2].innerHTML = '65 gold'; 
+    stockTable.rows[4].cells[2].innerHTML = '70 gold'; 
     stockTable.rows[5].cells[0].innerHTML = 'Power Potion'; 
     stockTable.rows[5].cells[1].innerHTML = 'Attribute Points +1';    
     stockTable.rows[5].cells[2].innerHTML = potionPrice + ' gold';    
@@ -1766,8 +1768,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Bread": if (this.gold >= 17) {
-        this.gold -= 17;
+      case " Bread": if (this.gold >= 19) {
+        this.gold -= 19;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1846,8 +1848,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Cheese": if (this.gold >= 28) {
-        this.gold -= 28;
+      case " Cheese": if (this.gold >= 31) {
+        this.gold -= 31;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1926,8 +1928,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Ham": if (this.gold >= 44) {
-        this.gold -= 44;
+      case " Ham": if (this.gold >= 47) {
+        this.gold -= 47;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2006,8 +2008,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Stew": if (this.gold >= 65) {
-        this.gold -= 65;
+      case " Stew": if (this.gold >= 70) {
+        this.gold -= 70;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2450,8 +2452,8 @@ function Character() {
   this.points = 2;
   this.gold = 10;
   this.equipment = [];
-  this.energy = 15;
-  this.maxEnergy = 15;
+  this.energy = 20;
+  this.maxEnergy = 20;
   this.updateTime = updateTime;
   this.healthRegen = healthRegen;
   this.strPlus = strPlus;
