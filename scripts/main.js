@@ -158,9 +158,9 @@ var goblin = {
   plural: "Goblins",
   level: 10,
   energyCost: 7,
-  hp: 90,
-  maxHp: 90,
-  str: 19,
+  hp: 85,
+  maxHp: 85,
+  str: 20,
   hit: 19,
   def: 17,
   dodge: 17,
@@ -185,7 +185,7 @@ var orc = {
   hit: 26,
   def: 24,
   dodge: 24,
-  xpWin: 50,
+  xpWin: 51,
   xpDraw: 25,
   xpLose: 13,
   //  dropTable: "medDrop",
@@ -316,6 +316,8 @@ function fight(enemy) {
   fighting = true;
   $('#wrapper').removeClass('noDisplay');
   $('#stock').addClass('noDisplay');
+  $('#tutorial').fadeOut(100, "linear");
+  $('#testStats').fadeOut(100, "linear");
   if (enemy.name=="Mouse") {    
     showMouse();
   }
@@ -352,24 +354,23 @@ function fight(enemy) {
       enemy.defeats -= 5;
       enemy.realDifficulty += 0.7,
       enemy.difficulty = Math.floor(enemy.realDifficulty);      
-      enemy.maxHp += 1 + Math.floor(enemy.maxHp/20);
+      enemy.maxHp += 2 + Math.floor(enemy.maxHp/60);
       enemy.str = (enemy.str + 1) + Math.floor(enemy.str/20);
       enemy.hit = (enemy.hit + 1) + Math.floor(enemy.hit/20);
       enemy.def = (enemy.def + 1) + Math.floor(enemy.def/20);
       enemy.dodge = (enemy.dodge + 1) + Math.floor(enemy.dodge/20);
-      enemy.xpWin = (enemy.xpWin + 1) + Math.floor(enemy.xpWin/35);
+      enemy.xpWin = (enemy.xpWin + 1) + Math.floor(enemy.xpWin/40);
       enemy.xpDraw = (enemy.xpDraw + 1) + Math.floor(enemy.xpDraw/25);
       enemy.xpLose = (enemy.xpLose + 1) + Math.floor(enemy.xpLose/20);
       other.innerHTML = "The " + enemy.plural + " are growing wise to you. Be careful."
     }
     if (enemy.levelUps>=enemy.veteranCount) {
       enemy.veteranCount +=5;
-      enemy.maxHp += 3;
       enemy.str ++;
       enemy.hit ++
       enemy.def ++;
       enemy.dodge ++;
-      enemy.realDifficulty -= 0.3;
+      enemy.realDifficulty -= 0.4;
       enemy.difficulty = Math.floor(enemy.realDifficulty);
     }
   }
@@ -507,7 +508,7 @@ function fight(enemy) {
       invulnerableScore = 4;  
     }
     else if (enemy.hp < 1 && self.hp < 1) {
-      fightResult.innerHTML = "The dying " + enemy.name + " lashes out with the last of it's strength, you are both dead. You receive " + enemy.xpDraw + " Experience Points and pay 2 Energy for resurrection.";
+      fightResult.innerHTML = "The exhausted " + enemy.name + " lashes out with the last of it's strength, you have fought each other to a stalemate. You receive " + enemy.xpDraw + " Experience Points and pay 2 Energy for revival.";
       self.xp += enemy.xpDraw;
       fighting = false;
       document.getElementById('close').style.visibility='visible'; 
@@ -517,7 +518,7 @@ function fight(enemy) {
       invulnerableScore = 4;        
     }
     else if (self.hp < 1 && enemy.hp > 0) {
-      fightResult.innerHTML = "You lose! You receive " + enemy.xpLose + " Experience Points and pay 2 Energy for resurrection.";
+      fightResult.innerHTML = "You lose! You receive " + enemy.xpLose + " Experience Points and pay 2 Energy for revival.";
       self.xp += enemy.xpLose;
       fighting = false;
       document.getElementById('close').style.visibility='visible'; 
@@ -617,7 +618,7 @@ function fight(enemy) {
       invulnerableScore = 4;        
     }
     else if (enemy.hp < 1 && self.hp < 1) {
-      fightResult.innerHTML = "The dying " + enemy.name + " lashes out with the last of it's strength, you are both dead. You receive " + enemy.xpDraw + " Experience Points and pay 2 Energy for resurrection.";
+      fightResult.innerHTML = "The exhausted " + enemy.name + " lashes out with the last of it's strength, you have fought each other to a stalemate. You receive " + enemy.xpDraw + " Experience Points and pay 2 Energy for revival.";
       self.xp += enemy.xpDraw;
       fighting = false;
       document.getElementById('close').style.visibility='visible'; 
@@ -627,7 +628,7 @@ function fight(enemy) {
       invulnerableScore = 4;        
     }
     else if (self.hp < 1 && enemy.hp > 0) {
-      fightResult.innerHTML = "You lose! You receive " + enemy.xpLose + " Experience Points and pay 2 Energy for resurrection.";
+      fightResult.innerHTML = "You lose! You receive " + enemy.xpLose + " Experience Points and pay 2 Energy for revival.";
       self.xp += enemy.xpLose;
       fighting = false;
       document.getElementById('close').style.visibility='visible'; 
@@ -2096,7 +2097,7 @@ function buy() {
       case " Power Potion": if (this.gold >= potionPrice) {
         this.gold -= potionPrice;
         this.equipment[this.equipment.length] = item;
-        potionPrice += Math.floor(potionPrice/10);
+        potionPrice += Math.floor(potionPrice/20) + 10;
         changeStock();
       }
       else {
