@@ -352,26 +352,40 @@ function fight(enemy) {
     if(enemy.defeats>=5) {
       enemy.levelUps ++;
       enemy.defeats -= 5;
-      enemy.realDifficulty += 0.7,
+      enemy.realDifficulty += 0.5,
       enemy.difficulty = Math.floor(enemy.realDifficulty);      
       enemy.maxHp += 2 + Math.floor(enemy.maxHp/60);
-      enemy.str = (enemy.str + 1) + Math.floor(enemy.str/20);
-      enemy.hit = (enemy.hit + 1) + Math.floor(enemy.hit/20);
-      enemy.def = (enemy.def + 1) + Math.floor(enemy.def/20);
-      enemy.dodge = (enemy.dodge + 1) + Math.floor(enemy.dodge/20);
-      enemy.xpWin = (enemy.xpWin + 1) + Math.floor(enemy.xpWin/40);
-      enemy.xpDraw = (enemy.xpDraw + 1) + Math.floor(enemy.xpDraw/25);
+      enemy.str = (enemy.str + 1) + Math.floor(enemy.str/25);
+      enemy.hit = (enemy.hit + 1) + Math.floor(enemy.hit/25);
+      enemy.def = (enemy.def + 1) + Math.floor(enemy.def/25);
+      enemy.dodge = (enemy.dodge + 1) + Math.floor(enemy.dodge/25);
+      enemy.xpWin = (enemy.xpWin + 1) + Math.floor(enemy.xpWin/45);
+      enemy.xpDraw = (enemy.xpDraw + 1) + Math.floor(enemy.xpDraw/30);
       enemy.xpLose = (enemy.xpLose + 1) + Math.floor(enemy.xpLose/20);
       other.innerHTML = "The " + enemy.plural + " are growing wise to you. Be careful."
     }
-    if (enemy.levelUps>=enemy.veteranCount) {
+    if (enemy.xpWin/enemy.energyCost<8 && enemy.levelUps>=enemy.veteranCount){
       enemy.veteranCount +=5;
       enemy.str ++;
-      enemy.hit ++
+      enemy.hit ++;
       enemy.def ++;
       enemy.dodge ++;
-      enemy.realDifficulty -= 0.4;
-      enemy.difficulty = Math.floor(enemy.realDifficulty);
+    }
+    else if (enemy.xpWin/enemy.energyCost>=10 && enemy.levelUps>=enemy.veteranCount) {
+      enemy.veteranCount +=2;
+      enemy.str += 2;
+      enemy.hit += 2;
+      enemy.def += 2;
+      enemy.dodge += 2;
+      enemy.maxHp += 3;
+    }
+    else if (enemy.xpWin/enemy.energyCost>=8 && enemy.levelUps>=enemy.veteranCount) {
+      enemy.veteranCount +=4;
+      enemy.str += 2;
+      enemy.hit += 2;
+      enemy.def += 2;
+      enemy.dodge += 2;
+      enemy.maxHp += 2;
     }
   }
   attack = function()  {
