@@ -313,7 +313,7 @@ function fight(enemy) {
       if (this.energy === this.maxEnergy) {
         startDate = new Date();
       }
-  fighting = true;
+  fighting = true; //'close' button changes fighting to 'false'
   $('#wrapper').removeClass('noDisplay');
   $('#stock').addClass('noDisplay');
   $('#tutorial').fadeOut(100, "linear");
@@ -510,7 +510,6 @@ function fight(enemy) {
   } 
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
-      fighting = false;
       enemy.defeats ++;
       enemyLevel();
       document.getElementById('close').style.visibility='visible'; 
@@ -524,7 +523,6 @@ function fight(enemy) {
     else if (enemy.hp < 1 && self.hp < 1) {
       fightResult.innerHTML = "The exhausted " + enemy.name + " lashes out with the last of it's strength, you have fought each other to a stalemate. You receive " + enemy.xpDraw + " Experience Points and pay 2 Energy for revival.";
       self.xp += enemy.xpDraw;
-      fighting = false;
       document.getElementById('close').style.visibility='visible'; 
       self.updateStatus();
       document.getElementById("attack" + enemy.name).style.visibility='hidden';
@@ -534,7 +532,6 @@ function fight(enemy) {
     else if (self.hp < 1 && enemy.hp > 0) {
       fightResult.innerHTML = "You lose! You receive " + enemy.xpLose + " Experience Points and pay 2 Energy for revival.";
       self.xp += enemy.xpLose;
-      fighting = false;
       document.getElementById('close').style.visibility='visible'; 
       self.updateStatus();
       document.getElementById("attack" + enemy.name).style.visibility='hidden';
@@ -620,7 +617,6 @@ function fight(enemy) {
   document.getElementById("berserk" + enemy.name).style.visibility='hidden';  
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
-      fighting = false;
       enemy.defeats ++;
       enemyLevel();
       document.getElementById('close').style.visibility='visible'; 
@@ -634,7 +630,6 @@ function fight(enemy) {
     else if (enemy.hp < 1 && self.hp < 1) {
       fightResult.innerHTML = "The exhausted " + enemy.name + " lashes out with the last of it's strength, you have fought each other to a stalemate. You receive " + enemy.xpDraw + " Experience Points and pay 2 Energy for revival.";
       self.xp += enemy.xpDraw;
-      fighting = false;
       document.getElementById('close').style.visibility='visible'; 
       self.updateStatus();
       document.getElementById("attack" + enemy.name).style.visibility='hidden';
@@ -644,7 +639,6 @@ function fight(enemy) {
     else if (self.hp < 1 && enemy.hp > 0) {
       fightResult.innerHTML = "You lose! You receive " + enemy.xpLose + " Experience Points and pay 2 Energy for revival.";
       self.xp += enemy.xpLose;
-      fighting = false;
       document.getElementById('close').style.visibility='visible'; 
       self.updateStatus();
       document.getElementById("attack" + enemy.name).style.visibility='hidden';
@@ -704,7 +698,6 @@ function fight(enemy) {
   document.getElementById("invulnerable" + enemy.name).style.visibility='hidden';     
     if (enemy.hp < 1 && self.hp > 0) {
       self.xp += enemy.xpWin;
-      fighting = false;
       enemy.defeats ++;
       enemyLevel();
       document.getElementById('close').style.visibility='visible'; 
@@ -2428,7 +2421,8 @@ $(document).ready(function(){
   $('#close').on('click', 'button', function() {
   $('#wrapper').addClass('noDisplay');
   $('#stock').removeClass('noDisplay');
-  document.getElementById("close").style.visibility='hidden';    
+  document.getElementById("close").style.visibility='hidden';
+  fighting = false;    //ends the fight
   });
 });
 function Character() {
