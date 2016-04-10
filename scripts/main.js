@@ -31,6 +31,8 @@ var startDate = new Date();
 var hpStartDate = new Date();
 var correction = 0;
 var hpCorrection = 0;
+var foodHp = 0;
+var foodEnergy = 0;
 var fighting = false;
 var shop = [];
 var tier = [ "1", "2", "3", "4", "5", "Food & Potions"];
@@ -164,8 +166,8 @@ var goblin = {
   hit: 19,
   def: 17,
   dodge: 17,
-  xpWin: 38,
-  xpDraw: 18,
+  xpWin: 39,
+  xpDraw: 19,
   xpLose: 9,
   //  dropTable: "medDrop",
   realDifficulty: 11,
@@ -185,8 +187,8 @@ var orc = {
   hit: 26,
   def: 24,
   dodge: 24,
-  xpWin: 51,
-  xpDraw: 25,
+  xpWin: 53,
+  xpDraw: 26,
   xpLose: 13,
   //  dropTable: "medDrop",
   realDifficulty: 14,
@@ -206,9 +208,9 @@ var ogre = {
   hit: 32,
   def: 37,
   dodge: 29,
-  xpWin: 63,
-  xpDraw: 32,
-  xpLose: 16,
+  xpWin: 67,
+  xpDraw: 34,
+  xpLose: 17,
   //  dropTable: "medDrop",
   realDifficulty: 17,
   difficulty: 17,
@@ -373,8 +375,8 @@ function fight(enemy) {
     }
     else if (enemy.xpWin/enemy.energyCost>=10 && enemy.levelUps>=enemy.veteranCount) {
       enemy.veteranCount +=2;
-      enemy.str += 2;
-      enemy.hit += 2;
+      enemy.str += 1;
+      enemy.hit += 1;
       enemy.def += 2;
       enemy.dodge += 2;
       enemy.maxHp += 3;
@@ -835,7 +837,7 @@ function checkLevel() {
   if (this.xp >= this.nextLevelXp) {
   this.xp -= this.nextLevelXp;
   this.level ++;
-  this.nextLevelXp = (this.level-1)*(25 + this.level);
+  this.nextLevelXp = 5 + (this.level-1)*(26 + this.level);
   this.baseMaxHp = this.baseMaxHp + 5;
   this.maxHp = this.equipHp + this.baseMaxHp;  
   if (this.hp < this.maxHp) {
@@ -998,12 +1000,36 @@ function lowDrop(difficulty) {
         break; 
     case 42: drop = "40 gold coins";   
         this.gold += 40;
-        break;         
-    case 43: drop = "a Pair of Bronze Gloves";
+        break; 
+    case 43: if (this.hp%2 === 0) {
+        drop = "a Pair of Bronze Gloves";
         this.equipment[this.equipment.length] = " Bronze Gloves";
-        break;            
-    default: drop = "45 gold coins";   
-        this.gold += 45;
+        }
+        else {
+          drop = "42 gold coins"
+          this.gold += 42;
+        }
+        break; 
+    case 44: if (this.hp%5 === 0) {
+        drop = "a Bronze Chainmail Shirt";
+        this.equipment[this.equipment.length] = " Bronze Chainmail";
+        }
+        else {
+          drop = "44 gold coins"
+          this.gold += 44;
+        }
+        break;
+    case 45: drop = "a Pair of Bronze Gloves";
+        this.equipment[this.equipment.length] = " Bronze Gloves";
+        break; 
+    default: drop = if (this.hp%11 === 0) {
+        drop = "a Power Potion";
+        this.equipment[this.equipment.length] = " Power Potion";
+        }
+        else {
+          drop = "50 gold coins"
+          this.gold += 50;
+        }
         break;      
   }
 }
@@ -1044,6 +1070,14 @@ function healthRegen() {
    }
   }
 }
+function foodAdjuster() {
+  if (hpCorrection>foodHp) {
+    hpCorrection-=foodHp;
+  }
+  else {
+    hpCorrection = 0;
+  }  
+}
 function find() {
   equipment.innerHTML = "";
   this.select();  
@@ -1072,13 +1106,13 @@ function sell() {
     break;
     case " Cloth Hat": this.gold += 7;
     break;
-    case " Cloth Gloves": this.gold += 11;
+    case " Cloth Gloves": this.gold += 12;
     break;
-    case " Cloth Boots": this.gold += 7;
+    case " Cloth Boots": this.gold += 12;
     break;    
-    case " Wooden Sword": this.gold += 11;
+    case " Wooden Sword": this.gold += 12;
     break;
-    case " Wooden Shield": this.gold += 11;
+    case " Wooden Shield": this.gold += 12;
     break;
     case " Worn Ring": this.gold += 14;
     break;
@@ -1100,13 +1134,13 @@ function sell() {
     break;
     case " Leather Hat": this.gold += 13;
     break;
-    case " Leather Gloves": this.gold += 23;
+    case " Leather Gloves": this.gold += 25;
     break;
-    case " Leather Boots": this.gold += 13;
+    case " Leather Boots": this.gold += 25;
     break;    
-    case " Truncheon": this.gold += 23;
+    case " Truncheon": this.gold += 25;
     break;
-    case " Hardwood Shield": this.gold += 25;
+    case " Hardwood Shield": this.gold += 26;
     break;
     case " Bone Chestplate": this.gold += 47;
     break;
@@ -1114,17 +1148,17 @@ function sell() {
     break;
     case " Bone Helm": this.gold += 23;
     break;
-    case " Hard Leather Mitts": this.gold += 37;
+    case " Hard Leather Mitts": this.gold += 40;
     break;
-    case " Hard Leather Boots": this.gold += 21;
+    case " Hard Leather Boots": this.gold += 40;
     break;    
-    case " Bone Club": this.gold += 37;
+    case " Bone Club": this.gold += 40;
     break;
-    case " Reinforced Shield": this.gold += 39;
+    case " Reinforced Shield": this.gold += 42;
     break;    
-    case " Hatchet": this.gold += 43;
+    case " Hatchet": this.gold += 50;
     break;    
-    case " Kite Shield": this.gold += 45;
+    case " Kite Shield": this.gold += 50;
     break;
     case " Tin Helm": this.gold += 27;
     break;
@@ -1132,9 +1166,9 @@ function sell() {
     break;
     case " Studded Legs": this.gold += 53;
     break;
-    case " Studded Gloves": this.gold += 45;
+    case " Studded Gloves": this.gold += 50;
     break;
-    case " Hobnail Boots": this.gold += 25;
+    case " Hobnail Boots": this.gold += 50;
     break;
     case " Engraved Ring": this.gold += 37;
     break;    
@@ -1142,9 +1176,9 @@ function sell() {
     break;
     case " Stew": this.gold += 15;
     break; 
-    case " Bronze Dagger": this.gold += 59;
+    case " Bronze Dagger": this.gold += 65;
     break;    
-    case " Bronze Shield": this.gold += 61;
+    case " Bronze Shield": this.gold += 67;
     break;
     case " Bronze Helm": this.gold += 35;
     break;
@@ -1152,9 +1186,9 @@ function sell() {
     break;
     case " Bronze Chainlegs": this.gold += 71;
     break;
-    case " Bronze Gloves": this.gold += 59;
+    case " Bronze Gloves": this.gold += 65;
     break;
-    case " Bronze Boots": this.gold += 33;
+    case " Bronze Boots": this.gold += 66;
     break;
     case " Jade Ring": this.gold += 49;
     break;    
@@ -1173,17 +1207,29 @@ function use() {
   position = this.equipment.indexOf(id_tag);
   if ( ~position ) this.equipment.splice(position, 1);
     switch(item) {
-    case " Bread": this.hp += 3;
-      this.energy +=1;
+    case " Bread": foodHp = 3;
+      foodEnergy = 1;
+      this.hp += foodHp;
+      this.energy += foodEnergy;
+      foodAdjuster();
       break;
-    case " Cheese": this.hp += 5;
-      this.energy +=2;
+    case " Cheese": foodHp = 5;
+      foodEnergy = 2;
+      this.hp += foodHp;
+      this.energy += foodEnergy;
+      foodAdjuster();
       break; 
-    case " Ham": this.hp += 8;
-      this.energy +=3;
+    case " Ham": foodHp = 8;
+      foodEnergy = 3;
+      this.hp += foodHp;
+      this.energy += foodEnergy;
+      foodAdjuster();
       break;  
-    case " Stew": this.hp += 9;
-      this.energy +=5;
+    case " Stew": foodHp = 9;
+      foodEnergy = 5;
+      this.hp += foodHp;
+      this.energy += foodEnergy;
+      foodAdjuster();
       break;     
     case " Power Potion": this.points ++;
       break;       
@@ -1209,7 +1255,7 @@ function use() {
       this.equipment[this.equipment.length] = this.weapon;
     }
       this.weapon = " Wooden Sword"; 
-      this.equipStr = 4;  
+      this.equipStr = 5;  
       break;
     case " Wooden Shield": if(this.shield !== "None") {
       this.equipment[this.equipment.length] = this.shield;
@@ -1239,13 +1285,13 @@ function use() {
       this.equipment[this.equipment.length] = this.boots;
     }
       this.boots = " Cloth Boots"; 
-      this.bootDodge = 2;  
+      this.bootDodge = 4;  
       break; 
     case " Cloth Gloves": if(this.gloves !== "None") {
       this.equipment[this.equipment.length] = this.gloves;
     }
       this.gloves = " Cloth Gloves"; 
-      this.equipHit = 4;  
+      this.equipHit = 5;  
       break; 
     case " Worn Ring": if(this.ring !== "None") {
       this.equipment[this.equipment.length] = this.ring;
@@ -1263,7 +1309,7 @@ function use() {
       this.equipment[this.equipment.length] = this.weapon;
     }
       this.weapon = " Truncheon"; 
-      this.equipStr = 8;  
+      this.equipStr = 10;  
       break;
     case " Hardwood Shield": if(this.shield !== "None") {
       this.equipment[this.equipment.length] = this.shield;
@@ -1293,13 +1339,13 @@ function use() {
       this.equipment[this.equipment.length] = this.boots;
     }
       this.boots = " Leather Boots"; 
-      this.bootDodge = 4;  
+      this.bootDodge = 8;  
       break; 
     case " Leather Gloves": if(this.gloves !== "None") {
       this.equipment[this.equipment.length] = this.gloves;
     }
       this.gloves = " Leather Gloves"; 
-      this.equipHit = 8;  
+      this.equipHit = 10;  
       break; 
     case " Tarnished Ring": if(this.ring !== "None") {
       this.equipment[this.equipment.length] = this.ring;
@@ -1317,7 +1363,7 @@ function use() {
       this.equipment[this.equipment.length] = this.weapon;
     }
       this.weapon = " Bone Club"; 
-      this.equipStr = 12;  
+      this.equipStr = 15;  
       break;
     case " Reinforced Shield": if(this.shield !== "None") {
       this.equipment[this.equipment.length] = this.shield;
@@ -1347,13 +1393,13 @@ function use() {
       this.equipment[this.equipment.length] = this.boots;
     }
       this.boots = " Hard Leather Boots"; 
-      this.bootDodge = 6;  
+      this.bootDodge = 12;  
       break; 
     case " Hard Leather Mitts": if(this.gloves !== "None") {
       this.equipment[this.equipment.length] = this.gloves;
     }
       this.gloves = " Hard Leather Mitts"; 
-      this.equipHit = 12;  
+      this.equipHit = 15;  
       break; 
     case " Shiny Ring": if(this.ring !== "None") {
       this.equipment[this.equipment.length] = this.ring;
@@ -1371,7 +1417,7 @@ function use() {
       this.equipment[this.equipment.length] = this.weapon;
     }
       this.weapon = " Hatchet"; 
-      this.equipStr = 16;  
+      this.equipStr = 20;  
       break;
     case " Kite Shield": if(this.shield !== "None") {
       this.equipment[this.equipment.length] = this.shield;
@@ -1401,13 +1447,13 @@ function use() {
       this.equipment[this.equipment.length] = this.boots;
     }
       this.boots = " Hobnail Boots"; 
-      this.bootDodge = 8;  
+      this.bootDodge = 16;  
       break; 
     case " Studded Gloves": if(this.gloves !== "None") {
       this.equipment[this.equipment.length] = this.gloves;
     }
       this.gloves = " Studded Gloves"; 
-      this.equipHit = 16;  
+      this.equipHit = 20;  
       break; 
     case " Engraved Ring": if(this.ring !== "None") {
       this.equipment[this.equipment.length] = this.ring;
@@ -1425,7 +1471,7 @@ function use() {
       this.equipment[this.equipment.length] = this.weapon;
     }
       this.weapon = " Bronze Dagger"; 
-      this.equipStr = 20;  
+      this.equipStr = 25;  
       break;
     case " Bronze Shield": if(this.shield !== "None") {
       this.equipment[this.equipment.length] = this.shield;
@@ -1455,13 +1501,13 @@ function use() {
       this.equipment[this.equipment.length] = this.boots;
     }
       this.boots = " Bronze Boots"; 
-      this.bootDodge = 10;  
+      this.bootDodge = 20;  
       break; 
     case " Bronze Gloves": if(this.gloves !== "None") {
       this.equipment[this.equipment.length] = this.gloves;
     }
       this.gloves = " Bronze Gloves"; 
-      this.equipHit = 20;  
+      this.equipHit = 25;  
       break; 
     case " Jade Ring": if(this.ring !== "None") {
       this.equipment[this.equipment.length] = this.ring;
@@ -1526,8 +1572,8 @@ function changeStock() {
   if (shopTier==="1") {
     shop = [" Wooden Sword", " Wooden Shield", " Cloth Hat", " Cloth Shirt", " Cloth Legs", " Cloth Gloves", " Cloth Boots", " Worn Ring", " Worn Amulet"];
     stockTable.rows[1].cells[0].innerHTML = 'Wooden Sword'; 
-    stockTable.rows[1].cells[1].innerHTML = 'Strength +4'; 
-    stockTable.rows[1].cells[2].innerHTML = '42 gold'; 
+    stockTable.rows[1].cells[1].innerHTML = 'Strength +5'; 
+    stockTable.rows[1].cells[2].innerHTML = '58 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Wooden Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +4';        
     stockTable.rows[2].cells[2].innerHTML = '45 gold';        
@@ -1541,11 +1587,11 @@ function changeStock() {
     stockTable.rows[5].cells[1].innerHTML = 'Defence +4';    
     stockTable.rows[5].cells[2].innerHTML = '48 gold'; 
     stockTable.rows[6].cells[0].innerHTML = 'Cloth Gloves';  
-    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +4';    
-    stockTable.rows[6].cells[2].innerHTML = '45 gold';    
+    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +5';    
+    stockTable.rows[6].cells[2].innerHTML = '60 gold';    
     stockTable.rows[7].cells[0].innerHTML = 'Cloth Boots'; 
-    stockTable.rows[7].cells[1].innerHTML = 'Evade +2';    
-    stockTable.rows[7].cells[2].innerHTML = '24 gold';
+    stockTable.rows[7].cells[1].innerHTML = 'Evade +4';    
+    stockTable.rows[7].cells[2].innerHTML = '48 gold';
     stockTable.rows[8].cells[0].innerHTML = 'Worn Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +2';    
     stockTable.rows[8].cells[2].innerHTML = '36 gold'; 
@@ -1556,8 +1602,8 @@ function changeStock() {
   else if (shopTier ==="2") { 
     shop = [" Truncheon", " Hardwood Shield", " Leather Hat", " Leather Shirt", " Leather Legs", " Leather Gloves", " Leather Boots", " Tarnished Ring", " Tarnished Amulet"];
     stockTable.rows[1].cells[0].innerHTML = 'Truncheon'; 
-    stockTable.rows[1].cells[1].innerHTML = 'Strength +8'; 
-    stockTable.rows[1].cells[2].innerHTML = '90 gold'; 
+    stockTable.rows[1].cells[1].innerHTML = 'Strength +10'; 
+    stockTable.rows[1].cells[2].innerHTML = '121 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Hardwood Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +8';        
     stockTable.rows[2].cells[2].innerHTML = '96 gold';        
@@ -1571,11 +1617,11 @@ function changeStock() {
     stockTable.rows[5].cells[1].innerHTML = 'Defence +8';    
     stockTable.rows[5].cells[2].innerHTML = '105 gold'; 
     stockTable.rows[6].cells[0].innerHTML = 'Leather Gloves';  
-    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +8';    
-    stockTable.rows[6].cells[2].innerHTML = '90 gold';    
+    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +10';    
+    stockTable.rows[6].cells[2].innerHTML = '121 gold';    
     stockTable.rows[7].cells[0].innerHTML = 'Leather Boots'; 
-    stockTable.rows[7].cells[1].innerHTML = 'Evade +4';    
-    stockTable.rows[7].cells[2].innerHTML = '51 gold'; 
+    stockTable.rows[7].cells[1].innerHTML = 'Evade +8';    
+    stockTable.rows[7].cells[2].innerHTML = '102 gold'; 
     stockTable.rows[8].cells[0].innerHTML = 'Tarnished Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +4';    
     stockTable.rows[8].cells[2].innerHTML = '75 gold'; 
@@ -1586,8 +1632,8 @@ function changeStock() {
   else if (shopTier ==="3") { 
     shop = [" Bone Club", " Reinforced Shield", " Bone Helm", " Bone Chestplate", " Hard Leather Legs", " Hard Leather Mitts", " Hard Leather Boots", " Shiny Ring", " Shiny Amulet"];
     stockTable.rows[1].cells[0].innerHTML = 'Bone Club'; 
-    stockTable.rows[1].cells[1].innerHTML = 'Strength +12'; 
-    stockTable.rows[1].cells[2].innerHTML = '150 gold'; 
+    stockTable.rows[1].cells[1].innerHTML = 'Strength +15'; 
+    stockTable.rows[1].cells[2].innerHTML = '203 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Reinforced Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +12';        
     stockTable.rows[2].cells[2].innerHTML = '156 gold';        
@@ -1601,11 +1647,11 @@ function changeStock() {
     stockTable.rows[5].cells[1].innerHTML = 'Defence +12';    
     stockTable.rows[5].cells[2].innerHTML = '171 gold'; 
     stockTable.rows[6].cells[0].innerHTML = 'Hard Leather Mitts';  
-    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +12';    
-    stockTable.rows[6].cells[2].innerHTML = '150 gold';    
+    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +15';    
+    stockTable.rows[6].cells[2].innerHTML = '203 gold';    
     stockTable.rows[7].cells[0].innerHTML = 'Hard Leather Boots'; 
-    stockTable.rows[7].cells[1].innerHTML = 'Evade +6';    
-    stockTable.rows[7].cells[2].innerHTML = '84 gold';
+    stockTable.rows[7].cells[1].innerHTML = 'Evade +12';    
+    stockTable.rows[7].cells[2].innerHTML = '168 gold';
     stockTable.rows[8].cells[0].innerHTML = 'Shiny Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +6';    
     stockTable.rows[8].cells[2].innerHTML = '126 gold'; 
@@ -1616,8 +1662,8 @@ function changeStock() {
   else if (shopTier ==="4") { 
     shop = [" Hatchet", " Kite Shield", " Tin Helm", " Studded Harness", " Studded Legs", " Studded Gloves", " Hobnail Boots", " Engraved Ring", " Engraved Amulet"];
     stockTable.rows[1].cells[0].innerHTML = 'Hatchet'; 
-    stockTable.rows[1].cells[1].innerHTML = 'Strength +16'; 
-    stockTable.rows[1].cells[2].innerHTML = '216 gold'; 
+    stockTable.rows[1].cells[1].innerHTML = 'Strength +20'; 
+    stockTable.rows[1].cells[2].innerHTML = '291 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Kite Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +16';        
     stockTable.rows[2].cells[2].innerHTML = '225 gold';        
@@ -1631,11 +1677,11 @@ function changeStock() {
     stockTable.rows[5].cells[1].innerHTML = 'Defence +16';    
     stockTable.rows[5].cells[2].innerHTML = '252 gold'; 
     stockTable.rows[6].cells[0].innerHTML = 'Studded Gloves';  
-    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +16';    
-    stockTable.rows[6].cells[2].innerHTML = '216 gold';    
+    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +20';    
+    stockTable.rows[6].cells[2].innerHTML = '291 gold';    
     stockTable.rows[7].cells[0].innerHTML = 'Hobnail Boots'; 
-    stockTable.rows[7].cells[1].innerHTML = 'Evade +8';    
-    stockTable.rows[7].cells[2].innerHTML = '123 gold';
+    stockTable.rows[7].cells[1].innerHTML = 'Evade +16';    
+    stockTable.rows[7].cells[2].innerHTML = '246 gold';
     stockTable.rows[8].cells[0].innerHTML = 'Engraved Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +8';    
     stockTable.rows[8].cells[2].innerHTML = '180 gold';
@@ -1646,8 +1692,8 @@ function changeStock() {
   else if (shopTier ==="5") { 
     shop = [" Bronze Dagger", " Bronze Shield", " Bronze Helm", " Bronze Chainmail", " Bronze Chainlegs", " Bronze Gloves", " Bronze Boots", " Jade Ring", " Jade Amulet"];
     stockTable.rows[1].cells[0].innerHTML = 'Bronze Dagger'; 
-    stockTable.rows[1].cells[1].innerHTML = 'Strength +20'; 
-    stockTable.rows[1].cells[2].innerHTML = '291 gold'; 
+    stockTable.rows[1].cells[1].innerHTML = 'Strength +25'; 
+    stockTable.rows[1].cells[2].innerHTML = '393 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Bronze Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +20';        
     stockTable.rows[2].cells[2].innerHTML = '300 gold';        
@@ -1661,11 +1707,11 @@ function changeStock() {
     stockTable.rows[5].cells[1].innerHTML = 'Defence +20';    
     stockTable.rows[5].cells[2].innerHTML = '324 gold'; 
     stockTable.rows[6].cells[0].innerHTML = 'Bronze Gloves';  
-    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +20';    
-    stockTable.rows[6].cells[2].innerHTML = '291 gold';    
+    stockTable.rows[6].cells[1].innerHTML = 'Accuracy +25';    
+    stockTable.rows[6].cells[2].innerHTML = '393 gold';    
     stockTable.rows[7].cells[0].innerHTML = 'Bronze Boots'; 
-    stockTable.rows[7].cells[1].innerHTML = 'Evade +10';    
-    stockTable.rows[7].cells[2].innerHTML = '159 gold';
+    stockTable.rows[7].cells[1].innerHTML = 'Evade +20';    
+    stockTable.rows[7].cells[2].innerHTML = '318 gold';
     stockTable.rows[8].cells[0].innerHTML = 'Jade Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +10';    
     stockTable.rows[8].cells[2].innerHTML = '225 gold';
@@ -1709,8 +1755,8 @@ function changeStock() {
 function buy() {
   var item = document.getElementById("shopStock").value;
   switch(item) {   
-      case " Wooden Sword": if (this.gold >= 42) {
-        this.gold -= 42;
+      case " Wooden Sword": if (this.gold >= 58) {
+        this.gold -= 58;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1749,16 +1795,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Cloth Gloves": if (this.gold >= 45) {
-        this.gold -= 45;
+      case " Cloth Gloves": if (this.gold >= 60) {
+        this.gold -= 60;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Cloth Boots": if (this.gold >= 24) {
-        this.gold -= 24;
+      case " Cloth Boots": if (this.gold >= 48) {
+        this.gold -= 48;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1789,8 +1835,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Truncheon": if (this.gold >= 90) {
-        this.gold -= 90;
+      case " Truncheon": if (this.gold >= 121) {
+        this.gold -= 121;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1829,16 +1875,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Leather Gloves": if (this.gold >= 90) {
-        this.gold -= 90;
+      case " Leather Gloves": if (this.gold >= 121) {
+        this.gold -= 121;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Leather Boots": if (this.gold >= 51) {
-        this.gold -= 51;
+      case " Leather Boots": if (this.gold >= 102) {
+        this.gold -= 102;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1869,8 +1915,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;      
-      case " Bone Club": if (this.gold >= 150) {
-        this.gold -= 150;
+      case " Bone Club": if (this.gold >= 203) {
+        this.gold -= 203;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1909,16 +1955,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Hard Leather Mitts": if (this.gold >= 150) {
-        this.gold -= 150;
+      case " Hard Leather Mitts": if (this.gold >= 203) {
+        this.gold -= 203;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Hard Leather Boots": if (this.gold >= 84) {
-        this.gold -= 84;
+      case " Hard Leather Boots": if (this.gold >= 168) {
+        this.gold -= 168;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1949,8 +1995,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;  
-      case " Hatchet": if (this.gold >= 216) {
-        this.gold -= 216;
+      case " Hatchet": if (this.gold >= 291) {
+        this.gold -= 291;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1989,16 +2035,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Studded Gloves": if (this.gold >= 216) {
-        this.gold -= 216;
+      case " Studded Gloves": if (this.gold >= 291) {
+        this.gold -= 291;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Hobnail Boots": if (this.gold >= 123) {
-        this.gold -= 123;
+      case " Hobnail Boots": if (this.gold >= 246) {
+        this.gold -= 246;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2029,8 +2075,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;  
-      case " Bronze Dagger": if (this.gold >= 291) {
-        this.gold -= 291;
+      case " Bronze Dagger": if (this.gold >= 393) {
+        this.gold -= 393;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2069,16 +2115,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Bronze Gloves": if (this.gold >= 291) {
-        this.gold -= 291;
+      case " Bronze Gloves": if (this.gold >= 393) {
+        this.gold -= 393;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Bronze Boots": if (this.gold >= 159) {
-        this.gold -= 159;
+      case " Bronze Boots": if (this.gold >= 318) {
+        this.gold -= 318;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2104,7 +2150,7 @@ function buy() {
       case " Power Potion": if (this.gold >= potionPrice) {
         this.gold -= potionPrice;
         this.equipment[this.equipment.length] = item;
-        potionPrice += Math.floor(potionPrice/20) + 10;
+        potionPrice += Math.floor(potionPrice/33) + 11;
         changeStock();
       }
       else {
@@ -2470,6 +2516,7 @@ function Character() {
   this.maxEnergy = 20;
   this.updateTime = updateTime;
   this.healthRegen = healthRegen;
+  this.foodAdjuster = foodAdjuster;
   this.strPlus = strPlus;
   this.hitPlus = hitPlus;
   this.dodgePlus = dodgePlus;
