@@ -837,7 +837,7 @@ function checkLevel() {
   if (this.xp >= this.nextLevelXp) {
   this.xp -= this.nextLevelXp;
   this.level ++;
-  this.nextLevelXp = 5 + (this.level-1)*(26 + this.level);
+  this.nextLevelXp = 6 + (this.level-1)*(27 + this.level);
   this.baseMaxHp = this.baseMaxHp + 5;
   this.maxHp = this.equipHp + this.baseMaxHp;  
   if (this.hp < this.maxHp) {
@@ -887,8 +887,8 @@ function lowDrop(difficulty) {
         this.equipment[this.equipment.length] = " Bread";   
         this.gold += 1;     
         break;                  
-    case 7: drop = "a Pair of Cloth Boots";
-        this.equipment[this.equipment.length] = " Cloth Boots";
+    case 7: drop = "a Cloth Hat";
+        this.equipment[this.equipment.length] = " Cloth Hat";
         break;      
     case 8: drop = "6 gold coins";
         this.gold += 6;        
@@ -934,18 +934,30 @@ function lowDrop(difficulty) {
     case 21: drop = "17 gold coins";
         this.gold += 17;
         break;         
-    case 22: drop = "a Pair of Leather Gloves";
-        this.equipment[this.equipment.length] = " Leather Gloves";        
-        break;      
+    case 22: if (this.hp%2 === 0) {
+        drop = "a Pair of Leather Gloves";
+        this.equipment[this.equipment.length] = " Leather Gloves";
+        }
+        else {
+          drop = "20 gold coins"
+          this.gold += 20;
+        }
+        break;     
     case 23: drop = "a Leg of Ham";
         this.equipment[this.equipment.length] = " Ham";        
         break;
     case 24: drop = "20 gold coins";
         this.gold += 20;
         break; 
-    case 25: drop = "a Pair of Leather Leggings";
-        this.equipment[this.equipment.length] = " Leather Legs";        
-        break;              
+    case 25: if (this.hp%2 === 0) {
+        drop = "a Pair of Leather Leggings";
+        this.equipment[this.equipment.length] = " Leather Legs";
+        }
+        else {
+          drop = "22 gold coins"
+          this.gold += 22;
+        }
+        break;               
     case 26: drop = "a Leg of Ham and 3 gold coins";
         this.gold += 3;      
         this.equipment[this.equipment.length] = " Ham";        
@@ -1104,27 +1116,27 @@ function sell() {
     break;
     case " Cloth Legs": this.gold += 13;
     break;
-    case " Cloth Hat": this.gold += 7;
+    case " Cloth Hat": this.gold += 8;
     break;
-    case " Cloth Gloves": this.gold += 12;
+    case " Cloth Gloves": this.gold += 14;
     break;
-    case " Cloth Boots": this.gold += 12;
+    case " Cloth Boots": this.gold += 14;
     break;    
-    case " Wooden Sword": this.gold += 12;
+    case " Wooden Sword": this.gold += 13;
     break;
-    case " Wooden Shield": this.gold += 12;
+    case " Wooden Shield": this.gold += 13;
     break;
-    case " Worn Ring": this.gold += 14;
+    case " Worn Ring": this.gold += 15;
     break;
-    case " Tarnished Ring": this.gold += 19;
+    case " Tarnished Ring": this.gold += 32;
     break;
-    case " Shiny Ring": this.gold += 31;
+    case " Shiny Ring": this.gold += 48;
     break;
     case " Worn Amulet": this.gold += 15;
     break;
-    case " Tarnished Amulet": this.gold += 19;
+    case " Tarnished Amulet": this.gold += 32;
     break;
-    case " Shiny Amulet": this.gold += 31;
+    case " Shiny Amulet": this.gold += 48;
     break;
     case " Ham": this.gold += 10;
     break;     
@@ -1142,13 +1154,13 @@ function sell() {
     break;
     case " Hardwood Shield": this.gold += 26;
     break;
-    case " Bone Chestplate": this.gold += 47;
+    case " Bone Chestplate": this.gold += 46;
     break;
     case " Hard Leather Legs": this.gold += 43;
     break;
     case " Bone Helm": this.gold += 23;
     break;
-    case " Hard Leather Mitts": this.gold += 40;
+    case " Hard Leather Mitts": this.gold += 45;
     break;
     case " Hard Leather Boots": this.gold += 40;
     break;    
@@ -1156,7 +1168,7 @@ function sell() {
     break;
     case " Reinforced Shield": this.gold += 42;
     break;    
-    case " Hatchet": this.gold += 50;
+    case " Hatchet": this.gold += 55;
     break;    
     case " Kite Shield": this.gold += 50;
     break;
@@ -1170,13 +1182,13 @@ function sell() {
     break;
     case " Hobnail Boots": this.gold += 50;
     break;
-    case " Engraved Ring": this.gold += 37;
+    case " Engraved Ring": this.gold += 56;
     break;    
-    case " Engraved Amulet": this.gold += 39;
+    case " Engraved Amulet": this.gold += 56;
     break;
     case " Stew": this.gold += 15;
     break; 
-    case " Bronze Dagger": this.gold += 65;
+    case " Bronze Dagger": this.gold += 75;
     break;    
     case " Bronze Shield": this.gold += 67;
     break;
@@ -1186,15 +1198,15 @@ function sell() {
     break;
     case " Bronze Chainlegs": this.gold += 71;
     break;
-    case " Bronze Gloves": this.gold += 65;
+    case " Bronze Gloves": this.gold += 70;
     break;
     case " Bronze Boots": this.gold += 66;
     break;
-    case " Jade Ring": this.gold += 49;
+    case " Jade Ring": this.gold += 76;
     break;    
-    case " Jade Amulet": this.gold += 51;
+    case " Jade Amulet": this.gold += 76;
     break;
-    case " Power Potion": this.gold += 30;
+    case " Power Potion": this.gold += 50;
     break;    
     }
     document.getElementById("sellItems").style.visibility='hidden';
@@ -1594,10 +1606,10 @@ function changeStock() {
     stockTable.rows[7].cells[2].innerHTML = '48 gold';
     stockTable.rows[8].cells[0].innerHTML = 'Worn Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +2';    
-    stockTable.rows[8].cells[2].innerHTML = '36 gold'; 
+    stockTable.rows[8].cells[2].innerHTML = '65 gold'; 
     stockTable.rows[9].cells[0].innerHTML = 'Worn Amulet'; 
     stockTable.rows[9].cells[1].innerHTML = 'Max Health +10';    
-    stockTable.rows[9].cells[2].innerHTML = '39 gold';    
+    stockTable.rows[9].cells[2].innerHTML = '65 gold';    
   }
   else if (shopTier ==="2") { 
     shop = [" Truncheon", " Hardwood Shield", " Leather Hat", " Leather Shirt", " Leather Legs", " Leather Gloves", " Leather Boots", " Tarnished Ring", " Tarnished Amulet"];
@@ -1624,10 +1636,10 @@ function changeStock() {
     stockTable.rows[7].cells[2].innerHTML = '102 gold'; 
     stockTable.rows[8].cells[0].innerHTML = 'Tarnished Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +4';    
-    stockTable.rows[8].cells[2].innerHTML = '75 gold'; 
+    stockTable.rows[8].cells[2].innerHTML = '135 gold'; 
     stockTable.rows[9].cells[0].innerHTML = 'Tarnished Amulet'; 
     stockTable.rows[9].cells[1].innerHTML = 'Max Health +20';    
-    stockTable.rows[9].cells[2].innerHTML = '78 gold';      
+    stockTable.rows[9].cells[2].innerHTML = '135 gold';      
   }
   else if (shopTier ==="3") { 
     shop = [" Bone Club", " Reinforced Shield", " Bone Helm", " Bone Chestplate", " Hard Leather Legs", " Hard Leather Mitts", " Hard Leather Boots", " Shiny Ring", " Shiny Amulet"];
@@ -1654,10 +1666,10 @@ function changeStock() {
     stockTable.rows[7].cells[2].innerHTML = '168 gold';
     stockTable.rows[8].cells[0].innerHTML = 'Shiny Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +6';    
-    stockTable.rows[8].cells[2].innerHTML = '126 gold'; 
+    stockTable.rows[8].cells[2].innerHTML = '210 gold'; 
     stockTable.rows[9].cells[0].innerHTML = 'Shiny Amulet'; 
     stockTable.rows[9].cells[1].innerHTML = 'Max Health +30';    
-    stockTable.rows[9].cells[2].innerHTML = '132 gold';    
+    stockTable.rows[9].cells[2].innerHTML = '210 gold';    
   }
   else if (shopTier ==="4") { 
     shop = [" Hatchet", " Kite Shield", " Tin Helm", " Studded Harness", " Studded Legs", " Studded Gloves", " Hobnail Boots", " Engraved Ring", " Engraved Amulet"];
@@ -1684,10 +1696,10 @@ function changeStock() {
     stockTable.rows[7].cells[2].innerHTML = '246 gold';
     stockTable.rows[8].cells[0].innerHTML = 'Engraved Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +8';    
-    stockTable.rows[8].cells[2].innerHTML = '180 gold';
+    stockTable.rows[8].cells[2].innerHTML = '300 gold';
     stockTable.rows[9].cells[0].innerHTML = 'Engraved Amulet'; 
     stockTable.rows[9].cells[1].innerHTML = 'Max Health +40';    
-    stockTable.rows[9].cells[2].innerHTML = '192 gold';     
+    stockTable.rows[9].cells[2].innerHTML = '300 gold';     
   }
   else if (shopTier ==="5") { 
     shop = [" Bronze Dagger", " Bronze Shield", " Bronze Helm", " Bronze Chainmail", " Bronze Chainlegs", " Bronze Gloves", " Bronze Boots", " Jade Ring", " Jade Amulet"];
@@ -1714,10 +1726,10 @@ function changeStock() {
     stockTable.rows[7].cells[2].innerHTML = '318 gold';
     stockTable.rows[8].cells[0].innerHTML = 'Jade Ring'; 
     stockTable.rows[8].cells[1].innerHTML = 'Luck +10';    
-    stockTable.rows[8].cells[2].innerHTML = '225 gold';
+    stockTable.rows[8].cells[2].innerHTML = '400 gold';
     stockTable.rows[9].cells[0].innerHTML = 'Jade Amulet'; 
     stockTable.rows[9].cells[1].innerHTML = 'Max Health +50';    
-    stockTable.rows[9].cells[2].innerHTML = '240 gold';     
+    stockTable.rows[9].cells[2].innerHTML = '400 gold';     
   }  
   else if (shopTier ==="Food & Potions") {
     shop = [" Bread", " Cheese", " Ham", " Stew", " Power Potion"];
@@ -1811,16 +1823,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Worn Ring": if (this.gold >= 36) {
-        this.gold -= 36;
+      case " Worn Ring": if (this.gold >= 65) {
+        this.gold -= 65;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Worn Amulet": if (this.gold >= 39) {
-        this.gold -= 39;
+      case " Worn Amulet": if (this.gold >= 65) {
+        this.gold -= 65;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1891,16 +1903,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Tarnished Ring": if (this.gold >= 75) {
-        this.gold -= 75;
+      case " Tarnished Ring": if (this.gold >= 135) {
+        this.gold -= 135;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break; 
-      case " Tarnished Amulet": if (this.gold >= 78) {
-        this.gold -= 78;
+      case " Tarnished Amulet": if (this.gold >= 135) {
+        this.gold -= 135;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1971,16 +1983,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Shiny Ring": if (this.gold >= 126) {
-        this.gold -= 126;
+      case " Shiny Ring": if (this.gold >= 210) {
+        this.gold -= 210;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break; 
-      case " Shiny Amulet": if (this.gold >= 132) {
-        this.gold -= 132;
+      case " Shiny Amulet": if (this.gold >= 210) {
+        this.gold -= 210;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2051,16 +2063,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Engraved Ring": if (this.gold >= 180) {
-        this.gold -= 180;
+      case " Engraved Ring": if (this.gold >= 300) {
+        this.gold -= 300;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break; 
-      case " Engraved Amulet": if (this.gold >= 192) {
-        this.gold -= 192;
+      case " Engraved Amulet": if (this.gold >= 300) {
+        this.gold -= 300;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2131,16 +2143,16 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Jade Ring": if (this.gold >= 225) {
-        this.gold -= 225;
+      case " Jade Ring": if (this.gold >= 400) {
+        this.gold -= 400;
         this.equipment[this.equipment.length] = item;
       }
       else {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Jade Amulet": if (this.gold >= 240) {
-        this.gold -= 240;
+      case " Jade Amulet": if (this.gold >= 400) {
+        this.gold -= 400;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2510,7 +2522,7 @@ function Character() {
   this.ring = "None";
   this.amulet = "None";  
   this.points = 2;
-  this.gold = 10;
+  this.gold = 1;
   this.equipment = [];
   this.energy = 20;
   this.maxEnergy = 20;
