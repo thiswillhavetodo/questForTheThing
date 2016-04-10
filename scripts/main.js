@@ -375,11 +375,11 @@ function fight(enemy) {
     }
     else if (enemy.xpWin/enemy.energyCost>=10 && enemy.levelUps>=enemy.veteranCount) {
       enemy.veteranCount +=2;
-      enemy.str += 1;
+      enemy.str += 2;
       enemy.hit += 1;
-      enemy.def += 2;
-      enemy.dodge += 2;
-      enemy.maxHp += 3;
+      enemy.def += 1;
+      enemy.dodge += 1;
+      enemy.maxHp += 4;
     }
     else if (enemy.xpWin/enemy.energyCost>=8 && enemy.levelUps>=enemy.veteranCount) {
       enemy.veteranCount +=4;
@@ -1022,7 +1022,7 @@ function lowDrop(difficulty) {
     case 45: drop = "a Pair of Bronze Gloves";
         this.equipment[this.equipment.length] = " Bronze Gloves";
         break; 
-    default: drop = if (this.hp%11 === 0) {
+    default: if (this.hp%11 === 0) {
         drop = "a Power Potion";
         this.equipment[this.equipment.length] = " Power Potion";
         }
