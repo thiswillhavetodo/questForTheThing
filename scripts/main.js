@@ -162,7 +162,7 @@ var goblin = {
   energyCost: 7,
   hp: 85,
   maxHp: 85,
-  str: 20,
+  str: 21,
   hit: 19,
   def: 17,
   dodge: 17,
@@ -184,7 +184,7 @@ var orc = {
   hp: 99,
   maxHp: 99,
   str: 27,
-  hit: 26,
+  hit: 28,
   def: 24,
   dodge: 24,
   xpWin: 53,
@@ -391,7 +391,7 @@ function fight(enemy) {
     }
   }
   attack = function()  {
-    var randomize = (Math.random(0,1) + 0.2);
+    var randomize = (Math.random(0,1) + 0.25);
     var score = Math.floor((self.luck/10)/randomize); 
     highRoll = Math.floor(enemy.level/3) + 4;
     scaler = Math.floor(enemy.level/5);
@@ -896,45 +896,67 @@ function lowDrop(difficulty) {
     case 9: drop = "8 gold coins";
         this.gold += 8;
         break;
-    case 10: drop = "a Piece of Cheese";
+    case 10: drop = "a Crust of Bread and 6 gold coins";
+        this.equipment[this.equipment.length] = " Bread";   
+        this.gold += 6;     
+        break;  
+    case 11: if (this.hp%2 === 0) {
+        drop = "a Wooden Shield";
+        this.equipment[this.equipment.length] = " Wooden Shield";
+        }
+        else {
+          drop = "9 gold coins"
+          this.gold += 9;
+        }
+        break; 
+    case 12: drop = "a Piece of Cheese";
         this.equipment[this.equipment.length] = " Cheese";        
-        break;         
-    case 11: drop = "a Wooden Shield";
+        break;                          
+    case 13: drop = "a Wooden Shield";
         this.equipment[this.equipment.length] = " Wooden Shield";        
         break; 
-    case 12: drop = "10 gold coins";
+    case 14: drop = "10 gold coins";
         this.gold += 10;
         break;           
-    case 13: drop = "a Piece of Cheese and 2 gold coins";
+    case 15: drop = "a Piece of Cheese and 2 gold coins";
         this.equipment[this.equipment.length] = " Cheese"; 
         this.gold += 2;    
         break;   
-    case 14: drop = "11 gold coins";
+    case 16: drop = "11 gold coins";
         this.gold += 11;
         break;
-    case 15: drop = "a Wooden Training Sword";
+    case 17: drop = "a Wooden Training Sword";
         this.equipment[this.equipment.length] = " Wooden Sword";
         break;
-    case 16: drop = "a Piece of Cheese and 4 gold coins";
+    case 18: drop = "a Piece of Cheese and 4 gold coins";
         this.equipment[this.equipment.length] = " Cheese"; 
         this.gold += 4;      
         break;         
-    case 17: drop = "14 gold coins";
+    case 19: drop = "14 gold coins";
         this.gold += 14;
         break;
-    case 18: drop = "a Cloth Shirt";
+    case 20: if (this.hp%2 === 0) {
+        drop = "a Cloth Shirt";
+        this.equipment[this.equipment.length] = " Cloth Shirt";
+        }
+        else {
+          drop = "15 gold coins"
+          this.gold += 15;
+        }
+        break;          
+    case 21: drop = "a Cloth Shirt";
         this.equipment[this.equipment.length] = " Cloth Shirt";        
         break;    
-    case 19: drop = "16 gold coins";
+    case 22: drop = "16 gold coins";
         this.gold += 16;
         break; 
-    case 20: drop = "a Leather Hat";
+    case 23: drop = "a Leather Hat";
         this.equipment[this.equipment.length] = " Leather Hat";        
         break; 
-    case 21: drop = "17 gold coins";
+    case 24: drop = "17 gold coins";
         this.gold += 17;
         break;         
-    case 22: if (this.hp%2 === 0) {
+    case 25: if (this.hp%2 === 0) {
         drop = "a Pair of Leather Gloves";
         this.equipment[this.equipment.length] = " Leather Gloves";
         }
@@ -943,13 +965,13 @@ function lowDrop(difficulty) {
           this.gold += 20;
         }
         break;     
-    case 23: drop = "a Leg of Ham";
+    case 26: drop = "a Leg of Ham";
         this.equipment[this.equipment.length] = " Ham";        
         break;
-    case 24: drop = "20 gold coins";
+    case 27: drop = "20 gold coins";
         this.gold += 20;
         break; 
-    case 25: if (this.hp%2 === 0) {
+    case 28: if (this.hp%2 === 0) {
         drop = "a Pair of Leather Leggings";
         this.equipment[this.equipment.length] = " Leather Legs";
         }
@@ -958,37 +980,37 @@ function lowDrop(difficulty) {
           this.gold += 22;
         }
         break;               
-    case 26: drop = "a Leg of Ham and 3 gold coins";
+    case 29: drop = "a Leg of Ham and 3 gold coins";
         this.gold += 3;      
         this.equipment[this.equipment.length] = " Ham";        
         break;
-    case 27: drop = "22 gold coins";
+    case 30: drop = "22 gold coins";
         this.gold += 22;
         break;               
-    case 28: drop = "a Bone Helm and 6 gold coins";
+    case 31: drop = "a Bone Helm and 6 gold coins";
         this.equipment[this.equipment.length] = " Bone Helm";
         this.gold += 6;
         break;       
-    case 29: drop = "25 gold coins";
+    case 32: drop = "25 gold coins";
         this.gold += 25;
         break; 
-    case 30: drop = "a Bone Club";
+    case 33: drop = "a Bone Club";
         this.equipment[this.equipment.length] = " Bone Club";
         break;
-    case 31: drop = "27 gold coins";
+    case 34: drop = "27 gold coins";
         this.gold += 27;
         break;
-    case 32: drop = "a Leg of Ham and 9 gold coins";
+    case 35: drop = "a Leg of Ham and 9 gold coins";
         this.gold += 9;      
         this.equipment[this.equipment.length] = " Ham";        
         break;                
-    case 33: drop = "a Bone Chestplate";
+    case 36: drop = "a Bone Chestplate";
         this.equipment[this.equipment.length] = " Bone Chestplate";        
         break;
-    case 34: drop = "30 gold coins";
+    case 37: drop = "30 gold coins";
         this.gold += 30;
         break; 
-    case 35: if (this.hp%2 === 0) {
+    case 38: if (this.hp%2 === 0) {
         drop = "a Pair of Studded Gloves";
         this.equipment[this.equipment.length] = " Studded Gloves";
         }
@@ -997,16 +1019,16 @@ function lowDrop(difficulty) {
           this.gold += 32;
         }
         break;  
-    case 36: drop = "33 gold coins";
+    case 39: drop = "33 gold coins";
         this.gold += 33;
         break; 
-    case 37: drop = "a Pair of Studded Gloves";
+    case 40: drop = "a Pair of Studded Gloves";
         this.equipment[this.equipment.length] = " Studded Gloves";
         break;        
-    case 38: drop = "34 gold coins";
+    case 41: drop = "34 gold coins";
         this.gold += 34;
         break; 
-    case 39: if (this.hp%2 === 0) {
+    case 42: if (this.hp%2 === 0) {
         drop = "a Kite Shield";
         this.equipment[this.equipment.length] = " Kite Shield";
         }
@@ -1015,29 +1037,29 @@ function lowDrop(difficulty) {
           this.gold += 35;
         }
         break; 
-    case 40: drop = "36 gold coins";
+    case 43: drop = "36 gold coins";
         this.gold += 36;
         break;                
-    case 41: drop = "a Kite Shield";
+    case 44: drop = "a Kite Shield";
         this.equipment[this.equipment.length] = " Kite Shield";        
         break; 
-    case 42: drop = "two Legs of Ham";
+    case 45: drop = "two Legs of Ham";
         this.equipment[this.equipment.length] = " Ham";     
         this.equipment[this.equipment.length] = " Ham";        
         break;              
-    case 43: drop = "38 gold coins";
+    case 46: drop = "38 gold coins";
         this.gold += 38;
         break; 
-    case 44: drop = "a Pair of Studded Leggings";
+    case 47: drop = "a Pair of Studded Leggings";
         this.equipment[this.equipment.length] = " Studded Legs";
         break;     
-    case 45: drop = "38 gold coins";   
+    case 48: drop = "38 gold coins";   
         this.gold += 38;
         break; 
-    case 46: drop = "40 gold coins";   
+    case 49: drop = "40 gold coins";   
         this.gold += 40;
         break; 
-    case 47: if (this.hp%2 === 0) {
+    case 50: if (this.hp%2 === 0) {
         drop = "a Pair of Bronze Gloves";
         this.equipment[this.equipment.length] = " Bronze Gloves";
         }
@@ -1046,7 +1068,7 @@ function lowDrop(difficulty) {
           this.gold += 42;
         }
         break; 
-    case 48: if (this.hp%5 === 0) {
+    case 51: if (this.hp%5 === 0) {
         drop = "a Bronze Chainmail Shirt";
         this.equipment[this.equipment.length] = " Bronze Chainmail";
         }
@@ -1055,7 +1077,7 @@ function lowDrop(difficulty) {
           this.gold += 44;
         }
         break;
-    case 49: drop = "a Pair of Bronze Gloves";
+    case 52: drop = "a Pair of Bronze Gloves";
         this.equipment[this.equipment.length] = " Bronze Gloves";
         break; 
     default: if (this.hp%11 === 0) {
@@ -1612,7 +1634,7 @@ function changeStock() {
     stockTable.rows[1].cells[2].innerHTML = '58 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Wooden Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +4';        
-    stockTable.rows[2].cells[2].innerHTML = '45 gold';        
+    stockTable.rows[2].cells[2].innerHTML = '50 gold';        
     stockTable.rows[3].cells[0].innerHTML = 'Cloth Hat';        
     stockTable.rows[3].cells[1].innerHTML = 'Defence +2';        
     stockTable.rows[3].cells[2].innerHTML = '24 gold';        
@@ -1642,7 +1664,7 @@ function changeStock() {
     stockTable.rows[1].cells[2].innerHTML = '131 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Hardwood Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +8';        
-    stockTable.rows[2].cells[2].innerHTML = '106 gold';        
+    stockTable.rows[2].cells[2].innerHTML = '120 gold';        
     stockTable.rows[3].cells[0].innerHTML = 'Leather Hat';        
     stockTable.rows[3].cells[1].innerHTML = 'Defence +4';        
     stockTable.rows[3].cells[2].innerHTML = '67 gold';        
@@ -1672,12 +1694,12 @@ function changeStock() {
     stockTable.rows[1].cells[2].innerHTML = '213 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Reinforced Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +12';        
-    stockTable.rows[2].cells[2].innerHTML = '166 gold';        
+    stockTable.rows[2].cells[2].innerHTML = '183 gold';        
     stockTable.rows[3].cells[0].innerHTML = 'Bone Helm';        
     stockTable.rows[3].cells[1].innerHTML = 'Defence +6';        
     stockTable.rows[3].cells[2].innerHTML = '103 gold';        
     stockTable.rows[4].cells[0].innerHTML = 'Bone Chestplate';  
-    stockTable.rows[4].cells[1].innerHTML = 'Defence +18';    
+    stockTable.rows[4].cells[1].innerHTML = 'Defence +12';    
     stockTable.rows[4].cells[2].innerHTML = '196 gold';    
     stockTable.rows[5].cells[0].innerHTML = 'Hard Leather Legs'; 
     stockTable.rows[5].cells[1].innerHTML = 'Defence +12';    
@@ -1702,7 +1724,7 @@ function changeStock() {
     stockTable.rows[1].cells[2].innerHTML = '301 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Kite Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +16';        
-    stockTable.rows[2].cells[2].innerHTML = '235 gold';        
+    stockTable.rows[2].cells[2].innerHTML = '265 gold';        
     stockTable.rows[3].cells[0].innerHTML = 'Tin Helm';        
     stockTable.rows[3].cells[1].innerHTML = 'Defence +8';        
     stockTable.rows[3].cells[2].innerHTML = '139 gold';        
@@ -1732,7 +1754,7 @@ function changeStock() {
     stockTable.rows[1].cells[2].innerHTML = '403 gold'; 
     stockTable.rows[2].cells[0].innerHTML = 'Bronze Shield';
     stockTable.rows[2].cells[1].innerHTML = 'Evade +20';        
-    stockTable.rows[2].cells[2].innerHTML = '310 gold';        
+    stockTable.rows[2].cells[2].innerHTML = '333 gold';        
     stockTable.rows[3].cells[0].innerHTML = 'Bronze Helm';        
     stockTable.rows[3].cells[1].innerHTML = 'Defence +10';        
     stockTable.rows[3].cells[2].innerHTML = '175 gold';        
@@ -1799,8 +1821,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Wooden Shield": if (this.gold >= 45) {
-        this.gold -= 45;
+      case " Wooden Shield": if (this.gold >= 50) {
+        this.gold -= 50;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1879,8 +1901,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Hardwood Shield": if (this.gold >= 106) {
-        this.gold -= 106;
+      case " Hardwood Shield": if (this.gold >= 120) {
+        this.gold -= 120;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -1959,8 +1981,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Reinforced Shield": if (this.gold >= 166) {
-        this.gold -= 166;
+      case " Reinforced Shield": if (this.gold >= 183) {
+        this.gold -= 183;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2039,8 +2061,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Kite Shield": if (this.gold >= 235) {
-        this.gold -= 235;
+      case " Kite Shield": if (this.gold >= 265) {
+        this.gold -= 265;
         this.equipment[this.equipment.length] = item;
       }
       else {
@@ -2119,8 +2141,8 @@ function buy() {
         result.innerHTML = "You don't have enough gold to buy that.";
       }
       break;
-      case " Bronze Shield": if (this.gold >= 310) {
-        this.gold -= 310;
+      case " Bronze Shield": if (this.gold >= 333) {
+        this.gold -= 333;
         this.equipment[this.equipment.length] = item;
       }
       else {
