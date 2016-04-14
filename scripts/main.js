@@ -896,11 +896,7 @@ function lowDrop(difficulty) {
     case 9: drop = "8 gold coins";
         this.gold += 8;
         break;
-    case 10: drop = "a Crust of Bread and 6 gold coins";
-        this.equipment[this.equipment.length] = " Bread";   
-        this.gold += 6;     
-        break;  
-    case 11: if (this.hp%2 === 0) {
+    case 10: if (this.hp%2 === 0) {
         drop = "a Wooden Shield";
         this.equipment[this.equipment.length] = " Wooden Shield";
         }
@@ -908,7 +904,11 @@ function lowDrop(difficulty) {
           drop = "9 gold coins"
           this.gold += 9;
         }
-        break; 
+        break;         
+    case 11: drop = "a Crust of Bread and 6 gold coins";
+        this.equipment[this.equipment.length] = " Bread";   
+        this.gold += 6;     
+        break;  
     case 12: drop = "a Piece of Cheese";
         this.equipment[this.equipment.length] = " Cheese";        
         break;                          
@@ -922,28 +922,28 @@ function lowDrop(difficulty) {
         this.equipment[this.equipment.length] = " Cheese"; 
         this.gold += 2;    
         break;   
-    case 16: drop = "11 gold coins";
-        this.gold += 11;
-        break;
-    case 17: drop = "a Wooden Training Sword";
+    case 16: drop = "a Wooden Training Sword";
         this.equipment[this.equipment.length] = " Wooden Sword";
         break;
-    case 18: drop = "a Piece of Cheese and 4 gold coins";
-        this.equipment[this.equipment.length] = " Cheese"; 
-        this.gold += 4;      
-        break;         
-    case 19: drop = "14 gold coins";
-        this.gold += 14;
-        break;
-    case 20: if (this.hp%2 === 0) {
+    case 17: drop = "11 gold coins";
+        this.gold += 11;
+        break;        
+    case 18: if (this.hp%2 === 0) {
         drop = "a Cloth Shirt";
         this.equipment[this.equipment.length] = " Cloth Shirt";
         }
         else {
-          drop = "15 gold coins"
-          this.gold += 15;
+          drop = "12 gold coins"
+          this.gold += 12;
         }
-        break;          
+        break;         
+    case 19: drop = "a Piece of Cheese and 4 gold coins";
+        this.equipment[this.equipment.length] = " Cheese"; 
+        this.gold += 4;      
+        break;         
+    case 20: drop = "14 gold coins";
+        this.gold += 14;
+        break;        
     case 21: drop = "a Cloth Shirt";
         this.equipment[this.equipment.length] = " Cloth Shirt";        
         break;    
